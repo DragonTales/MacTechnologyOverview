@@ -12,13 +12,23 @@ https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_
 
 The Cocoa application layer is primarily responsible for the appearance of apps and their responsiveness to user actions. In addition, many of the features that define the OS X user experience—such as Notification Center, full-screen mode, and Auto Save—are implemented by the Cocoa layer.
 
+Cocoa 应用层是应用外观和用户交互最主要的一层。另外，定义OSX 用户体验的功能，比如通知中心，全屏模式 和 自动保存 都是使用 Cocoa 层实现。
+
 
 
 **Note:** In this book, *Cocoa* usually refers to the application layer of OS X. In other Apple technical documents, *Cocoa* frequently refers to all programmatic interfaces that you might use to develop an app, regardless of the layer in which those interfaces reside.
 
+备注：在本章节中，`Cocoa` 通常指 OSX 的应用层。在其他Apple 技术文档中，Cocoa 频繁用于描述所有你用来开发应用的变成接口，而与这些接口所在的层无关。
+
 
 
 The term *Aqua* refers to the overall appearance and behavior of OS X. The Aqua look and feel is characterized by consistent, user-friendly behaviors combined with a masterful use of layout, color, and texture. Although much of the Aqua look and feel comes for free when you use Cocoa technologies to develop your app, there are still many steps you should take to distinguish your app from the competition. To create a beautiful, compelling app that users will love, be sure to follow the guidance provided in *OS X Human Interface Guidelines*.
+
+`Aqua` 表示 OSX 的整体外形和功能表现。Aqua 外观的特定是一致的、用户友好的操作，结合布局、色彩、纹理的熟练使用。尽管当您使用Cocoa技术开发应用程序时，许多Aqua外观都是免费提供的，你仍需要花费很多步骤，来让你的应用脱颖而出。去穿件漂亮的、引人瞩目的让用户喜爱的应用，可以查看 *OS X Human Interface Guidelines*  的建议。
+
+
+
+
 
 ![../art/osx_architecture-cocoa_2x.png](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/art/osx_architecture-cocoa_2x.png)
 
@@ -32,6 +42,8 @@ The term *Aqua* refers to the overall appearance and behavior of OS X. The Aqua 
 
 The Cocoa (Application) layer implements many features that are distinctive aspects of the OS X user experience. Users expect to find these features throughout the system, so it’s a good idea to support all the features that make sense in your app.
 
+Cocoa 层实现 OSX 用户交互的
+
 
 
 ### 1、Notification Center
@@ -44,6 +56,7 @@ To learn about integrating the Notification Center into your app, see *[NSUserNo
 
 
 
+***
 ### 2、Game Center
 
 Game Center accesses the same social-gaming network as on iOS, allowing users to track scores on a leaderboard, compare their in-game achievements, invite friends to play a game, and start a multiplayer game through automatic matching. Game Center functionality is provided in three parts:
@@ -64,6 +77,7 @@ To learn more about adding Game Center support to your app, see *[Game Center Pr
 
 
 
+***
 ### 3、Sharing
 
 The sharing service provides a consistent user experience for sharing content among many types of services. For example, a user might want to share a photo by posting it in a Twitter message, attaching it to an email, or sending it to another Mac user via AirDrop.
@@ -74,6 +88,7 @@ Use the AppKit `NSSharingService` class to get information about available servi
 
 
 
+***
 ### 4、Resume
 
 Resume is a systemwide enhancement of the user experience that supports app persistence. A user can log out or shut down the operating system, and on next login or startup, OS X automatically relaunches the apps that were last running and restores the windows that were last opened. If your app provides the necessary support, reopened windows have the same size and location as before; in addition, window contents are scrolled to the previous position and selections are restored.
@@ -94,6 +109,7 @@ You enable and manage full-screen support through methods of the `NSApplication`
 
 
 
+***
 ### 6、Cocoa Auto Layout
 
 Cocoa Auto Layout is a rule-based system designed to implement the layout guidelines described in *OS X Human Interface Guidelines*. It expresses a larger class of relationships and is more intuitive to use than springs and struts. 
@@ -126,6 +142,7 @@ For more information, see *[NSPopover Class Reference](https://developer.apple.c
 
 
 
+***
 ### 8、Software Configuration 软件配置
 
 OS X programs commonly use property list files (also known as *plist files*) to store configuration data. A property list is a text or binary file used to manage a dictionary of key-value pairs. Apps use a special type of property list file, called an *information property list* (`Info.plist`) *file*, to communicate key attributes of the app—such as the app’s name, unique identification string, and version information—to the system. Apps also use property list files to store user preferences or other custom configuration data.
@@ -136,6 +153,7 @@ Inside your app, you can read and write property list files programmatically usi
 
 
 
+***
 ### 9、Accessibility 辅助功能
 
 Accessibility is the successful access to information and information technologies by the millions of people who have some type of disability or special need. OS X provides many built-in features and assistive technologies that help users with special needs benefit from the Mac. OS X also provides software developers with the functions they need to create apps that are accessible to all users. 
@@ -156,6 +174,7 @@ For more information about accessibility, see *[Accessibility Programming Guide 
 
 
 
+***
 ### 10、AppleScript 脚本
 
 OS X employs AppleScript as the primary language for making apps scriptable. With AppleScript, users can write scripts that link together the services of multiple scriptable apps. 
@@ -166,6 +185,7 @@ To learn how to support AppleScript in your programs, see [Applescript Overview]
 
 
 
+***
 ### 11、Spotlight 搜索聚焦
 
 Spotlight provides advanced search capabilities for apps. The Spotlight server gathers metadata from documents and other relevant user files and incorporates that metadata into a searchable index. The Finder uses this metadata to provide users with more relevant information about their files. For example, in addition to listing the name of a JPEG file, the Finder can also list its width and height in pixels. 
@@ -182,6 +202,7 @@ For more information on using Spotlight in your apps, see *[Spotlight Overview](
 
 
 
+***
 ### 12、Ink Services
 
 Ink Services provides handwriting recognition for apps that support the Cocoa and WebKit text systems and any text system that supports input methods. The automatic support is for text and handwriting gestures (which are defined in the Ink panel). The Ink framework offers several features that you can incorporate into your apps, including the following: 
@@ -197,6 +218,7 @@ The Ink framework is a subframework of `Carbon.framework`; you should link to it
 
 
 
+***
 ## 三、Frameworks 框架
 
 The Cocoa (Application) layer includes the frameworks described in the following sections.
@@ -219,6 +241,7 @@ The Cocoa umbrella framework (`Cocoa.framework`) imports the core Objective-C fr
 
 
 
+***
 ### 2、AppKit 
 
 AppKit is the key framework for Cocoa apps. The classes in the AppKit framework implement the user interface (UI) of an app, including windows, dialogs, controls, menus, and event handling. They also handle much of the behavior required of a well-behaved app, including menu management, window management, document management, Open and Save dialogs, and pasteboard (Clipboard) behavior. 
@@ -241,6 +264,7 @@ For an overview of the AppKit framework, see the introduction to the *[Applicati
 
 
 
+***
 ### 3、Game Kit 游戏
 
 The Game Kit framework (`GameKit.framework`) provides APIs that allow your app to participate in Game Center. For example, you can use Game Kit classes to display leaderboards in your game and to give users the opportunity to share their in-game achievements and play multiplayer games. 
@@ -249,6 +273,7 @@ To learn more about using Game Kit in your app, see *[Game Kit Framework Referen
 
 
 
+***
 ### 4、Preference Panes 偏好设置面板
 
 The Preference Panes framework (`PreferencePanes.framework`) lets you create plug-ins containing a user interface for setting app preferences. At runtime, the System Preferences app (or your app) can dynamically load the plug-in and present the settings UI to users. In System Preferences, each icon in the Show All view represents an individual preference pane plug-in. You typically implement preference pane plug-ins when your app lacks its own user interface or has a very limited UI but needs to be configurable. In these cases, you create both the plug-in and the app-specific code that reads and writes the preference settings.
@@ -257,6 +282,7 @@ For more information about creating preference-pane plug-ins, see *[Preference P
 
 
 
+***
 ### 5、Screen Saver 屏保
 
 The Screen Saver framework (`ScreenSaver.framework`) contains classes for creating dynamically loadable bundles that implement screen savers. Users can select your screen saver in the Desktop & Screen Saver pane of the System Preferences app. Screen Saver helps you implement the screen saver view and preview and manage screen saver preferences.
@@ -265,7 +291,8 @@ To learn more about creating screen savers, see *[Screen Saver Framework Referen
 
 
 
-### 6、Security Interface
+***
+### 6、Security Interface  安全接口
 
 The Security Interface framework (`SecurityInterface.framework`) contains classes that provide UI elements for programs implementing security features such as authorization, access to digital certificates, and access to items in keychains. There are classes for creating custom views and standard security controls, for creating panels and sheets for presenting and editing certificates, for editing keychain settings, and for presenting and allowing selection of identities.
 
