@@ -3,6 +3,9 @@
 [toc]
 
 ***
+原文地址：
+[https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SoftwareProducts/SoftwareProducts.html#//apple_ref/doc/uid/TP40001067-CH206-TPXREF101](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SoftwareProducts/SoftwareProducts.html#//apple_ref/doc/uid/TP40001067-CH206-TPXREF101)
+***
 
 Apps are the most common type of Mac software, but there are many other types of software that you can create, too. The following sections introduce the range of software products you can create for the Mac platform and suggest when you might consider doing so. 
 
@@ -301,7 +304,7 @@ An image unit is a type of plug-in that you can use with the Core Image and Core
 #### 6）Input methods. 输入法
 A common example of an input method is an interface for typing Japanese or Chinese characters using multiple keystrokes. Other examples of input methods include spelling checkers and pen-based gesture recognition systems. You can create input methods using Input Method Kit (`InputMethodKit.framework`). For information on how to use this framework, see *[Input Method Kit Framework Reference](https://developer.apple.com/documentation/inputmethodkit)*. 
 
-
+一个输入法的常见例子是 使用多种键盘 输入日文或中文字符的接口。其它例子是，输入检查和基于笔触的识别系统。你可以使用 Input Method Kit (`InputMethodKit.framework`) 创建输入法。更多信息可见  *[Input Method Kit Framework Reference](https://developer.apple.com/documentation/inputmethodkit)*。
 
 
 
@@ -309,7 +312,7 @@ A common example of an input method is an interface for typing Japanese or Chine
 #### 7）Metadata importers. 元数据导入器
 Spotlight relies on metadata importers to gather information about the user’s files and to build a systemwide index. Spotlight uses this index to help users find information by searching on attributes that make sense to them, such as the duration of a video or the dimensions of an image. If your app defines a custom file format, you should always provide a metadata importer for that file format. (If your app relies on commonly used file formats, such as JPEG, RTF, or PDF, the system provides a metadata importer for you.) To learn how to create metadata importers, see *[Spotlight Importer Programming Guide](https://developer.apple.com/library/archive/documentation/Carbon/Conceptual/MDImporters/MDImporters.html#//apple_ref/doc/uid/TP40001267)*. 
 
-
+聚焦（Spotlight） 依赖于源输入导入七来采集用户文件信息来创建一个系统级别的缩影。聚焦使用这个缩影来帮助用户通过搜索属性来 查找信息，比如视频的长度或图片的尺寸。如果你的应用定义了一个自定义的文件格式，你需要一直为这个格式提供一个元数据导入器。（如果你的应用依赖于常见的用户文件格式，比如  JPEG, RTF, 或 PDF，使用系统的元数据导入器即可）。
 
 
 
@@ -317,7 +320,7 @@ Spotlight relies on metadata importers to gather information about the user’s 
 #### 8）Quartz Composer plug-ins. 
 Quartz Composer supports a plug-in mechanism that allows you to create a custom patch and make it available in the Quartz Composer workspace and to most Quartz Composer clients. (A *patch* is processing unit that performs a specific task, such as processing a string or rendering an OpenGL texture.) To learn how to create a Quartz Composer plug-in, see *[Quartz Composer Custom Patch Programming Guide](https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/QuartzComposer_Patch_PlugIn_ProgGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004787)*.
 
-
+Quartz Composer 支持一个插件机制，允许你创建自定义的不定，在 Quartz Composer 工作栈中和多数 Quartz Composer  客户端中可用。不定是执行特定任务的处理单元，比如 处理字符串或渲染 OpenGL 纹理。
 
 
 
@@ -325,7 +328,7 @@ Quartz Composer supports a plug-in mechanism that allows you to create a custom 
 #### 9）Quick Look plug-ins. 快速查看插件
 A Quick Look plug-in—also known as a Quick Look generator—converts a document from its native format into a format that Quick Look can display to users. If your app creates documents of a nonstandard or private type, it’s a good idea to provide a Quick Look generator so that users can get previews of these documents in Quick Look. To learn how to create a Quick Look plug-in, see *[Quick Look Programming Guide](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/Quicklook_Programming_Guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40005020)*.
 
-
+Quick Look 插件，也被熟知为 Quick Look 生成器，将文档从原始格式转化为 Quick Look 可以展示给用户查看的格式。如果你的应用创建 非标准格式或私有类型的文档，最好提供 Quick Look 生成器，这样用户可以从 Quick Look 预览文档。
 
 
 
@@ -333,9 +336,13 @@ A Quick Look plug-in—also known as a Quick Look generator—converts a documen
 #### 10）Safari plug-ins.    Safari 插件
 Safari supports the Netscape-style plug-in model for incorporating additional types of content in the web browser. In Safari in OS X v10.7 and later, these plug-ins run in their own process, which improves the stability and security of Safari. Netscape-style plug-ins include support for onscreen drawing, event handling, and networking and scripting functions.
 
+Safari 支持网景风格的插件模型，赖在浏览器中合并其它类型的内容。在 OSX 10.7 和之后的 Safari 中，这个插件在他们自己的进程中运行，增强了 Safari 的稳定性和安全性。网景风格的插件，包含屏幕绘图、事件处理 和 网络、脚本等功能。
+
 
 
 **Note:** Beginning in OS X v10.7, Safari does not support WebKit plug-ins because they are not compatible with the new process architecture. Going forward, you must convert WebKit plug-ins to Netscape-style plug-ins or Safari Extensions.
+
+备注：从  OSX 10.7 之后，Safari 不支持 WebKit 插件，因为他们和新的进程架构不兼容。此后，你需要将 WebKit 插件 转化为 Netscape-style  插件 或 Safari 拓展。
 
 
 
@@ -354,8 +361,16 @@ To learn more about Safari extensions, read *Safari Extensions Development Guide
 
 
 
+使用 Safari 拓展即可以增强 Safari 浏览器特性，也可以增强 Safari 的显示内容特性。比如，你可以给浏览的工具栏添加自定义的按钮，重新设置网页格式，阻止不需要的站点，以及创建上下文菜单项。拓展可以让你在网页内容中注入脚本和样式表。
+
+一个 Safari 拓展是 HTML、 JavaScript 和 CSS文件  的集合，同事支持  HTML5 和 CSS3。OSX 和 Windows 系统中的 Safari 5.0 及后续版本都支持 Safari 拓展。
+
+> 译者注：OSX 10.8及以后，苹果停止开发Windows版Safari。
+
+
+
 ***
-### 4、Agent Applications
+### 4、Agent Applications 代理应用
 
 An agent is a special type of application that typically runs in the background, providing information as needed to the user or to another app. For example, the Dock is an agent application that is run by OS X. 
 
@@ -365,18 +380,44 @@ To create an agent application, you create a bundled app and include the `LSUIEl
 
 
 
+代理是一种特殊类型的应用，通常在后台运行，向用户或其他应用程序提供所需的信息。比如，Dock 是 OSX 运行的代理应用。
+
+一个代理应用可以被用户启动，但更多的是被系统或其它应用启动。所以，代理应用不一般不会再 Dock 上展示，也不会出现在强制退出的目录中。虽然代理可能会出现在前台，并展示用户接口，但他们没有用于选择命令 的菜单栏（译者注：左上角的菜单栏）。所有和代理应用的用户交互都是简洁的，而且聚焦在特定的目标上，比如设置偏好或请求信息。
+
+创建一个代理程序，你需要创建一个应用，并在 `Info.plist` 中包含 `LSUIElement` 键。
+
+
+
 ***
-### 5、Screen Savers
+### 5、Screen Savers 屏幕保护
 
 Screen savers are small programs that take over the screen after a certain period of idleness. Screen savers provide entertainment and also prevent the screen image from being burned into the surface of a display. OS X supports both slideshows and programmatically generated screen-saver content.
+
+屏幕保护程序是一些小的程序，它们在电脑闲置了一段时间后会接管屏幕。屏幕保护程序不仅可以娱乐，还可以防止屏幕图像被烧入显示器表面。OSX 提供了幻灯片 和 编程方式生成的屏幕保护程序内容。
+
+
 
 A slideshow is a simple type of screen saver that does not require any code to implement. To create a slideshow, you create a bundle with an extension of `.slideSaver`. Inside this bundle, you place a Resources directory that contains the images you want to display in your slideshow. Your bundle should also include an information property list that specifies basic information about the bundle, such as its name, identifier string, and version. 
 
 OS X includes several slideshow screen savers you can use as templates for creating your own. These screen savers are located in `/System/Library/Screen Savers`. You should put your own slideshows in either `/Library/Screen Savers` or in the `~/Library/Screen Savers`directory of a user.
 
+
+
+幻灯片类型的屏幕保护程序，不需要使用代码来实现。你可以创建  `.slideSaver` 类型的扩展来创建幻灯片，在包中，替换资源文件夹中的图片为你想展示的图片即可。您的包还应包含一个信息属性列表（info.plist），该列表指定有关捆绑软件的基本信息，例如其名称，标识符字符串和版本。
+
+OSX 包含几个幻灯片类型的屏幕保护，你可以作为模板来创建你自己的。它们在 `/System/Library/Screen Savers` 文件夹中。你需要将你的幻灯片放到用户的  `/Library/Screen Savers` 或 `~/Library/Screen Savers`来给用户使用。
+
+
+
 A programmatic screen saver is a screen saver that continuously generates content to appear on the screen. You can use this type of screen saver to create animations or to create a screen saver with user-configurable options. The bundle for a programmatic screen saver ends with the `.saver`extension. 
 
 You create programmatic screen savers using Cocoa with the Swift language or with Objective-C. Specifically, you create a custom subclass of `ScreenSaverView` that provides the interface for displaying the screen saver content and options. The information property list of your bundle provides the system with the name of your custom subclass. For information on creating programmatic screen savers, see *[Screen Saver Framework Reference](https://developer.apple.com/documentation/screensaver)*.
+
+程序式的屏保 需要不断生成内容以展示到屏幕上。你可以通过这种屏保创建动画，或根据用户可配置的选项来创建屏保。
+
+你可以使用 OC 或 Swift 语言来使用 Cocoa 创建程序式屏保。特别注意的是，你创建自定义的类继承自 `ScreenSaverView`，`ScreenSaverView` 提供接口来展示评报内容和选项。包的 info.plist 提供了你自定义类的名字。
+
+
 
 
 
@@ -385,7 +426,29 @@ You create programmatic screen savers using Cocoa with the Swift language or wit
 
 Services are not separate programs that you write; instead, they are features exported by your app for the benefit of other apps. Services let you share the resources and capabilities of your app with other apps in the system. Users access services through the Services menu that is available in every app’s application menu. (Services replace the contextual menu plug-in functionality that was available in earlier versions of OS X.)
 
-A service typically acts on the currently selected data. When the user initiates a service, the app that holds the selected data places it on the pasteboard. The app whose service was selected then takes the data, processes it, and puts the results (if any) back on the pasteboard for the original app to retrieve. For example, a user might select a folder in the Finder and choose a service that compresses the folder contents and replaces them with the compressed version. Services can represent one-way actions as well. For example, a service could take the currently selected text in a window and use it to create the content of a new email message. For information on how to provide and use services in your app, see *[Services Implementation Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/SysServices/introduction.html#//apple_ref/doc/uid/10000101i)*.
+服务不是您编写的单独程序； 相反，它们是您的应用导出的功能，以供其他应用使用。Services 帮助你和系统中其它应用分享资源和应用的功能。用户可以 通过每个应用程序 的应用程序菜单中的 `服务` 菜单访问服务。（Services 替换了早期版本中可用的上下文菜单插件功能）。
+
+
+
+> 译者注：Typora 的服务
+>
+> ![image-20191219145835281](/Users/shushu/Library/Application Support/typora-user-images/image-20191219145835281.png)
+
+
+
+
+
+A service typically acts on the currently selected data. When the user initiates a service, the app that holds the selected data places it on the pasteboard. The app whose service was selected then takes the data, processes it, and puts the results (if any) back on the pasteboard for the original app to retrieve. 
+
+For example, a user might select a folder in the Finder and choose a service that compresses the folder contents and replaces them with the compressed version. 
+
+Services can represent one-way actions as well. For example, a service could take the currently selected text in a window and use it to create the content of a new email message. For information on how to provide and use services in your app, see *[Services Implementation Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/SysServices/introduction.html#//apple_ref/doc/uid/10000101i)*.
+
+服务通常会作用于当前选择的数据。当用户初始化一个服务，应用会获取到选中的数据，放到剪贴板中。然后，选择了服务的应用程序将获取数据，对其进行处理，然后将结果（如果有）放回粘贴板上，以供原始应用程序检索。
+
+比如，一个用户肯恩贵选择 Finder 中的一个文件夹，然后选择一个服务去 压缩文件架内容，并将其替换为压缩版本。
+
+服务也可以代表单向操作。比如，一个服务可以获取窗口中当前选中的文字，然后用它来创建一个新的邮件信息。
 
 
 
@@ -394,12 +457,27 @@ A service typically acts on the currently selected data. When the user initiates
 
 Preference panes are used primarily to modify system preferences for the current user. Preference panes are implemented as plug-ins and installed in `/Library/PreferencePanes`. App developers can also take advantage of these plug-ins to manage per-user app preferences; however, most apps provide their own UI to manage preferences.
 
+偏好设置面板主要用来修改 当前用户的系统偏好设置。偏好设置作为差劲来执行，安装在  `/Library/PreferencePanes` 文件夹。App 开发者 可以利用这些插件 来管理每个用户的应用程序首选项。 但是，大多数应用程序提供了自己的UI 来管理偏好设置。
+
+
+
 You might need to create preference panes if you create:
 
+你可以使用偏好设置面板来创建：
+
 - Hardware devices that are user configurable
+
+  用户可配置的硬件设备
+
 - Systemwide utilities, such as virus protection programs, that require user configuration
 
+  系统工具，比如需要用户配置的病毒防护程序
+
+  
+
 If you're an app developer, you might want to reuse preference panes intended for the System Preferences app or use the same model to implement your app preferences. To learn how to create and manage preference panes, read *[Preference Pane Programming Guide](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/PreferencePanes/PreferencePanes.html#//apple_ref/doc/uid/10000110i)*.
+
+如果你是应用开发这，你可能需要重用用于 “系统偏好设置”应用的偏好设置面板，或使用相同的模型来实现您的应用程序偏好设置。
 
 
 
@@ -408,17 +486,43 @@ If you're an app developer, you might want to reuse preference panes intended fo
 
 OS X supports a variety of techniques and technologies for creating web content. In addition to [Identity Services](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-SW1), dynamic websites and web services offer web developers ways to deliver their content quickly and easily. 
 
+OS X支持多种用于创建Web内容的技术。在 [Identity Services](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-SW1) 之外，动态网站和网络服务提供网站开发者方式去快速和简便发布他们的内容。
+
+
+
 OS X provides support for creating and testing dynamic content in web pages. If you are developing CGI-based web apps, you can create websites using a variety of scripting technologies, including Perl and the PHP Hypertext Preprocessor (a complete list of scripting technologies is provided in [Scripts](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SoftwareProducts/SoftwareProducts.html#//apple_ref/doc/uid/TP40001067-CH206-TPXREF120)). You can also create and deploy more complex web apps using JBoss, Tomcat, and WebObjects. To deploy your webpages, use the built-in Apache HTTP web server.
+
+OSX 提供创建和测试网络中的动态内容。如果你在开发基于 CGI 的网页app。您可以使用多种脚本技术创建网站，包括 Perl 和 PHP。您还可以使用JBoss，Tomcat和WebObjects创建和部署更复杂的Web应用程序。使用内置的 Apache HTTP web server 来部署你的网页。
+
+
 
 Safari provides standards-compliant support for viewing pages that incorporate numerous technologies, including HTML, XML, XHTML, DOM, CSS, Java, and JavaScript. You can also use Safari to test pages that contain multimedia content created for QuickTime, Flash, and Shockwave.
 
+Safari 为查看页面提供了符合标准的支持，这些页面结合了多种技术，包括HTML，XML，XHTML，DOM，CSS，Java和JavaScript。你也可以使用 Safari 来测试包含 为 QuickTime, Flash, and Shockwave 创建的多媒体内容的网页。
+
+
+
 The Simple Object Access Protocol (SOAP) is an object-oriented protocol that defines a way for programs to communicate over a network. XML-RPC is a protocol for performing remote procedure calls between programs. In OS X, you can create clients that use these protocols to gather information from web services across the Internet. To create these clients, you use technologies such as PHP, JavaScript, AppleScript, and Cocoa. 
 
+SOAP 是一个面向对象的协议，给程序定义了一个网络沟通方法。XML-RPC是用于在程序之间执行远程过程调用的协议。在 OSX 中，你可以创建客户端，使用这些协议来从 web服务中采集信息。要创建这些客户端，可以使用PHP，JavaScript，AppleScript和Cocoa等技术。
+
+
+
 Representational State Transfer (REST) is an alternative method for transferring data using URLs. OS X provides full support for building REST applications through NSURL, NSURLSession, and related classes. For more information, see *URL Loading System Programming Guide*.
+
+REST是使用URL传输数据的另一种方法。 OS X 通过NSURL，NSURLSession 和相关类 来全面支持构建 REST应用程序。 查询更多的信息可见：*URL Loading System Programming Guide*.
+
+
 
 If you want to provide your own web services in OS X, use WebObjects or implement the service using the scripting language of your choice. You then post your script code to a web server, give clients a URL, and publish the message format your script supports. 
 
 For information on how to create client programs using AppleScript, see *[XML-RPC and SOAP Programming Guide](https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/soapXMLRPC/chapter1/soapXMLRPC_intro.html#//apple_ref/doc/uid/TP30001126)*. For information on how to create web services, see *[WebObjects Web Services Programming Guide](https://developer.apple.com/library/archive/documentation/WebObjects/Web_Services/About/About.html#//apple_ref/doc/uid/TP30001019)*.
+
+
+
+如果要在OS X中提供自己的Web服务，请使用 WebObjects 或使用您选择的脚本语言实现该服务。 然后，将脚本代码发布到Web服务器，为客户端提供URL，然后发布脚本支持的消息格式。
+
+更多使用 AppleScript 创建客户端程序的信息，可见  *[XML-RPC and SOAP Programming Guide](https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/soapXMLRPC/chapter1/soapXMLRPC_intro.html#//apple_ref/doc/uid/TP30001126)*。 如何创建web 服务，更多信息可见  *[WebObjects Web Services Programming Guide](https://developer.apple.com/library/archive/documentation/WebObjects/Web_Services/About/About.html#//apple_ref/doc/uid/TP30001019)*。
 
 
 
@@ -429,16 +533,24 @@ The Mail app provides templates that give users prebuilt email messages that are
 
 Developers and web designers can create custom template packages for external or internal users. Each template consists of an HTML page, a property list file, and a set of images which are packaged together in a bundle and then stored in the Mail app’s stationery folder. The HTML page and images define the content of the email message and can include drop zones for custom user content. The property list file gives Mail information about the template, such as its name, ID, and the name of its thumbnail image. To learn how to create new stationery templates, see *[Mail Programming Topics](https://developer.apple.com/library/archive/documentation/AppleApplications/Conceptual/MailArticles/Introduction/Introduction.html#//apple_ref/doc/uid/TP40006071)*. 
 
+邮件应用程序提供了模板，这些模板为用户提供了易于定制的 预建电子邮件。 由于模板是基于HTML的，所以它们可以合并图像和高级格式，来为用户的电子邮件 提供更加时尚和精致的外观。
 
+开发人员和Web设计人员 可以为外部或内部用户创建自定义模板包。 每个模板都包含一个HTML页，一个属性列表文件和一组图像，这些图像打包在一起捆绑在一起，然后存储在Mail应用程序的 信纸文件夹中。HTML页面和图像定义了电子邮件的内容，并且可以包含用于自定义用户内容的放置区域。 属性列表文件为Mail提供有关模板的信息，例如其名称，ID和其缩略图的名称。学习更多创建信纸模板的方法，可以参考  *[Mail Programming Topics](https://developer.apple.com/library/archive/documentation/AppleApplications/Conceptual/MailArticles/Introduction/Introduction.html#//apple_ref/doc/uid/TP40006071)*。
 
 
 
 ***
-### 10、Command-Line Tools
+### 10、Command-Line Tools 命令行工具
 
 Command-line tools are simple programs that manipulate data through a text-based interface. These tools do not use windows, menus, or other user interface elements traditionally associated with apps. Instead, they run from the command-line environment of the Terminal app. Because command-line tools require less explicit knowledge of the system to develop, they are often simpler to write than many other types of software. However, command-line tools are best suited to technically savvy users who are familiar with the conventions and syntax of the command-line interface. 
 
 Xcode supports the creation of command-line tools from several initial code bases. For example, you can create a simple and portable tool using standard C or C++ library calls, or you can create a tool more specific to OS X using frameworks such as Core Foundation, Core Services, or Cocoa Foundation.
+
+命令行工具是通过基于文本的接口操作数据的简单程序。这些工具不会使用 窗口、菜单或其它用户接口元素 传统的连接到应用。作为代替，他们从终端应用中运行命令行环境。因为命令行工具的开发 需要比较少的系统知识，他们一般比其它类型软件更容易编写。然而，命令行工具 最适合 熟悉命令行界面的约定和语法 的技术精通的用户。
+
+Xcode 支持从几个不同的初始化代码基础 创建命令行工具。比如，你可以使用标准 C 或 C++ 库 创建一个简单的编写的工具，或者你可以使用比如 Core Foundation, Core Services, or Cocoa Foundation之类的框架来 创建针对 OSX 的工具。
+
+
 
 
 
@@ -447,24 +559,38 @@ Xcode supports the creation of command-line tools from several initial code base
 
 Launch items are special programs that launch other programs or perform one-time operations during startup and login periods. Daemons are programs that run continuously and act as servers for processing client requests. You typically use launch items to launch daemons or perform periodic maintenance tasks, such as checking the hard drive for corrupted information. 
 
-
+登录项是特殊的程序，用来启动其它程序，或者在启动和登录期间执行一次性操作。守护进程是不断运行，作为一个服务来处理客户端请求的程序。通常，您使用启动项目来启动守护程序 或执行定期维护任务，例如检查硬盘驱动器上是否有损坏的信息。
 
 
 
 Launch items should not be confused with the login items found in the Accounts system preferences. Login items are typically agent applications that run within a given user’s session and can be configured by that user. Launch items are not user-configurable. 
 
+启动项 不应该和 用户账户系统偏好设置中的 `登录项` 混淆。`登录项` 是特定的代理应用，在用户会话中运行，可以被用户配置。启动项不能被用户配置。
+
+
+
+> 译者注：系统偏好设置中的登录项，和这里的启动项不同。
+>
+> ![image-20191219163234439](/Users/shushu/Library/Application Support/typora-user-images/image-20191219163234439.png)
+
+
+
 Few developers should ever need to create launch items or daemons. These programs are reserved for special situations in which you need to guarantee the availability of a particular service. For example, OS X provides a launch item to run the DNS daemon. Similarly, a virus-detection program might install a launch item to launch a daemon that monitors the system for virus-like activity. In both cases, the launch item would run its daemon in the root session, which provides services to all users of the system. To learn more about launch items and daemons, see *[Daemons and Services Programming Guide](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html#//apple_ref/doc/uid/10000172i)*. 
+
+几乎没有开发人员需要创建启动项或守护程序。这些程序被用于在特定情况下，你需要保证特定服务的功能可用。 OSX 提供一个启动项来运行 DNS 守护进程。相似的，一个病毒检测程序可能会安装一个启动项来启动进程，来监视系统中是否存在类似病毒的活动。在这些情况下，启动项会在根会话中运行它们的守护进程，给系统的所有用户提供服务。学习更多的启动项和守护进程，可以查看  *[Daemons and Services Programming Guide](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html#//apple_ref/doc/uid/10000172i)*。
 
 
 
 ***
-### 12、Scripts
+### 12、Scripts 脚本
 
 A script is a set of text commands that are interpreted at runtime and turned into a sequence of actions. Most scripting languages provide high-level features that make it easy to implement complex workflows quickly. Scripting languages are often very flexible, letting you call other programs and manipulate the data they return. Some scripting languages are also portable across platforms, so that you can use your scripts anywhere. 
 
-Table 1-1 lists many of the scripting languages available in OS X.
+脚本是一组文本命令，可在运行时进行解释并转换为一系列操作。大多数脚本语言提供高级功能，简单快捷的实现复杂的工作流。脚本语言通常非常灵活，可以让您调用其他程序并处理它们返回的数据。一些脚本语言也是跨平台的，你可以在任意地方使用你的脚本。
 
 
+
+Table 1-1 lists many of the scripting languages available in OS X. 
 
 | Language    | Description                                                  |
 | :---------- | :----------------------------------------------------------- |
@@ -483,22 +609,47 @@ Table 1-1 lists many of the scripting languages available in OS X.
 
 
 
+***
 ### 13、Scripting Additions for AppleScript
 
 A scripting addition delivers additional functionality for AppleScript scripts by adding systemwide support for new commands or data types. Developers who need features not available in the current command set can use scripting additions to implement those features and make them available to all apps. For example, one of the built-in scripting additions extends the basic file-handling commands to support the reading and writing of file contents from an AppleScript script. For information on how to create a scripting addition, see Technical Note TN1164, “[Scripting Additions for OS X](http://developer.apple.com/technotes/tn/tn1164.html).”
 
+通过添加对 新命令或数据类型的 系统范围支持，脚本附加功能为 AppleScript 脚本提供了附加功能。需要使用当前特性（在当前命令组中没有这个特性）的开发者，可以使用脚本附加功能，来实现这些特性，并让他们对所有应用可用。
+
+比如，一个内置脚本添加功能 扩展了基本的文件处理命令，以支持从AppleScript 脚本 读取和写入文件内容。更多创建附加脚本的信息，可以阅读 Technical Note TN1164, “[Scripting Additions for OS X](http://developer.apple.com/technotes/tn/tn1164.html).”
 
 
-### 14、Kernel Extensions
+
+
+
+***
+### 14、Kernel Extensions  内核扩展
 
 Kernel extensions are code modules that load directly into the kernel process space and therefore bypass the protections offered by the OS X core environment. Most developers have little need to create kernel extensions. The situations in which you might need a kernel extension are the following:
 
+内和扩展是直接加载进内核进程空间的代码模块，因此可以绕过 OSX 核心环节提供的保护。大部分开发者没有创建内核扩展的需求。下列情况你可能需要内核扩展：
+
 - Your code needs to handle a primary hardware interrupt.
+
+  您的代码需要处理主要的硬件中断。
+
 - The client of your code is inside the kernel.
+
+  您的代码客户端在内核内部。
+
 - A large number of apps require a resource your code provides. For example, you might implement a file-system stack using a kernel extension.
+
+  大量的应用需要你的代码提供源。比如，你可能需要使用内核扩展实现一个文件系统堆栈。
+
 - Your code has special requirements or needs to access kernel interfaces that are not available in the user space.
 
+  你的代码有特别的需要，或者需要访问用户空间无法访问的内核接口。
+
+  
+
 Although a device driver is a type of kernel extension, by convention the term *kernel extension* refers to a code module that implements a new network stack or file system. You would not use a kernel extension to communicate with an external device such as a digital camera or a printer. (For information on communicating with external devices, see [Device Drivers](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SoftwareProducts/SoftwareProducts.html#//apple_ref/doc/uid/TP40001067-CH206-TPXREF123).)
+
+虽然 设备驱动 是 内核拓展的一种类型；按照约定，术语 `内核扩展` 是指实现新的网络堆栈或文件系统的代码模块。你可能不会使用一个内核扩展来和内部设备（如 电子相机，打印机）通信。关于和外设通信，可以阅读 [Device Drivers](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SoftwareProducts/SoftwareProducts.html#//apple_ref/doc/uid/TP40001067-CH206-TPXREF123) 。
 
 
 
@@ -512,10 +663,36 @@ For information about writing kernel extensions, see *[Kernel Programming Guide]
 
 
 
+备注：内核数据结构拥有可访问模型，让编写稳定内核扩展成为可能，意即：档内核数据结构改变时，内核扩展不会中断。开发者被孤立来使用 内核扩展API 来访问内核数据结构。
+
+开发一个内和扩展，必须使用特殊的 developer ID 证书签名。付费开发者会员可以在 `https://developer.apple.com/contact/kext/`. 申请内核签名ID。更多关于编写内核扩展的信息，可以阅读  *[Kernel Programming Guide](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/KernelProgramming/About/About.html#//apple_ref/doc/uid/TP30000905)*。
+
+
+
+***
 ### 15、Device Drivers  设备驱动
 
 Device drivers are a special type of kernel extension that enable OS X to communicate with many hardware devices, including mice, keyboards, and FireWire drives. Device drivers communicate hardware status to the system and facilitate the transfer of device-specific data to and from the hardware. OS X provides default drivers for many types of devices, but these might not meet the needs of all hardware developers. 
 
+设备驱动是特殊的内核拓展类型，可以允许 OSX 和很多硬件设备通信，包括 鼠标、键盘 和 火线驱动。设备驱动和和系统沟通硬件状态，并促进设备特定数据与硬件之间的传输。OSX 提供默认的驱动给很多类型的设备，但这可能不能满足所有硬件开发者的需求。
+
+
+
 Although developers of mice and keyboards might be able to use the standard drivers, many other developers require custom drivers. Developers of hardware such as scanners, printers, AGP cards, and PCI cards typically have to create custom device drivers because these devices require more sophisticated data handling than is usually needed for mice and keyboards. Hardware developers also tend to differentiate their hardware by adding custom features and behavior, which makes it difficult for Apple to provide generic drivers to handle all devices. 
 
+虽然鼠标和键盘的开发者可能不能使用标准驱动，许多其他的开发者需要自定义的驱动。硬件如：扫描仪、打印机、AGP 卡 和 PCI 卡的开发者 通常需要创建自定义的设备驱动，因为这些设备需要 比鼠标和键盘 更复杂的数据处理。硬件开发者同样趋向于添加自定义的功能和表现，来让他们的产品不同，这让 Apple 难以提供驱动去处理所有设备。
+
+
+
 Apple provides code you can use as the basis for your custom drivers. The I/O Kit provides an object-oriented framework for developing device drivers using C++. To learn more about the I/O Kit, see *[IOKit Fundamentals](https://developer.apple.com/library/archive/documentation/DeviceDrivers/Conceptual/IOKitFundamentals/Introduction/Introduction.html#//apple_ref/doc/uid/TP0000011)*.
+
+苹果提供了代码，你可以作为你自定义的驱动的基础。 I/O Kit  提供了一个面向对象的框架来使用 C++ 开发设备驱动。关于学习更多 I/O Kit，可以阅读  *[IOKit Fundamentals](https://developer.apple.com/library/archive/documentation/DeviceDrivers/Conceptual/IOKitFundamentals/Introduction/Introduction.html#//apple_ref/doc/uid/TP0000011)*。
+
+
+
+
+
+
+
+
+
