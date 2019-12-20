@@ -1,9 +1,12 @@
 # 【Mac Technology Overview】（三） Cocoa Application Layer
 
-[toc]
+***
+
+[TOC]
 
 ***
 
+原文地址：
 https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CocoaApplicationLayer/CocoaApplicationLayer.html
 
 ***
@@ -259,19 +262,35 @@ Apps that use Cocoa interfaces receive significant support for accessibility aut
 
 - Sticky keys let users press keys sequentially instead of simultaneously for keyboard shortcuts.
 
+  粘滞键允许用户按顺序按键，而不是同时按键盘快捷键。
+
 - Mouse keys let users control the mouse with the numeric keypad.
+
+  鼠标键允许用户使用数字键盘控制鼠标。
 
 - Full keyboard access mode lets users complete any action using the keyboard instead of the mouse.
 
+  全键盘访问模式，允许用户使用键盘而非鼠标 来完成任何操作。
+
 - Speech recognition lets users speak commands rather than type them.
+
+  语音识别来让用户说出命令，而非键入命令。
 
 - Text-to-speech reads text to users with visual disabilities.
 
+  文本到语音向有视觉障碍的用户阅读文本。
+
 - VoiceOver provides spoken user interface features to assist visually impaired users.
+
+  VoiceOver提供语音用户界面功能，以帮助视力受损的用户。
+
+
 
 Although Cocoa integrates accessibility support into its APIs, there might still be times when you need to provide more descriptive information about your windows and controls. The Accessibility section of the Xcode Identity inspector makes it easy to provide custom accessibility information about the UI elements in your app. Or you can use the appropriate accessibility interfaces to change the settings programmatically.
 
 For more information about accessibility, see *[Accessibility Programming Guide for OS X](https://developer.apple.com/library/archive/documentation/Accessibility/Conceptual/AccessibilityMacOSX/index.html#//apple_ref/doc/uid/TP40001078)*. 
+
+虽然 Cocoa 将辅助功能整合到了它的接口中，你可能还是需要时间来对窗口和控件提供更多描述信息。Xcode 标识检查器 的可访问性部分，使您可以轻松地提供 有关应用程序中UI元素的自定义可访问性信息。你也可以使用恰当的辅助功能接口，来使用代码修改设置。更多关于 辅助功能的信息，可以阅读  *[Accessibility Programming Guide for OS X](https://developer.apple.com/library/archive/documentation/Accessibility/Conceptual/AccessibilityMacOSX/index.html#//apple_ref/doc/uid/TP40001078)*。
 
 
 
@@ -284,6 +303,10 @@ When designing new apps, you should consider AppleScript support early in the pr
 
 To learn how to support AppleScript in your programs, see [Applescript Overview](http://developer.apple.com/library/mac/documentation/AppleScript/Conceptual/AppleScriptX/AppleScriptX.html).
 
+OS X使用 AppleScript 作为 应用程序校本化 的主要语言。用户可以使用 AppleScript 编写脚本来链接多个支持脚本的应用提供的服务。
+
+当设计新应用的时候，你需要在设计早期考虑 AppleScript 支持。 支持AppleScript 的良好设计的关键是，为应用程序选择适当的数据模型。该设计不仅必须满足应用程序的目的，而且还必须使 AppleScript 实现者 能够轻松地操作你的内容。在建立数据模型之后，可以实现支持脚本编写所需的Apple事件代码。关于更多在程序中支持 AppleScript，可以阅读   [Applescript Overview](http://developer.apple.com/library/mac/documentation/AppleScript/Conceptual/AppleScriptX/AppleScriptX.html)。
+
 
 
 ***
@@ -291,15 +314,21 @@ To learn how to support AppleScript in your programs, see [Applescript Overview]
 
 Spotlight provides advanced search capabilities for apps. The Spotlight server gathers metadata from documents and other relevant user files and incorporates that metadata into a searchable index. The Finder uses this metadata to provide users with more relevant information about their files. For example, in addition to listing the name of a JPEG file, the Finder can also list its width and height in pixels. 
 
+Spotlight 为应用提供优越的搜索功能。Spotlight 服务从文稿和其他相关用户文件 收集元数据，并将该元数据合并到可搜索的索引中。Finder 使用这些元数据提供用户关于他们文件的更多信息。比如，除了展示一个 JPEG 文件的名字，还可以获得它的宽度和高度的像素。
+
+
+
 App developers use Spotlight in two different ways. First, you can search for file attributes and content using the Spotlight search API. Second, if your app defines its own custom file formats, you should incorporate any appropriate metadata information in those formats and provide a Spotlight importer plug-in to return that metadata to Spotlight. 
+
+应用开发者可以以两种方式使用 Spotlight。首先，你可以使用 Spotlight 搜索接口来搜索文件属性和内容。第二，如果你的应用有自定义的文件格式，你应该将任意适当的元数据信息 合并到这些格式中，并提供一个 Spotlight 导入插件 来将元数据返回给 Spotlight。
 
 
 
 **Note:** You should not use Spotlight for indexing and searching the general content of a file. Spotlight is intended for searching only the metainformation associated with files. To search the actual contents of a file, use Search Kit. For more information on Search Kit, see [Other Frameworks in the Core Services Layer](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-SW14).
 
-
-
 For more information on using Spotlight in your apps, see *[Spotlight Overview](https://developer.apple.com/library/archive/documentation/Carbon/Conceptual/MetadataIntro/MetadataIntro.html#//apple_ref/doc/uid/TP40001268)*. 
+
+备注：你不应该使用 Spotlight 来缩影和搜索一般文件的内容。Spotlight 只是用来搜索和文件关联的元信息。搜索文件实际的内容，应该使用 Search Kit。关于更多 Search Kit 的信息，可以阅读  [Other Frameworks in the Core Services Layer](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-SW14)。关于更多如何在应用中使用 Spotlight 的信息，可以阅读  *[Spotlight Overview](https://developer.apple.com/library/archive/documentation/Carbon/Conceptual/MetadataIntro/MetadataIntro.html#//apple_ref/doc/uid/TP40001268)*。
 
 
 
@@ -308,14 +337,35 @@ For more information on using Spotlight in your apps, see *[Spotlight Overview](
 
 Ink Services provides handwriting recognition for apps that support the Cocoa and WebKit text systems and any text system that supports input methods. The automatic support is for text and handwriting gestures (which are defined in the Ink panel). The Ink framework offers several features that you can incorporate into your apps, including the following: 
 
+Ink Services 为应用提供手写识别，支持 Cocoa 和 WebKit 文字系统，以及所有支持输入法的文字系统。自动支持文本和手写笔势（在墨迹面板中定义）。Ink framework  提供了以下几种你可以在应用中使用的特性。
+
 - Enabling or disabling handwriting recognition programmatically
+
+  以编程方式启用或禁用手写识别
+
 - Accessing Ink data directly
+
+  直接访问墨水数据
+
 - Supporting either deferred recognition or recognition on demand
+
+  支持延期确认或按需确认
+
 - Supporting the direct manipulation of text by means of gestures
+
+  支持通过手势直接操作文本
+
+  
 
 The Ink Services feature is implemented by the Ink framework (`Ink.framework`). The Ink framework is not intended solely for developers of end-user apps. Hardware developers can also use it to implement a handwriting recognition solution for a new input device. You might also use the Ink framework to implement your own correction model to provide users with a list of alternate interpretations for handwriting data. 
 
+ Ink Services 特性由 Ink 框架 (`Ink.framework`) 实现， Ink 框架不是专门为最终用户的开发者设计的，硬件开发者也需要使用它来给新的输入设备 实现 手写识别方案。你可能同时使用 Ink 框架来实现你的自己的 纠错模型，来给用户的手写输入数据 提供一组可替代的解释。
+
+
+
 The Ink framework is a subframework of `Carbon.framework`; you should link to it directly with the umbrella framework, not with `Ink.framework`. For more information on using Ink Services in Cocoa apps, see *[Using Ink Services in Your Application](https://developer.apple.com/library/archive/documentation/Carbon/Conceptual/using_ink/ink_intro/ink_intro.html#//apple_ref/doc/uid/TP40000959)*.
+
+Ink 框架是 `Carbon.framework` 的子框架，使用 Ink框架时，你需要引用 Ink 的伞框架（`Carbon.framework`），而非直接使用  `Ink.framework`。更多关于 Cocoa 应用中的 Ink 服务，可以阅读  *[Using Ink Services in Your Application](https://developer.apple.com/library/archive/documentation/Carbon/Conceptual/using_ink/ink_intro/ink_intro.html#//apple_ref/doc/uid/TP40000959)*。
 
 
 
@@ -330,15 +380,25 @@ The Cocoa (Application) layer includes the frameworks described in the following
 
 The Cocoa umbrella framework (`Cocoa.framework`) imports the core Objective-C frameworks for app development: AppKit, Foundation, and Core Data. 
 
+Cocoa 伞框架（`Cocoa.framework`）为应用开发引入了核心 OC 框架：AppKit, Foundation, 和 Core Data。
+
 - **AppKit** (`AppKit.framework`). This is the only framework of the three that is actually in the Cocoa layer. See [AppKit](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CocoaApplicationLayer/CocoaApplicationLayer.html#//apple_ref/doc/uid/TP40001067-CH274-SW6) for a summary of AppKit features and classes.
+
+  AppKit 是这三个框架中，唯一一个在 Cocoa 层的框架。你可以阅读 [AppKit](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CocoaApplicationLayer/CocoaApplicationLayer.html#//apple_ref/doc/uid/TP40001067-CH274-SW6)  来查看 AppKit 的特性和类的总结。
 
 - **Foundation** (`Foundation.framework`). The classes of the Foundation framework (which resides in the Core Services layer) implement data management, file access, process notification, network communication, and other low-level features. AppKit has a direct dependency on Foundation because many of its methods and functions either take instances of Foundation classes as parameters, or return the instances as values. 
 
   To find out more about Foundation, see [Foundation and Core Foundation](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-SW4).
 
+  Foundation 的类（在 Core Services  层），实现数据管理、文件访问、进程通知、网络通信 和 其他低层级的功能。 AppKit 对Foundation 有直接的依赖，因为 AppKit 的很多方法和功能使用 Foundation 的类作为参数或返回值。关于更多 Foundation 的信息，可以阅读  [Foundation and Core Foundation](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-SW4)。
+
+
+
 - **Core Data** (`CoreData.framework`). The classes of the Core Data framework (which also resides in the Core Services layer) manage the data model of an app based on the Model-View-Controller design pattern. Although Core Data is optional for app development, it is recommended for apps that deal with large data sets. 
 
   For more information about Core Data, see [Core Data](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-BAJGDBBH).
+  
+  Core Data 框架（在  Core Services 层）的类管理 基于 MVC 设计模式的应用的数据模型。虽然  Core Data 对于应用开发是可选项，但推荐 应用处理大量数据集合时使用。关于更多  Core Data 的信息，可以阅读 [Core Data](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-BAJGDBBH)。
 
 
 
@@ -347,21 +407,45 @@ The Cocoa umbrella framework (`Cocoa.framework`) imports the core Objective-C fr
 
 AppKit is the key framework for Cocoa apps. The classes in the AppKit framework implement the user interface (UI) of an app, including windows, dialogs, controls, menus, and event handling. They also handle much of the behavior required of a well-behaved app, including menu management, window management, document management, Open and Save dialogs, and pasteboard (Clipboard) behavior. 
 
+AppKit 是 Cocoa 应用的核心框架。AppKit 框架中的类，实现应用的用户界面，包括 窗口、对话、控件、目录 和 事件处理。它同样管理应用的行为，包括 目录管理、窗口管理、文档管理，打开和保存对话，剪贴板行为。
+
+
+
 In addition to having classes for windows, menus, event handling, and a wide variety of views and controls, AppKit has window- and data-controller classes and classes for fonts, colors, images, and graphics operations. A large subset of classes comprise the Cocoa text system, described in [Text, Typography, and Fonts](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW11). Other AppKit classes support document management, printing, and services such as spellchecking, help, speech, and pasteboard and drag-and-drop operations.
+
+在 窗口、目录、事件处理和各种视图、控件之外，AppKit 还有窗口和数据控制器类，字体、颜色、图片、图形处理类。类的很大一部分组成Cocoa文本系统，在 [Text, Typography, and Fonts](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW11) 中有描述。其它 AppKit 类支持 文档管理、打印 和 拼写检查、帮助、语音、剪贴板、拖拽等服务。
+
+
 
 Apps can participate in many of the features that make the user experience of OS X such an intuitive, productive, and rewarding experience. These features include the following:
 
+应用程序可以参与许多功能，使OS X的用户体验成为一种直观、高效和有益的体验。这些功能包括：
+
 - **Gestures**. Users appreciate being able to use fluid, intuitive Multi-Touch gestures to interact with OS X. AppKit classes make it easy to adopt these gestures in your app and to provide a better zoom experience without redrawing your content. For example, `NSScrollView` includes built-in support for the smart zoom gesture (that is, a two-finger double-tap on a trackpad). When you provide the semantic layout of your content, `NSScrollView` can intelligently magnify the content under the pointer. You can also use this class to respond to the lookup gesture (that is, a three-finger tap on a trackpad). To learn more about the gesture support that `NSScrollView` provides, see *[NSScrollView Class Reference](https://developer.apple.com/documentation/appkit/nsscrollview)*.
+
+  手势：用户喜欢使用流畅、直观的多点触控手势与OSX交互。AppKit 的类 使在应用程序中采用这些手势变得容易，并且在不重新绘制内容的情况下 提供更好的缩放体验。比如 NSScrollView 为敏捷的缩放手势包含内置支持（双指双击触控板）。当你为内容提供语义布局时，NSScrollView 可以智能的放大指针下的内容。你也可以使用这个类来相应lookup 手势（三指轻击触控板） 。学习更多关于 NSScrollView 支持的手势，可以阅读 [NSScrollView Class Reference](https://developer.apple.com/documentation/appkit/nsscrollview).
 
   
 
 - **Spaces**. Spaces lets the user organize windows into groups and switch back and forth between groups to avoid cluttering up the desktop. AppKit provides support for sharing windows across spaces through the use of collection behavior attributes on the window. For information about setting these attributes, see *[NSWindow Class Reference](https://developer.apple.com/documentation/appkit/nswindow)*.
 
+  Spaces：空间让用户组织视窗进入组和开关后面，并在组之间避免在桌面上关闭。AppKit通过在窗口上使用集合行为属性，支持跨空间共享窗口更多关于设置这些属性的信息，可以参阅 [NSWindow Class Reference](https://developer.apple.com/documentation/appkit/nswindow)。
+
+
+
 - **Fast User Switching**. With this feature, multiple users can share access to a single computer without logging out. One user’s session can continue to run, while another user logs in and accesses the computer. To support fast user switching, be sure that your app avoids doing anything that might affect another version of the app running in a different session. To learn how to implement this behavior, see *[Multiple User Environment Programming Topics](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPMultipleUsers/BPMultipleUsers.html#//apple_ref/doc/uid/10000180i)*.
+
+  快速用户切换：使用这个功能，多用户可以在不注销的情况下访问同一台电脑。在一个用户登入电脑后，另一个用户的会话可以继续运行。为了支持快速用户切换，需要保证你的应用 不会干扰在不同会话中运行的此应用的其他版本。关于更多这方面的功能，可以参阅  *[Multiple User Environment Programming Topics](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPMultipleUsers/BPMultipleUsers.html#//apple_ref/doc/uid/10000180i)*。
+
+
 
 Xcode includes Interface Builder, a user interface editor that contains a library of AppKit objects, such as controls, views, and controller objects. With it, you can create most of your UI (including much of its behavior) graphically rather than programatically. With the addition of Cocoa bindings and Core Data, you can also implement most of the rest of your app graphically.
 
 For an overview of the AppKit framework, see the introduction to the *[Application Kit Framework Reference](https://developer.apple.com/documentation/appkit)*. *[Mac App Programming Guide](https://developer.apple.com/library/archive/documentation/General/Conceptual/MOSXAppProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010543)* offers a practical discussion of how you use mostly AppKit classes to implement an app’s user interface, its documents, and its overall behavior.
+
+Xcode 包含 IB，一个界面编辑器，包含 AppKit 对象库，比如 控件、视图 和控制器对象。使用 IB，你可以图形化的创造你大部分的 UI（包含他们的行为），而不用使用代码。使用 Cocoa 绑定和 Core Data，你也可以图形化的实现应用的其他部分。
+
+
 
 
 
@@ -372,6 +456,8 @@ The Game Kit framework (`GameKit.framework`) provides APIs that allow your app t
 
 To learn more about using Game Kit in your app, see *[Game Kit Framework Reference](https://developer.apple.com/documentation/gamekit)*.
 
+Game Kit 框架提供因公来允许你的应用参与 游戏中心。比如，你可以使用 Game Kit 类来在应用中展示排行榜，给用户机会去分享他们在游戏中的成绩，参与多人游戏。关于更多在应用中使用 Game Kit 的信息，参阅  *[Game Kit Framework Reference](https://developer.apple.com/documentation/gamekit)*。
+
 
 
 ***
@@ -380,6 +466,8 @@ To learn more about using Game Kit in your app, see *[Game Kit Framework Referen
 The Preference Panes framework (`PreferencePanes.framework`) lets you create plug-ins containing a user interface for setting app preferences. At runtime, the System Preferences app (or your app) can dynamically load the plug-in and present the settings UI to users. In System Preferences, each icon in the Show All view represents an individual preference pane plug-in. You typically implement preference pane plug-ins when your app lacks its own user interface or has a very limited UI but needs to be configurable. In these cases, you create both the plug-in and the app-specific code that reads and writes the preference settings.
 
 For more information about creating preference-pane plug-ins, see *[Preference Pane Programming Guide](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/PreferencePanes/PreferencePanes.html#//apple_ref/doc/uid/10000110i)*.
+
+Preference Panes 框架帮你创建 应用偏好设置的用户交互插件。在运行时，系统偏好设置应用（或你的应用），可以动态加载插件，给用户展示设置 UI。在系统偏好设置，所有 Show All 视图中展示的 icon，代表一个独立的 偏好设置面板插件。通常在你的应用缺乏自己的界面，或者只有少数的 UI，但需要被配置的情况下，才来实现偏好设置插件。在这些情况下，你同时创建插件，和特定的代码来读写偏好设置。
 
 
 
@@ -390,6 +478,10 @@ The Screen Saver framework (`ScreenSaver.framework`) contains classes for creati
 
 To learn more about creating screen savers, see *[Screen Saver Framework Reference](https://developer.apple.com/documentation/screensaver)*. Also read the technical note *[Building Screen Savers for Snow Leopard](https://developer.apple.com/library/archive/qa/qa1666/_index.html#//apple_ref/doc/uid/DTS40009292)* for additional information.
 
+ Screen Saver 框架包含类，来创建可以动态加载的 实现屏保的包。用户可以在 `Desktop & Screen Saver ` 面板 选择你的屏幕保护程序。Screen Saver 帮助你实现屏保视图，展示和管理屏保偏好设置。关于更多创建屏保的信息，参阅  *[Screen Saver Framework Reference](https://developer.apple.com/documentation/screensaver)*。更多信息可以阅读 [Building Screen Savers for Snow Leopard](https://developer.apple.com/library/archive/qa/qa1666/_index.html#//apple_ref/doc/uid/DTS40009292)。
+
+
+
 
 
 ***
@@ -398,6 +490,20 @@ To learn more about creating screen savers, see *[Screen Saver Framework Referen
 The Security Interface framework (`SecurityInterface.framework`) contains classes that provide UI elements for programs implementing security features such as authorization, access to digital certificates, and access to items in keychains. There are classes for creating custom views and standard security controls, for creating panels and sheets for presenting and editing certificates, for editing keychain settings, and for presenting and allowing selection of identities.
 
 For more information about the Security Interface framework, see *[Security Interface Framework Reference](https://developer.apple.com/documentation/securityinterface)*.
+
+
+
+Security Interface 框架包含使用程序实现 安全功能UI元素 的类，比如：授权、访问数字证书、访问 keychain 里面的项目。有创建自定义视图和标准安全控制的类，展示、编辑证书的窗口和表单的类，编辑钥匙串设置，展示和允许选择身份的类。
+
+关于更多 Security Interface 框架的信息，可以参阅  *[Security Interface Framework Reference](https://developer.apple.com/documentation/securityinterface)*。
+
+
+
+
+
+
+
+
 
 
 
