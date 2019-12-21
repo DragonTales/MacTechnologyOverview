@@ -145,126 +145,232 @@ OSX 为 Cocoa 的应用程序的高级排版提供了广泛的支持。有这项
 
 There are two technologies to draw upon for more sophisticated text, font, and typography needs: the Cocoa text system and the Core Text API. Unless you need low-level access to the layout manager routines, the Cocoa text system should provide most of the features and performance you need. If you need a lower-level API for drawing any kind of text into a `CGContext`, then you should consider using the Core Text API.
 
+有两种技术可用于更复杂的文本、字体和排版需求：Cocoa 文字系统和 Core Text API。除非你需要使用对布局管理器历程低级别的访问， Cocoa text system  会提供你需要的大部分特性和表现。如果你需要低层级的 API 来绘制任意类型的文本到 `CGContext`。
+
+
+
 - **Cocoa text system.** AppKit provides a collection of classes, known as the *Cocoa text system*, that together provide a complete set of high-quality typographical services. With these services, apps can create, edit, display, and store text with all the characteristics of fine typesetting, such as kerning, ligatures, line breaking, and justification. Use the Cocoa Text system to display small or large amounts of text and to customize the default layout manager classes to support custom layout. The Cocoa text system is the recommended technology for most apps that require text handling and typesetting capabilities.
 
-  AppKit also offers a class (`NSFont`), a font manager, and a font panel. In addition, the Cocoa text system supports vertical text and linguistic tagging. 
+  AppKit also offers a class (`NSFont`), a font manager, and a font panel. In addition, the Cocoa text system supports vertical text and linguistic tagging.
 
   For an overview of the Cocoa text system, see *[Cocoa Text Architecture Guide](https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009459)*.
+
+  Cocoa text system：AppKit 提供了一系列类，称为 Cocoa 文本系统，它们仪器提供了一整套高质量的因数服务。使用这些服务，应用可以创建、编辑、展示和存储 具有精细排班所有特征的文本，如字距调整、连字、换行和对齐。使用 Cocoa 文字系统来展示少数或大量的文本，自定义默认的布局管理器类来支持自定义布局。Cocoa 文字系统推荐给大部分需要文字处理和打印功能的应用使用。
 
 - **Core Text** (`CoreText.framework`). The Core Text framework contains low-level interfaces for laying out Unicode text and handling Unicode fonts. Core Text provides the underlying implementation for many features of the Cocoa text system. 
 
   To learn more about the Core Text framework, see [Core Text](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW3).
+  
+  Core Text 框架包含低级别的接口来布局编码字符，处理编码格式。Core Text 为 Cocoa 文字系统的许多特征 提供 底层实现。关于更多 Core Text 框架，可以参阅  [Core Text](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW3)。
 
-
-
-### 3、Images
+***
+### 3、Images 图片
 
 Both AppKit and Quartz let you create objects that represent images (`NSImage` and `CGImageRef`) from various sources, draw these images to an appropriate graphics context, and even composite one image over another according to a given blending mode. Beyond the native capabilities of AppKit and Core Graphics, you can do other things with images using the following frameworks:
 
+AppKit 和 Quartz 都可以帮你创建 表示图片（`NSImage` and `CGImageRef`）的对象。将这些图像绘制到 适当的图形上下文中，甚至根据给定的混合模式 将一个图像合成到另一个图像上。在  AppKit 和 Core Graphics 的原生功能之外，你也可以使用下面框架处理图片：
+
+
+
 - **Image Capture Core** (`ImageCaptureCore.framework`). The Image Capture Core framework enables your app to browse locally connected or networked scanners and cameras, to list and download thumbnails and images, to take scans, rotate and delete images and, if the device supports it, to take pictures or control the scan parameters. For more information, see [Other Media Layer Frameworks](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW10).
+
+  Image Capture Core  框架可以使你的应用 浏览本地连接或联网 的 扫描仪和照相机，列出并下载缩略图和图像，进行扫描，旋转并删除图像，如果设备支持，则拍照或控制扫描参数。关于更多信息，可以参阅  [Other Media Layer Frameworks](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW10)。
+
+  
 
 - **Core Image.** Core Image is an image processing technology that allows developers to process images with system-provided image filters, create custom image filters, and detect features in an image. Examples of built-in filters are those that crop, blur, and warp images. Core Image is implemented by the Quartz Core framework (`QuartzCore.framework`). For more information, see [Core Image](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW30).
 
+  Core Image 是一个图片处理技术，允许开发者 使用系统提供的图片滤镜来处理图片，创建自定义滤镜 ，检测图像中的特征。内置滤镜的例子有 裁剪、模糊 和 扭曲图像。Core Image 是 Quartz Core  框架 (`QuartzCore.framework`) 实现的，更多信息可参阅  [Core Image](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW30)。
+
+  
+
 - **Image Kit.** Image Kit is built on top of the Image Capture Core framework. It provides views you can use in your app to help users connect to cameras and scanners, view and download images from these devices, and edit and process the images. For more information, see [Image Kit](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW9).
+
+  Image Kit 在  Image Capture Core 框架的上层，它同乐你可以再应用中帮助用户连接 照相机和扫描仪、查看和下载这些设备中的图片、编辑和处理图片 的视图。更多信息可参阅 [Image Kit](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW9).
 
   
 
 - **Image I/O** (`ImageIO.framework`). The Image I/O framework helps you read image data from a source and write image data to a destination. Sources and destinations can be URLs, Core Foundation data objects, and Quartz data consumers and data providers. For more information, see [Image I/O](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW4).
 
+  Image I/O 框架可以帮助你 从输入源 读取图片数据，编写图片数据到目的地。源头和目的地可以是 URLs, Core Foundation 数据对象，Quartz 数据使用者和数据提供者，更多信息可以参阅  [Image I/O](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW4)。
 
 
-### 4、Color Management
+
+***
+### 4、Color Management 颜色管理
 
 ColorSync is the color management system for OS X. It provides essential services for fast, consistent, and accurate color reproduction, proofing, and calibration. It also provides an interface for accessing and managing systemwide settings for color devices such as displays, printers, cameras, and scanners.
 
+ColorSync 是 OSX 的颜色管理系统。它为快速、一致和准确的色彩复制、校对和校准提供必要的服务。它还提供了一个接口，用于访问和管理彩色设备（如显示器、打印机、相机和扫描仪）的系统范围设置。
+
+
+
 In most cases, you do not need to call ColorSync functions at all. Quartz and Cocoa automatically use ColorSync to manage pixel data when drawing on the screen or printing. By design, the ICC (International Color Consortium) profiles embedded in the color data of images and PDF documents are fully respected. You are strongly encouraged to use appropriate calibrated color spaces—for example, those based on ICC profiles—when creating your own content. For very special needs, ColorSync also allows you to define a custom color management module (CMM) to use instead of a system-provided CMM to perform required color conversions based on the ICC profiles.
+
+在大多数情况下，你完全不需要调用 ColorSync 的功能。Quartz 和 Cocoa 会自动使用 ColorSync 来在屏幕绘制或打印时 管理像素数据。通过设计，ICC（国际色彩协会 International Color Consortium）的配置文件 嵌入到图像和PDF文档的色彩数据中 得到了充分的认同。你呗强烈建议来使用 恰当的 校准颜色空间，比如，这些在你创建自己内容时 基于 ICC 配置文件。对于特别的需求，ColorSync 同样允许你定义一个自定义颜色管理模块（CMM），来代替系统提供的 CMM 来实现需要的基于 ICC 配置文件的颜色转换。  
+
+
 
 For information about creating custom color spaces, see [Making Custom Color Spaces](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DrawColor/Tasks/UsingColorSpaces.html#//apple_ref/doc/uid/TP40001807-96917). For information on the ColorSync API, see *[ColorSync on Mac OS X](https://developer.apple.com/library/archive/technotes/tn2035/_index.html#//apple_ref/doc/uid/DTS10003071)*, and the ColorSync header files in `/System/Library/Frameworks/ApplicationServices.framework/Frameworks/ColorSync.framework/Headers`. 
 
+关于更多创建自定义颜色空间的信息，可以参阅  [Making Custom Color Spaces](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DrawColor/Tasks/UsingColorSpaces.html#//apple_ref/doc/uid/TP40001807-96917)。ColorSync 相关的 API 信息，可以参阅  *[ColorSync on Mac OS X](https://developer.apple.com/library/archive/technotes/tn2035/_index.html#//apple_ref/doc/uid/DTS10003071)*, 和  `/System/Library/Frameworks/ApplicationServices.framework/Frameworks/ColorSync.framework/Headers` 中的  ColorSync 头文件。
 
 
-### 5、Printing
+
+***
+### 5、Printing 打印
 
 OS X implements printing support using a collection of APIs and system services that are available to all app environments. Drawing on the capabilities of Quartz, the printing system delivers a consistent human interface and streamlines the development process for printer vendors. It also provides apps with a high degree of control over the user interface elements in printing dialogs. Table 3-2 describes some other features of the OS X printing system.
+
+OSX 使用一组 API 和 系统服务 实现对所有应用环境的打印支持。利用 Quartz 的功能，打印系统提供了一致的人机界面，并简化了打印机供应商的开发过程。它还为应用程序提供了 对打印对话框中用户界面元素的 高度控制。表 3-2 描述了 OSX 打印系统的一些其他特性。
+
 
 
 
 | Feature                       | Description                                                  |
 | :---------------------------- | :----------------------------------------------------------- |
-| AirPrint                      | Users can print to an AirPrint-enabled printer on their network without having to use a third-party driver. |
-| CUPS                          | Common UNIX Printing System (CUPS), an open source architecture used to handle print spooling and other low-level features, provides the underlying support for printing. |
-| Desktop printers              | Desktop printers offer users a way to manage printing and print jobs from the Dock or desktop. |
-| Fax support                   | Fax support means that users can fax documents directly from the Print dialog. |
-| Native PDF support            | PDF as a native data type lets any app easily save textual and graphical data to the device-independent PDF format. |
-| PostScript support            | PostScript support allows apps to use legacy third-party drivers to print to PostScript Level 2–compatible and Level 3–compatible printers and to convert PostScript files directly to PDF. |
-| Print preview                 | The print preview capability lets users see documents through a PDF viewer app prior to printing. |
-| Printer discovery             | Printer discovery enables users to detect, configure, and add to printer lists those printers that implement Bluetooth or Bonjour. |
-| Raster printers (support for) | This support allows apps to print to raster printers using legacy third-party drivers. |
-| Speedy spooling               | Speedy spooling enables apps that use PDF to submit PDF files directly to the printing system instead of spooling individual pages. |
+| AirPrint <br>云打印           | Users can print to an AirPrint-enabled printer on their network without having to use a third-party driver. <br>用户可以在他们的网络上，无需使用第三方驱动，来使用支持 云打印的打印机。 |
+| CUPS                          | Common UNIX Printing System (CUPS), an open source architecture used to handle print spooling and other low-level features, provides the underlying support for printing.<br>标准 UNIX 打印系统，一个用来处理后台打印和其他低级别功能  的 开源架构，为打印提供底层支持。 |
+| Desktop printers              | Desktop printers offer users a way to manage printing and print jobs from the Dock or desktop.<br>桌面打印机 提供用户一个 从桌面或 Dock 管理打印和打印任务的方式。 |
+| Fax support                   | Fax support means that users can fax documents directly from the Print dialog.<br>传真支持意味着 用户可以从打印会话中直接传真文件。 |
+| Native PDF support            | PDF as a native data type lets any app easily save textual and graphical data to the device-independent PDF format.<br> PDF 是一个原始数据类型，让应用可以简单地保存纹理和图形数据到 设备独立的 PDF 格式。 |
+| PostScript support            | PostScript support allows apps to use legacy third-party drivers to print to PostScript Level 2–compatible and Level 3–compatible printers and to convert PostScript files directly to PDF.<br> PostScript支持  允许应用程序 使用传统的第三方驱动程序 打印到PostScript 2级兼容和 3级兼容的打印机，并将PostScript 文件直接转换为PDF格式。 |
+| Print preview                 | The print preview capability lets users see documents through a PDF viewer app prior to printing.<br> 打印机预览允许 用户 在打印之前 使用 PDF查看器应用 来查看文档。 |
+| Printer discovery             | Printer discovery enables users to detect, configure, and add to printer lists those printers that implement Bluetooth or Bonjour.<br> 对于实现蓝牙或 Bonjour 的打印机，打印机发现（Printer discovery） 能让用户去 探测、配置打印机， 和将打印机 添加到打印机列表。 |
+| Raster printers (support for) | This support allows apps to print to raster printers using legacy third-party drivers.<br> 这个支持允许应用程序使用传统的第三方驱动 来打印到 光栅打印机。 |
+| Speedy spooling               | Speedy spooling enables apps that use PDF to submit PDF files directly to the printing system instead of spooling individual pages.<br> Speedy spooling 让使用 PDF 的应用，直接提交 PDF 给打印系统， 而非后台处理单个界面。 |
 
 To learn more about the Cocoa printing architecture, and about how to support printing in a Cocoa app, see *[Printing Programming Guide for Mac](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Printing/osxp_aboutprinting/osxp_aboutprt.html#//apple_ref/doc/uid/10000083i)*; for information about the Core Printing API, see *[Core Printing Reference](https://developer.apple.com/documentation/applicationservices/core_printing)*.
 
+关于更多 Cocoa 打印架构，和如何在 Cocoa 应用中支持打印，可以参阅 *[Printing Programming Guide for Mac](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Printing/osxp_aboutprinting/osxp_aboutprt.html#//apple_ref/doc/uid/10000083i)*; 更多关于 Core Printing API 的信息,  可以参阅 *[Core Printing Reference](https://developer.apple.com/documentation/applicationservices/core_printing)*。
 
-
-## 四、Audio Technologies
+***
+## 四、Audio Technologies 音频技术
 
 OS X includes support for high-quality audio recording, synthesis, manipulation, and playback. The frameworks in the following list are ordered from high level to low level, with the AV Foundation framework offering the highest-level interfaces you can use. When choosing an audio technology, remember that higher-level frameworks are easier to use and, for this reason, are usually preferred. Lower-level frameworks offer more flexibility and control but require you to do more work. 
 
+OSX 支持高质量的音频录制、合成、操作和回放。下列框架是按从高到低层级的顺序排列的，AV Foundation 框架提供了您可以使用的最高级别接口。在选择音频技术时，请记住，更高级别的框架更易于使用，因此通常是首选。较低级别的框架提供了更多的灵活性和控制，但需要您做更多的工作。
+
 - **AV Foundation** (`AVFoundation.framework`). AV Foundation supports audio playback, editing, analysis, and recording. Unless you are creating a fast-action game, a virtual music instrument, or a Voice over IP (VoIP) app, look first at AV Foundation. For more information, see [AV Foundation](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW25).
+
+  AVFoundation 支持音频播放、编辑、分析和录制。除非你正在创建一个快速动作游戏，一个虚拟音乐工具，或一个IP语音（VoIP）应用，首先看看AV基金会。更多信息可参阅  [AV Foundation](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW25)。
+
+  
+
 - **OpenAL** (`OpenAL.framework`). OpenAL implements a cross-platform standard API for 3D audio. OpenAL also lets you add high-performance positional playback in games and other apps. For more information, see [OpenAL](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW16).
+
+  OpenAL 实现了 3D 音频的跨平台标准接口。OpenAL 还允许您在游戏和其他应用程序中添加高性能位置播放。更多信息可参阅  [OpenAL](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW16)。
+
+
+
 - **Core Audio** (`CoreAudio.framework`). Core Audio consists of a set of frameworks that provide audio services that support recording, playback, synchronization, signal processing, format conversion, synthesis, and surround sound. Core Audio is well suited for adding VoIP and other high-performance audio features to your app. For more information, see [Core Audio](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-TPXREF165).
 
+  核心音频由一组框架组成，这些框架提供支持录音、回放、同步、信号处理、格式转换、合成和环绕声的音频服务。Core Audio 非常适合在应用程序中添加VoIP和其他高性能音频功能。更多信息可参阅  [Core Audio](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-TPXREF165)。
 
 
-## 五、Video Technologies
+
+***
+## 五、Video Technologies 视频技术
 
 Whether you are playing movie files from your app or streaming them from the network, OS X provides several technologies to play your video-based content. On systems with the appropriate hardware, you can also use these technologies to capture video and incorporate it into your app.
 
+无论您是从应用程序播放电影文件，还是从网络流媒体播放，OSX 都提供了多种技术来播放基于视频的内容。在具有适当硬件的系统上，您还可以使用这些技术捕获视频，并将其合并到应用程序中。
+
+
+
 When choosing a video technology, remember that the higher-level frameworks simplify your work and are, for this reason, usually preferred. The frameworks in the following list are ordered from highest to lowest level, with the AV Foundation framework offering the highest-level interfaces you can use.
 
+在选择视频技术时，请记住，更高层次的框架简化了您的工作，因此通常是首选框架。下表中的框架按从高到低的顺序排列，AV Foundation 框架提供了您可以使用的最高级别接口。
+
+
+
 - **AVKit** (`AVKit.framework`). AV Kit supports playing visual content in your application using the standard controls.
+
+  AV Kit 支持使用标准控件 在应用程序中 播放可视内容。
+
 - **AV Foundation** (`AVFoundation.framework`). AV Foundation supports playing, recording, reading, encoding, writing, and editing audiovisual media.
+
+  AV Foundation 支持播放、录制、读取、编码、写入和编辑视听媒体。
+
 - **Core Media** (`CoreMedia.framework`). Core Media provides a low-level C interface for managing audiovisual media. With the Core Media I/O framework, you can create plug-ins that can access media hardware and that can capture video and mixed audio and video streams. 
+
+   Core Media 提供用于管理视听媒体的低级 C 接口。使用 Core Media I/O 框架，您可以创建可以访问媒体硬件 并可以捕获视频和混合音频和视频流的插件。
+
 - **Core Video** (`CoreVideo.framework`). Core Video provides a pipeline model for digital video between a client and the GPU to deliver hardware-accelerated video processing while allowing access to individual frames. Use Core Video only if your app needs to manipulate individual video frames; otherwise, use AV Foundation.
+
+  Core Video 为客户端和GPU之间的数字视频提供管道模型，以提供硬件加速的视频处理，同时允许访问单个帧。仅当你的应用需要 操作单个视频帧时 才使用核心视频；否则，请使用AV Foundation。
 
 For information about each of the video frameworks (as well as other frameworks) in the Media layer, see [Media Layer Frameworks](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW5).
 
+更多关于 Media 层的单个视频框架，可以参阅下面的 [Media Layer Frameworks](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW5)。
 
 
-## 六、Media Layer Frameworks
+
+## 六、Media Layer Frameworks 媒体层框架
 
 OS X includes numerous technologies for rendering and animating 2D and 3D content (including text) and for playing, recording, and editing audiovisual media. 
 
-
+OSX 包括许多渲染和动画二维和三维内容（包括文本）以及播放、录制和编辑视听媒体的技术。
 
 ### 1、Application Services Umbrella Framework
 
 The Application Services umbrella framework (`ApplicationServices.framework`) includes the following subframeworks. You should not link with these frameworks directly; instead link with (and import) `ApplicationServices.framework`. 
 
+Application Services 伞形框架（`ApplicationServices.framework`） 包含以下子框架。使用子框架的时候，不应该直接引入子框架，而应该引入  `ApplicationServices.framework`。
 
 
-#### 1.1 Core Graphics
+
+#### 1.1 Core Graphics 核心图形
 
 The Quartz 2D client API offered by the Core Graphics framework (`CoreGraphics.framework`) provides commands for managing the graphics context and for drawing primitive shapes, images, text, and other content. The Core Graphics framework defines the Quartz 2D interfaces, types, and constants you use in your apps.
+
+ Core Graphics 框架（`CoreGraphics.framework`） 提供的 Quartz 2D 客户端 API， 提供命令来管理图形上下文和 绘制基本形状、图片、文本和其他内容。 Core Graphics 框架定义了你应用中的  Quartz 2D 的接口、类型、和常量。
 
 
 
 Quartz 2D provides many important features to apps, including the following:
 
+Quartz 2D 为应用提供了许多重要的特性，包含下列特性：
+
 - High-quality rendering on the screen 
+
+  在屏幕上高质量的渲染
+
 - High-resolution UI support
+
+  高分辨率用户界面支持
+
 - Antialiasing for all graphics and text
+
+  所有图形和文本的抗锯齿
+
 - Support for adding transparency information to windows
+
+  支持向windows添加透明信息
+
 - Internal compression of data
+
+  数据的内部压缩
+
 - A consistent feature set for all printers 
+
+  对所有打印机一致的功能集合
+
 - Automatic PDF generation and support for printing, faxing, and saving as PDF
+
+  自动生成PDF 和 支持打印、传真和保存PDF
+
 - Color management through ColorSync
+
+  通过 ColorSync 管理颜色
 
 For information about the Quartz 2D API, see *[Quartz 2D Programming Guide](https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP30001066)*.
 
+更多关于 Quartz 2D API 的信息，可参阅 *[Quartz 2D Programming Guide](https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP30001066)*。
 
 
-#### 1.2 Core Text
+
+#### 1.2 Core Text 核心文本
 
 Core Text is a C-based API that provides precise control over text layout and typography. Core Text provides a layered approach to laying out and displaying Unicode text. You can modify as much or as little of the system as suits your needs. Core Text also provides optimized configurations for common scenarios, saving setup time in your app. 
 
@@ -543,3 +649,11 @@ The Media layer of OS X also has the following frameworks:
   This framework works in conjunction with the Image Capture Devices framework (`ICADevices.framework`) to communicate with imaging hardware. For information on using these frameworks, see *[Image Capture Applications Programming Guide](https://developer.apple.com/library/archive/documentation/Carbon/Conceptual/ImageCaptureServicesProgrammingGuide/01Introduction/01Introduction.html#//apple_ref/doc/uid/TP40005196)*. 
 
 - **Video Toolbox** (`VideoToolbox.framework`). The Video Toolbox framework comprises the 64-bit replacement for the QuickTime Image Compression Manager. Video Toolbox provide services for video compression and decompression, and for conversion between raster image formats stored in Core Video pixel buffers.
+
+
+
+
+
+***
+
+伊织 2019-12-22（日）
