@@ -1,6 +1,6 @@
 # 【Mac Technology Overview】（四） Media Layer
 
-[toc]
+[TOC]
 
 ***
 
@@ -11,6 +11,10 @@ https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_
 ## 一、概述
 
 Beautiful graphics and high-fidelity multimedia are hallmarks of the OS X user experience. Take advantage of the technologies of the Media layer to incorporate 2D and 3D graphics, animations, image effects, and professional-grade audio and video functionality into your app.
+
+漂亮的图标和高保真的多媒体是 OSX 用户体验的标志。使用媒体层技术来将 二维和三维图形、动画、图像效果和专业级音频和视频功能整合到应用程序中。
+
+
 
 ![../art/osx_architecture-media_2x.png](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/art/osx_architecture-media_2x.png)
 
@@ -24,7 +28,7 @@ Beautiful graphics and high-fidelity multimedia are hallmarks of the OS X user e
 
 OS X supports more than 100 media types, covering a range of audio, video, image, and streaming formats. Table 3-1 lists some of the more common supported file formats. 
 
-
+OSX支持100多种媒体类型，包括音频、视频、图像和流媒体格式。表3-1 列出了一些更常见的支持文件格式。
 
 | Image formats               | PICT, BMP, GIF, JPEG, TIFF, PNG, DIB, ICO, EPS, PDF          |
 | --------------------------- | ------------------------------------------------------------ |
@@ -34,25 +38,33 @@ OS X supports more than 100 media types, covering a range of audio, video, image
 
 
 
-## 三、Graphics Technologies
+## 三、Graphics Technologies 图像技术
 
 A distinctive quality of any OS X app is high-quality graphics in its user interface. And on a Retina display, users are more aware than ever of your app’s graphics.
 
+任何OSX应用程序的一个显著特点是 其用户界面中的高质量图形。在视网膜屏幕上，用户比以往任何时候都更清楚你的应用程序的图形。
+
 The simplest, most efficient, and most common way to ensure high-quality graphics in your app is to use the standard views and controls of the AppKit framework, along with prerendered images in different resolutions. In this way, you let the system do the work of rendering the app’s UI appropriately for the current display. Occasionally, you might need to go beyond off-the-shelf views and simple graphics. In these situations, you can take advantage of the powerful OS X graphics technologies. The following sections describe some of these technologies; for summaries of all technologies see [Media Layer Frameworks](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW5).
 
+确保应用程序中的高质量图形的最简单、最有效和最常见的方法是 使用AppKit框架的标准视图和控件，以及不同分辨率的预渲染图像。这样你可以让系在展示时，以适合的方式统渲染应用 UI。偶尔的，你可能需要超越现成的视图和简单的图形。这种情况下，你可以使用强大的 OSX 图形技术。接下来的部分将描述这些技术的一部分，查看所有技术的总结，可以参阅  [Media Layer Frameworks](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW5)。
 
 
-### 1、Graphics and Drawing
+
+### 1、Graphics and Drawing 图像和会话
 
 OS X offers several system technologies for graphics and drawing. Many of these technologies provide support for making your rendered content look good at different screen resolutions. To learn how to make sure that your app looks good on a high-resolution display, see *[High Resolution Guidelines for OS X](https://developer.apple.com/library/archive/documentation/GraphicsAnimation/Conceptual/HighResolutionOSX/Introduction/Introduction.html#//apple_ref/doc/uid/TP40012302)*.
 
+OSX 为图像和会话提供了一些系统技术。这些技术提供了支持，让你在不同屏幕分辨率下良好的渲染内容。学习关于如何让你的应用在高分辨率上看起来不错，可以参阅 [High Resolution Guidelines for OS X](https://developer.apple.com/library/archive/documentation/GraphicsAnimation/Conceptual/HighResolutionOSX/Introduction/Introduction.html#//apple_ref/doc/uid/TP40012302)。
 
 
-#### 1.1 Cocoa Drawing
+
+#### 1.1 Cocoa Drawing Cocoa 绘图
 
 The AppKit framework provides object-oriented wrappers for many of the features found in Quartz 2D. Cocoa provides support for drawing primitive shapes such as lines, rectangles, ovals, arcs, and Bezier paths. It supports drawing in both standard and custom color spaces and it supports content manipulations using graphics transforms. Drawing calls made from Cocoa are composited along with all other Quartz 2D content. You can even mix Quartz 2D drawing calls (and drawing calls from other system graphics technologies) with Cocoa calls in your code.
 
 The AppKit framework is described in [AppKit](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CocoaApplicationLayer/CocoaApplicationLayer.html#//apple_ref/doc/uid/TP40001067-CH274-SW6). For more information on how to draw using Cocoa features, see *[Cocoa Drawing Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaDrawingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40003290)*. 
+
+AppKit 提供 Quartz 2D 中特性的面向对象的封装。Cocoa 支持绘制基本形状，如直线、矩形、椭圆、圆弧和Bezier路径。它同时支持绘制标准图形，和自定义颜色空间的兔皮昂，它还支持使用图形转化 进行内容操作。由Cocoa 发出的绘图调用 与所有其他 Quartz 2D 内容一起合成。甚至可以在代码中混合使用Quartz 2D绘图调用（以及来自其他系统图形技术的绘图调用）和Cocoa调用。你甚至可以在你的代码中，混合使用Cocoa 调用和 Quartz 2D 的绘图调用（和其它系统绘图技术）。
 
 
 
@@ -62,35 +74,74 @@ Metal provides the lowest-overhead access to the GPU, enabling you to maximize t
 
 The Metal framework is described in *[Metal Programming Guide](https://developer.apple.com/library/archive/documentation/Miscellaneous/Conceptual/MetalProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40014221)*, *Metal Shading Language Guide*, and the associated references. 
 
+Metal 提供了对GPU的最低开销访问，使您能够最大化图形并计算应用程序的潜力。使用 流线型 API，预编译的阴影，并支持高效的多线程，Metal 可以把你的游戏或图形应用程序的性能和能力的下一个层次。 
 
 
-#### 1.3 Other Frameworks for Graphics and Drawing
+
+#### 1.3 Other Frameworks for Graphics and Drawing 其它图形和绘图框架
 
 In addition to AppKit (specifically, its Cocoa drawing interface), there are several other important frameworks for graphics and drawing. By design, Cocoa drawing integrates well with the other graphics and drawing technologies listed next.
 
+AppKit 之外有其他机构重要的 图形和绘图框架。Cocoa 绘图很好的继承了下列其它图形和绘图技术：
+
 - **Core Graphics** (`CoreGraphics.framework`). Core Graphics (also known as *Quartz 2D*) offers native 2D vector- and image-based rendering capabilities that are resolution- and device-independent. These capabilities include path-based drawing, painting with transparency, shading, drawing of shadows, transparency layers, color management, antialiased rendering, and PDF document generation. The Core Graphics framework is in the Application Services umbrella framework.
+
+  Core Graphics 提供了 基于二维矢量和图像的渲染功能，与分辨率和设备无关。这些功能包含了基于路径的绘制，使用透明度绘制、着色、阴影绘制、透明度层、颜色管理、抗锯齿渲染和PDF文档生成。Core Graphics 框架在 Application Services 这个伞形框架中。
+
+  
 
   Quartz is at the heart of the OS X graphics and windowing environment. It provides rendering support for 2D content and combines a rich imaging model with on-the-fly rendering, compositing, and antialiasing of content. It also implements the windowing system for OS X and provides low-level services such as event routing and cursor management (for more information, see [Core Graphics](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-BBCEADBC)).
 
+  Quartz 是 OSX 图像和窗口环境的核心。它提供了 2D 内容的渲染支持，整合了 丰富的图像模型与内容的实时渲染、合成和抗锯齿结合起来。它同时实现了 OSX 的窗口系统，提供了低级别的服务，比如时间路由和贯标管理（关于更多信息，可以参阅 [Core Graphics](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-BBCEADBC)）。
+
 - **Core Animation.** Core Animation enables your app to create fluid animations using advanced compositing effects. It defines a hierarchical view-like abstraction that mirrors a hierarchy of views and is used to perform complex animations of user interfaces. Core Animation is implemented by the Quartz Core framework (`QuartzCore.framework`) (for more information, see [Core Animation](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW29)).
+
+  核心动画使你的应用可以 使用高级合成效果 创建流程的动画效果。它定义了一个类似于层次视图的抽象，该抽象反映了视图的层次结构，并用于执行用户界面的复杂动画。Core Animation 由 Quartz Core 框架（`QuartzCore.framework`）执行。更多信息可参阅  [Core Animation](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW29)。
 
 - **SpriteKit** (`SpriteKit.framework`). SpriteKit provides the tools and methods for creating and rendering and animating textured images, or sprites. You use graphical editors for creating sprites, and then use those sprites in scenes that simulate game physics. In addition to sprites, you can add lights, emitters, and different kinds of fields to scenes. SpriteKit animates your scene and calls back to your code for events such as collisions. To learn more, see [Sprite Kit](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW34).
 
+  SpriteKit 提供了创建、渲染和动画 纹理图像或精灵🧚‍♂️。你可以使用 图像编辑器来创建精灵，然后在场景中使用 sprites 来模拟游戏。在 sprites 之外，你可以添加  灯光、发射器和不同类型的场地 到场景中。SpriteKit 让你的场景动起来，并会冲突等事件回调你的代码。更多信息可参阅  [Sprite Kit](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW34).
+
+
+
 - **Scene Kit** (`SceneKit.framework`). Scene Kit provides a high-level, Objective-C graphics API that you can use to efficiently load, manipulate, and render 3D scenes. Powerful and easy-to-use Scene Kit integrates well with Core Animation and SpriteKit, allowing you to use built-in materials or custom GLSL shaders to render your 3D scenes (for more information, see [Scene Kit](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW33)).
+
+   Scene Kit  提供了高级的 OC 图形 API，你可以用来快速加载、操作和渲染 3D 场景。功能强大和易于使用的 Scene Kit 良好的配合了 Core Animation 和 SpriteKit。允许你使用内置材料和自定义的 GLSL 着色器来渲染你的 3D 场景（更多信息可参阅 [Scene Kit](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW33) ）。
+
+
 
 - **Metal** *Metal.framework* provides extremely low-overhead access to the capabilities of modern GPUs and enables high-performance 2D and 3D graphics, and parallel computational tasks. A more flexible and efficient alternative to OpenGL and OpenCL, Metal is intended for use by games and graphics-intensive applications that require fine-grained control over the GPU. To learn more about Metal, see *[Metal Programming Guide](https://developer.apple.com/library/archive/documentation/Miscellaneous/Conceptual/MetalProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40014221)* and *Metal Shading Language Guide*
 
+  Metal 框架（`Metal.framework`）提供了 对现代GPU功能的极低开销访问，并支持高性能的二维和三维图形，以及并行的计算任务。作为 OpenGL 和 OpenCL 更灵活和搞笑的代替，Metal 用于 需要对GPU进行细粒度控制的游戏 和 图形密集型应用程序。更多 Metal 的信息可参阅  *[Metal Programming Guide](https://developer.apple.com/library/archive/documentation/Miscellaneous/Conceptual/MetalProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40014221)* and *Metal Shading Language Guide*。
+
+
+
 - MetalKit MetalKit.framework provides libraries of commonly needed functions and classes to reduce the overall time for developing a Metal application. For more information, see *[MetalKit Framework Reference](https://developer.apple.com/documentation/metalkit)* and *[MetalKit Functions Reference](https://developer.apple.com/documentation/metalkit/metalkit_functions)*.
+
+  MetalKit 框架（`MetalKit.framework`）提供了库，包含常用的功能和类，来减少开发 Metal 应用程序的总体时间。更多信息可参阅  [MetalKit Framework Reference](https://developer.apple.com/documentation/metalkit) 和 *[MetalKit Functions Reference](https://developer.apple.com/documentation/metalkit/metalkit_functions)*。
+
+
 
 - **OpenGL** (`OpenGL.framework`). OpenGL is an open, standards-based technology for creating and animating real-time 2D and 3D graphics. It is primarily used for games and other apps with real-time rendering needs. To learn more about OpenGL in OS X, see [OpenGL](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW8).
 
+  OpenGL 是一个 用于创建和动画 二维和三维图形的 开发的、标准的技术。它主要用于游戏和其他应用的实时渲染需求。更多 OSX 中的 OpenGL 信息可参阅 [OpenGL](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW8)。
+
+
+
 - **GLKit** (`GLKit.framework`). GLKit provides libraries of commonly needed functions and classes that reduce the effort required to create shader-based apps or to port existing apps that rely on fixed-function vertex or fragment processing provided by earlier versions of OpenGL ES or OpenGL. To learn more about the GLKit framework, see [GLKit](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW24).
 
+  GLKit 提供了常用的函数和类的库，这些类和类减少了 创建 基于着色器的应用程序 所需的努力，或者移植了依赖于OpenGL ES或OpenGL的早期版本提供的 固定函数顶点 或 片段处理 的现有应用程序。
 
 
-### 2、Text, Typography, and Fonts
+
+***
+### 2、Text, Typography, and Fonts  文字、印刷和字体
 
 OS X provides extensive support for advanced typography for Cocoa apps. With this support, your app can control the fonts, layout, typesetting, text input, and text storage when managing the display and editing of text. For the most basic text requirements, you can use the text fields, text views, and other text-displaying objects provided by the AppKit framework. 
+
+OSX 为 Cocoa 的应用程序的高级排版提供了广泛的支持。有这项支持，你的应用可以在管理展示和编辑文本时，控制字体、布局、排版、文字输入和文本存储。作为最基础的文本需求，你可以使用 text fields, text views 和其他 AppKit 提供的文本展示对象。
+
+
 
 There are two technologies to draw upon for more sophisticated text, font, and typography needs: the Cocoa text system and the Core Text API. Unless you need low-level access to the layout manager routines, the Cocoa text system should provide most of the features and performance you need. If you need a lower-level API for drawing any kind of text into a `CGContext`, then you should consider using the Core Text API.
 
@@ -438,8 +489,6 @@ For information about how to use Core Image or how to write custom image units, 
 ### 11、QuickTime Kit
 
 QTKit (`QTKit.framework`) is a deprecated Objective-C framework for manipulating QuickTime-based media. Use the AV Foundation framework instead; to learn more, see [AV Foundation](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW25). 
-
-
 
 
 
