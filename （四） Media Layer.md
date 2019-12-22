@@ -368,188 +368,349 @@ For information about the Quartz 2D API, see *[Quartz 2D Programming Guide](http
 
 更多关于 Quartz 2D API 的信息，可参阅 *[Quartz 2D Programming Guide](https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP30001066)*。
 
-
-
+***
 #### 1.2 Core Text 核心文本
 
 Core Text is a C-based API that provides precise control over text layout and typography. Core Text provides a layered approach to laying out and displaying Unicode text. You can modify as much or as little of the system as suits your needs. Core Text also provides optimized configurations for common scenarios, saving setup time in your app. 
+
+核心文本是一个基于C的API，它提供了对文本布局和排版的精确控制。核心文本提供了一种分层的方法来布局和显示Unicode文本。您可以根据需要 来修改系统的多少。核心文本还为常见场景提供优化配置，节省应用程序中的安装时间。
 
 The Core Text font API is complementary to the Core Text layout engine. Core Text font technology is designed to handle Unicode fonts natively and comprehensively, unifying disparate OS X font facilities so that developers can do everything they need to do without resorting to other APIs. 
 
 For more information about Core Text, see *[Core Text Programming Guide](https://developer.apple.com/library/archive/documentation/StringsTextFonts/Conceptual/CoreText_Programming/Introduction/Introduction.html#//apple_ref/doc/uid/TP40005533)* and *[Core Text Reference Collection](https://developer.apple.com/documentation/coretext)*.
 
+Core Text  的字体 API 是对 Core Text 布局引擎的补充。Core Text 字体技术旨在以原生和全面的方式处理Unicode字体，统一不同的OSX字体功能，以便开发人员 无需借助其他API 即可完成所需的所有工作。
 
 
+
+***
 #### 1.3 Image I/O
 
 The `NSImage` class takes advantage of all the capabilities of Image I/O and is the preferred method for loading and drawing image resources on OS X. It is particularly important to use `NSImage` if you’re working with images that are visible in the UI, because this class handles multiresolution images.
 
+NSImage类利用了 图像I/O 的所有功能，是在 OS X 上加载和绘制图像资源的首选方法。如果使用的是UI中可见的图像，则使用NSImage尤为重要，因为该类处理多分辨率图像。
+
+
+
 Apps can use the Image I/O framework to read and write image data in most file formats in a highly efficient manner. It offers very fast image encoding and decoding facilities, supports image metadata and caching, provides color management, and is able to load image data incrementally. 
+
+应用可以使用 Image I/O  框架以高效的方式读取和写入大多数文件格式的图像数据。它提供非常快速的图像编码和解码设施，支持图像元数据和缓存，提供颜色管理，并能够增量加载图像数据。
+
+
 
 The central objects in Image I/O are image sources and image destinations. Sources and destinations can be URLs (`CFURLRef`), data objects (`CFDataRef` and `CFMutableDataRef`), and data consumer and data provider objects (`CGDataConsumerRef` and `CGDataProviderRef`). 
 
+Image I/O 的核心对象是图像源和图像目的地。源和目标可以是 URLs（`CFURLRef`）、数据对象（`CFDataRef`和 `CFMutableDataRef`），以及数据使用者和数据提供程序对象（`CGDataConsumerRef`和`CGDataProviderRef`）。
+
+
+
 The Image I/O programmatic interfaces were once part of Quartz 2D (Core Graphics) but have been collected in an separate framework so that apps can use it independently of Core Graphics. To learn more about Image I/O, see *[Image I/O Programming Guide](https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/ImageIOGuide/imageio_intro/ikpg_intro.html#//apple_ref/doc/uid/TP40005462)*.
 
+Image I/O 编程接口曾是Quartz 2D（核心图形）的一部分，但已收集在单独的框架中，以便应用程序可以独立于核心图形使用它。要了解有关 Image I/O的更多信息，请参阅  *[Image I/O Programming Guide](https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/ImageIOGuide/imageio_intro/ikpg_intro.html#//apple_ref/doc/uid/TP40005462)*。
 
 
+
+***
 ### 2、AV Foundation
 
 The AV Foundation framework (`AVFoundation.framework`) provides services for capturing, playing, inspecting, editing, and reencoding time-based audiovisual media. The framework includes many Objective-C classes, with the core class being `AVAsset`; this class presents a uniform model and inspection interface for all forms and sources of audiovisual media. The services offered by this framework include the following:
 
+AV Foundation 框架（AVFoundation.framework）提供捕获、播放、检查、编辑和 重新编码 基于时间的视听媒体的服务。该框架包含许多Objective-C类，核心类是`AVAsset`，该类为视听媒体的各种形式和来源提供了统一的模型和检查接口。该框架提供的服务包括：
+
 - Movie or audio capture
+
+  电影或音频捕获
+
 - Movie or audio playback, including precise synchronization and audio panning
+
+  电影或音频播放，包括精确同步和音频平移
+
 - Media editing and track management
+
+  媒体编辑与跟踪管理
+
 - Media asset and metadata management
+
+  媒体资产和元数据管理
+
 - Audio file inspection (for example, data format, sample rate, and number of channels)
+
+  音频文件检查（例如，数据格式、采样率和通道数）
 
 For most audio recording and playback requirements, you can use the `AVAudioPlayer` and `AVAudioRecorder` classes.
 
+对于大多数音频录制和播放要求，可以使用  `AVAudioPlayer` 和 `AVAudioRecorder` 类。
+
 AV Foundation is the recommended framework for all new development involving time-based audiovisual media. AV Foundation is also recommended for transitioning existing apps based on QuickTime or QTKit.
 
-
+AV Foundation 是所有涉及基于时间的视听媒开发的 推荐框架。AV Foundation 还建议用于过度现有的基于 QuickTime/QTKIT 的应用程序。
 
 **Note:** The AV Foundation frameworks for OS X and iOS are almost identical.
 
-
-
 For more information about the classes of the AV Foundation framework, see *[AVFoundation Programming Guide](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/AVFoundationPG/Articles/00_Introduction.html#//apple_ref/doc/uid/TP40010188)*.
 
+备注： AV Foundation  框架在 iOS 和 macOS 上基本一致。更多关于 AV Foundation 框架的信息可以查阅  *[AVFoundation Programming Guide](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/AVFoundationPG/Articles/00_Introduction.html#//apple_ref/doc/uid/TP40010188)*。
 
 
+
+***
 ### 3、ColorSync
 
 The ColorSync framework (`ColorSync.framework`) implements the color management system for OS X. To find out more about ColorSync, see [Color Management](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-TPXREF160).
 
 The ColorSync framework is a subframework of the Application Services umbrella framework. Your project cannot link to it directly; it must link instead to `ApplicationServices.framework`.
 
+ColorSync 框架实现 OSX 上的颜色管理系统。更多关于  ColorSync, 可以查阅 [Color Management](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-TPXREF160).
+
+ColorSync 框架是  Application Services  伞形框架的子框架。你必须引入  `ApplicationServices.framework` 来使用 ColorSync，而非直接使用 ColorSync。
 
 
-### 4、Core Audio
+
+### 4、Core Audio 核心音频
 
 Core Audio consists of a group of frameworks that offer sophisticated services for manipulating multichannel audio. (Core Audio is also the name of one framework of this group.) You can use Core Audio to generate, record, mix, edit, process, and play audio. You can also use Core Audio to work with MIDI (Musical Instrument Digital Interface) data using both hardware and software MIDI instruments. The frameworks of Core Audio are as follows:
 
+Core Audio 由一组框架组成，这些框架提供 复杂的多声道 音频操作服务。（Core Audio也是 这组框架中的一个框架的名称）可以使用Core Audio生成、录制、混合、编辑、处理和播放音频。您还可以使用核心音频与MIDI（乐器数字接口）数据一起使用硬件和软件MIDI乐器。核心音频的框架如下：
+
 - **Core Audio** (`CoreAudio.framework`). Core Audio provides interfaces that allow your app to interact with audio hardware and obtain and convert the host's time base. It also defines data types used throughout the Core Audio frameworks.
+
+  Core Audio  提供接口，允许您的应用程序与音频硬件交互，并获取和转换主机的时基。它还定义了整个 Core Audio  框架中使用的数据类型。
+
 - **Core Audio Kit** (`CoreAudioKit.framework`). Core Audio Kit contains Objective-C classes that provide user interfaces for audio units.
+
+  核心音频工具包 包含为音频单元提供用户界面的Objective-C类。
+
 - **Audio Toolbox** (`AudioToolbox.framework`). Audio Toolbox provides general audio services to apps, such as audio converters and audio processing graphs, reading and writing audio data in files, managing and playing event tracks, and assigning and reading audio format metadata.
+
+  Audio Toolbox 为应用程序提供通用的音频服务，如音频转换器 和 音频处理图表、读取和写入文件中的音频数据、管理和播放事件轨迹、分配和读取音频格式元数据。
+
 - **Audio Unit** (`AudioUnit.framework`). The Audio Unit framework defines programmatic interfaces for creating and manipulating audio units, plug-ins for handling or generating audio signals.
+
+  音频单元框架定义了用于创建和操作音频单元的编程接口，以及用于处理或生成音频信号的插件。
+
 - **Core MIDI** (`CoreMIDI.framework`). Core MIDI provides MIDI support for apps, allowing them to communicate with MIDI devices, to configure or customize the global state of the MIDI system, and to create MIDI play-through connections between MIDI sources and destinations.
+
+  Core MIDI 为应用程序提供 MIDI支持，允许它们与MIDI设备通信，配置或自定义 MIDI系统的全局状态，并通过 MIDI源 和目标 之间的连接创建 MIDI播放。
 
 Most Core Audio interfaces are C based, providing a low-latency and flexible programming environment that is suitable for real-time apps. You can use Core Audio from any OS X program. Some of the benefits of Core Audio include the following:
 
+大多数核心音频接口是基于C的，提供适合于实时应用的低延迟和灵活的编程环境。您可以使用任何 OSX 程序的核心音频。核心音频的一些好处包括：
+
 - Built-in support for reading and writing a wide variety of audio file and data formats
+
+  内置对多种音频文件和数据格式的读写支持
+
 - Plug-in support for custom formats, audio synthesis, and processing (audio DSP)
+
+  支持自定义格式、音频合成和处理的插件（音频数字信号处理器）
+
 - A modular approach for constructing audio signal chains
+
+  构建音频信号链的模块化方法
+
 - Easy MIDI synchronization
+
+  简易MIDI同步
+
 - Support for scheduled playback and synchronization with access to timing and control information
+
+  支持定时播放和同步，可访问定时和控制信息
+
 - A standardized interface to all built-in and external hardware devices, regardless of connection type (USB, Firewire, PCI, and so on)
+
+  所有内置和外部硬件设备的标准接口，无论连接类型如何（USB、Firewire、PCI等）
 
 Audio queue objects give you access to incoming or outgoing raw audio data while the system mediates playback and recording, employs codecs (if needed), and makes hardware connections. To intercept and process audio as it proceeds through an audio queue object, you use the real-time, callback-based feature known as *audio queue processing taps*. This feature works for input (such as for recording) as well as output (such as for playback). Audio queue processing taps let you insert audio units or other forms of audio processing, effectively tapping into and modifying the data stream within an audio queue. You can also use this technology in a *siphon mode*, in which you gain access to the stream but do not modify it.
 
 To learn more about the Core Audio framework, see *[Core Audio Framework Reference](https://developer.apple.com/documentation/coreaudio)*.
 
+音频队列对象 允许你在 系统调解播放和录制、使用编解码器（如果需要）和进行硬件连接时访问传入或传出的原始音频数据。
+
+要在音频通过音频队列对象时 截取和处理音频，可以使用实时的、基于回调的功能，即 `audio queue processing taps`。此功能可用于输入（例如用于录制）和输出（例如用于播放）。
+
+音频队列处理抽头允许你 插入音频单元或其他形式的音频处理，有效地利用和修改音频队列中的数据流。您也可以在 虹吸模式（`siphon mode`） 下使用此技术，在这种模式下，您可以访问流，但不修改它。
 
 
+
+***
 ### 5、GLKit
 
 GLKit framework (`GLKit.framework`) helps reduce the effort required to create new shader-based apps or to port existing apps that rely on fixed-function vertex or fragment processing provided by earlier versions of OpenGL ES or OpenGL. In addition, the GLKit framework includes APIs that perform several optimized mathematical operations, reduce the effort in loading texture data, and provide standard implementations of commonly needed shader effects.
+
+GLKit 框架 有助于更方便的 创建新的基于着色器的应用程序，或者移植现有的应用程序，这些应用程序依赖于早期版本的 OpenGL ES 或 OpenGL 提供的 固定函数顶点或片段处理。此外，GLKit 框架还包括一些api，这些 api 执行一些优化的数学操作，减少加载纹理数据的工作量，并提供通常需要的着色器效果的标准实现。
 
 
 
 **Note:** GLKit requires an OpenGL context that supports the OpenGL 3.2 Core Profile. GLKit is not available to 32-bit apps in OS X.
 
-
-
 To learn more about using GLKit in your app, see *[GLKit Framework Reference](https://developer.apple.com/documentation/glkit)*.
 
+备注 ：GLKit 需要支持 OpenGL 3.2 核心概要文件（OpenGL 3.2 Core Profile.）的 OpenGL 上下文。GLKit不适用于OS X中的32位应用程序。
+
+关于更多应用中使用 GLKit 的信息，可参阅  *[GLKit Framework Reference](https://developer.apple.com/documentation/glkit)*。
 
 
-### 6、Instant Messaging
+
+***
+### 6、Instant Messaging 即时消息
 
 OS X provides enables plugins for supporting messaging services:
 
+OSX提供支持消息服务的插件：
+
+
+
 - **Instant Message Service Plug-in** (`IMServicePlugin.framework`). The Instant Message Service Plug-in framework enables the creation of bundle plug-ins that let apps talk to instant-messaging services, such as iChat. It includes support for the buddy list, handle availability, handle icon, status messages, instant messaging, and group-chat messaging. 
+
+  Instant Message Service Plug-in (`IMServicePlugin.framework`)，即时消息插件框架可以创建插件包来允许应用和即时消息服务通信，比如 iChat。它包括对好友列表、句柄可用性、句柄图标、状态消息、即时消息和群聊消息的支持。
 
 For more information about using the Instant Message framework, see *Instant Message Programming Guide*. For more information about the Instant Message Service Plug-in framework, see *IMServicePlugIn Protocol Reference* and *IMServicePlugInInstantMessagingSupport Protocol Reference*
 
+更多关于使用  Instant Message 框架的信息，可以阅读  `Instant Message Programming Guide`。
 
+更多关于使用 Instant Message Service Plug-in 框架的信息，可以参阅 `IMServicePlugIn Protocol Reference*`and `IMServicePlugInInstantMessagingSupport Protocol Reference`。
 
+***
 ### 7、OpenAL
 
 The Open Audio Library (`OpenAL.framework`) is a cross-platform standard framework for delivering 3D audio. OpenAL lets you implement high-performance positional playback in games and other programs. Because it is a cross-platform standard, apps you write using OpenAL in OS X can be ported to run on many other platforms. 
+
+Open Audio Library（`OpenAL.framework`）是一个跨平台的标准框架，用于交付3D音频。OpenAL允许您在游戏和其他程序中实现高性能的位置回放。因为它是一个跨平台的标准，所以你在OS X中使用OpenAL编写的应用程序可以移植到许多其他平台上运行。
+
+
 
 OpenAL in OS X supports audio capture, exponential and linear distance models, location offsets, and spatial effects such as reverb and occlusion. The OS X implementation of OpenAL also supports certain Core Audio features, such as mixer sample rates. 
 
 To learn about the OpenAL specification, visit [OpenAL](http://www.openal.org/).
 
+OS X 中的 OpenAL  支持音频捕获、指数和线性距离模型、位置偏移以及空间效果（如混响和遮挡）。OpenAL的 OSX 实现，还支持某些核心音频特性，例如混音器采样率。
+
+更多 OpenAL 的规范，可参阅  [OpenAL](http://www.openal.org/).
 
 
+
+***
 ### 8、OpenGL
 
 OpenGL is an industry wide standard for developing portable three-dimensional (3D) graphics apps. It is specifically designed for apps such as games that need a rich, robust framework for visualizing shapes in two and three dimensions. OpenGL is one of the most widely adopted graphics API standards, which makes code written for OpenGL portable and consistent across platforms. The OpenGL framework (`OpenGL.framework`) in OS X includes a highly optimized implementation of the OpenGL libraries that provides high-quality graphics at a consistently high level of performance. 
 
+OpenGL是开发便携式三维（3D）图形应用程序的行业标准。它是专门为游戏等应用程序而设计的，这些应用程序需要一个丰富、健壮的框架来可视化二维和三维图形。OpenGL是最广泛采用的图形API标准之一，它使得为OpenGL编写的代码 具有可移植性 和跨平台的一致性。OSX 中的 OpenGL 框架包含一个高度优化的OpenGL 库的实现，它提供了高质量的图形和一致的高性能。
+
+
+
 OpenGL offers a broad and powerful set of imaging functions, including texture mapping, hidden surface removal, alpha blending (transparency), antialiasing, pixel operations, viewing and modeling transformations, atmospheric effects (fog, smoke, and haze), and other special effects. Each OpenGL command directs a drawing action or causes a special effect, and developers can create lists of these commands for repetitive effects. Although OpenGL is largely independent of the windowing characteristics of each operating system, the standard defines special glue routines to enable OpenGL to work in an operating system’s windowing environment. The OS X implementation of OpenGL implements these glue routines to enable operation with Quartz Compositor.
 
+OpenGL提供了一系列广泛而强大的成像功能，包括纹理映射、隐藏表面移除、alpha混合（透明度）、抗锯齿、像素操作、查看和建模转换、大气效果（雾、烟和霾）以及其他特殊效果。
+
+每个OpenGL命令都指示一个绘图操作，或导致一个特殊的效果，开发人员可以创建这些命令的列表以获得重复的效果。尽管OpenGL在很大程度上独立于每个操作系统的窗口特性，但是标准定义了特殊的粘合例程，使 OpenGL 能够在操作系统的窗口环境中工作。OpenGL的OS X实现实现了这些粘合例程，以启用 Quartz Compositor 的操作。
+
+
+
 OpenGL supports the ability to use multiple threads to process graphics data. OpenGL also supports pixel buffer objects, color-managed texture images in the sRGB color space, and 64-bit addressing. It also offers improvements in the shader programming API. 
+
+OpenGL支持使用多线程处理图形数据的能力。OpenGL还支持像素缓冲区对象、sRGB 颜色空间中的颜色管理纹理图像和64位寻址。它还提供了对着色器编程API的改进。
+
+
 
 OS X v10.7 added support for Open GL 3.2 Core, which added more extensions as baseline features. Note that routines and mechanisms found in OpenGL 1.*n* and OpenGL 2.*n* are deprecated, including the removal of the fixed-function pipeline that was the main approach to developing OpenGL 1.*n* apps. An OpenGL 3.2 app requires you to create your own shader strategy rather than assuming that a standard graphics pipeline will do everything. As a result, for simple apps you need to write more boilerplate code than was required by previous versions of OpenGL.
 
 For information about using OpenGL in OS X, see *[OpenGL Programming Guide for Mac](https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/OpenGL-MacProgGuide/opengl_intro/opengl_intro.html#//apple_ref/doc/uid/TP40001987)*. 
 
+OSX 10.7 增加了对 OpenGL3.2核心 的支持，增加了更多的扩展作为基线特性。
 
+注意，OpenGL 1.n 和OpenGL 2.n 中的例程和机制是不推荐使用的，它们包括删除了的 作为开发openGL 1.n应用程序的主要方法的固定函数管道。
 
+OpenGL 3.2应用程序要求您创建自己的着色器策略，而不是假设标准的图形管道将执行所有操作。
+
+因此，对于简单的应用程序，您需要编写比以前版本的OpenGL所需更多的样板代码。
+有关在OS X中使用OpenGL的信息，请参阅  *[OpenGL Programming Guide for Mac](https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/OpenGL-MacProgGuide/opengl_intro/opengl_intro.html#//apple_ref/doc/uid/TP40001987)*。
+
+***
 ### 9、Quartz
 
 The Quartz umbrella framework includes the following subframeworks. You should not link directly with any of the subframeworks; instead link with (and import) `Quartz.framework`.
 
+Quartz 伞形框架包含下列子框架，使用子框架时，应引入  `Quartz.framework`，而不是直接引入子框架。
 
-
+***
 #### 9.1 Image Kit
 
 The Image Kit (`ImageKit.framework`) is an Objective-C framework that makes it easy to incorporate powerful imaging services into your apps. This framework takes advantage of features in Quartz, Core Image, OpenGL, and Core Animation to provide an advanced and highly optimized development path for implementing the following features: 
 
+Image Kit (`ImageKit.framework`) 是一个Objective-C框架，可以轻松地将强大的图像服务整合到应用程序中。该框架利用了Quartz、Core Image、OpenGL和Core Animation中的特性，为实现以下特性提供了一个高级的、高度优化的开发路径：
+
 - Displaying images
+
+  展示图片
+
 - Rotating, cropping, and performing other image-editing operations 
+
+  旋转、剪切和执行其他图像编辑操作
+
 - Browsing for images 
+
+  浏览图像
+
 - Taking pictures using the built-in picture taker panel
+
+  使用内置的拍照面板拍照
+
 - Displaying slideshows 
+
+  显示幻灯片
+
 - Browsing for Core Image filters 
+
+   Core Image 滤镜的浏览
+
 - Displaying custom views for Core Image filters 
+
+  显示核心图像过滤器的自定义视图
 
 For more information on how to use Image Kit, see *[ImageKit Programming Guide](https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/ImageKitProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004907)* and *Image Kit Reference Collection*.
 
+更多使用 Image Kit 的信息，可参阅  *[ImageKit Programming Guide](https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/ImageKitProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004907)* and Image Kit Reference Collection。
 
 
+
+***
 #### 9.2 PDF Kit
 
 PDF Kit (`PDFKit.framework`, a subframework of the Quartz framework) is a Cocoa framework for managing and displaying PDF content directly from your app’s windows and dialogs. You can embed a `PDFView` object in your window and give it a PDF file to display. The PDF view handles the rendering of the PDF content, handles copy-and-paste operations, and provides controls for navigating and setting the zoom level. Other classes let you get the number of pages in a PDF file, find text, manage selections, add annotations, and specify the behavior of some graphical elements, among other actions. 
 
 For more information on PDF Kit, see *[PDFKit Programming Guide](https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/PDFKitGuide/PDFKit_Prog_Intro/PDFKit_Prog_Intro.html#//apple_ref/doc/uid/TP40001863)*. 
 
+PDF Kit  是一个Cocoa框架，用于 直接从应用程序的窗口和对话框 管理和显示PDF内容。您可以在窗口中嵌入一个 `PDFView` 对象，并给它一个PDF文件来显示。PDF视图处理 PDF内容的呈现，处理复制和粘贴操作，并提供导航和设置缩放级别。其他类帮助您获取 PDF文件中的页数、查找文本、管理选择、添加注释以及指定某些图形元素的行为等操作。
 
+更多关于 PDF Kit 的信息可参阅  [PDFKit Programming Guide](https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/PDFKitGuide/PDFKit_Prog_Intro/PDFKit_Prog_Intro.html#//apple_ref/doc/uid/TP40001863)。
 
+***
 #### 9.3 Quartz Composer
 
 The Quartz Composer framework (`QuartzComposer.framework`) provides programmatic support for working with Quartz Composer compositions. It enables apps to load, play, and control compositions and to integrate them with Cocoa views, Core Animation layers, or OpenGL rendering.
 
 For more information, see *[Quartz Composer Programming Guide](https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/QuartzComposer/qc_intro/qc_intro.html#//apple_ref/doc/uid/TP40001357)*.
 
+Quartz Composer 框架提供编程的方法来使用 Quartz Composer 组成。它允许应用装载、播放和控制组成，来和 Cocoa 视图、Core Animation layers，OpenGL 渲染来整合。
 
-
-#### 9.4 Quick Look UI
+***
+#### 9.4 Quick Look UI 快速预览UI
 
 The Quick Look UI framework (`QuickLookUI.framework`) defines an interface for implementing a Quick Look preview panel, which displays the preview of a list of items. The framework also includes the capability for embedding a preview inside a view.
 
 For an example of an app that implements Quick Look preview panels, see *[QuickLookDownloader](https://developer.apple.com/library/archive/samplecode/QuickLookDownloader/Introduction/Intro.html#//apple_ref/doc/uid/DTS40009082)*.
 
+ Quick Look UI 框架定义了一个借口来实现快速预览面板，可以展示项目的列表。这个框架同样包含 在视图中 嵌入预览的功能。实现快速预览面板的样例，可以参考  *[QuickLookDownloader](https://developer.apple.com/library/archive/samplecode/QuickLookDownloader/Introduction/Intro.html#//apple_ref/doc/uid/DTS40009082)*。
 
-
+***
 ### 10、Quartz Core
 
 The Quartz Core framework (`QuartzCore.framework`) implements two important system technologies for graphics and imaging Core Animation and Core Image. 
 
+ Quartz Core  框架实现了两个重要的 图形和图片  Core Animation 和 Core Image 系统技术。
 
-
-#### 10.1 Core Animation
+***
+#### 10.1 Core Animation 核心动画
 
 Core Animation is a set of Objective-C classes used for sophisticated 2D rendering and animation. Using Core Animation, you can create everything from basic window content to carousel–style user interfaces (such as the Front Row interface), and achieve respectable animation performance without having to tune your code using OpenGL or other low-level drawing routines. This performance is achieved using server-side content caching, which restricts the compositing operations performed by the server to only those parts of a view or window whose contents actually change. 
 
@@ -570,6 +731,7 @@ For information about Core Animation, see *[Animation Overview](https://develope
 
 
 
+***
 #### 10.2 Core Image
 
 Core Image extends the basic graphics capabilities of the system to provide a framework for implementing complex visual behaviors in your app. Core Image uses GPU-based acceleration and 32-bit floating-point support to provide fast image processing and pixel-level accurate content. Its plug-in–based architecture lets you expand the capabilities of Core Image through the creation of image units, which implement the desired visual effects.
@@ -592,47 +754,71 @@ For information about how to use Core Image or how to write custom image units, 
 
 
 
+***
 ### 11、QuickTime Kit
 
 QTKit (`QTKit.framework`) is a deprecated Objective-C framework for manipulating QuickTime-based media. Use the AV Foundation framework instead; to learn more, see [AV Foundation](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW25). 
 
+QTKit 是一个过时的操作基于QuickTime 美体的框架，使用  AV Foundation 框架来替代。更多信息，可以参阅  [AV Foundation](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MediaLayer/MediaLayer.html#//apple_ref/doc/uid/TP40001067-CH273-SW25)。
 
-
-
-
-
-
+***
 ### 12、Scene Kit
 
 The Scene Kit framework (`SceneKit.framework`) provides a high-level Objective-C API that helps you to efficiently load, manipulate, and render 3D scenes in your app. Scene Kit allows you to import Digital Asset Exchange files (`.dae` files) that are created by popular content-creation applications and gives you access to the objects, lights, cameras, and geometry data that define a 3D scene. Using an approach based on scene graphs, Scene Kit makes it simple to modify, animate, and render your 3D scenes. 
 
 Scene Kit integrates with Image Kit, SpriteKit, and Core Animation, so you do not need advanced 3D graphical programming skills. For example, you can embed a 3D scene into a layer and then use Core Animation compositing capabilities to add overlays and backgrounds. You can also use Core Animation layers as textures for your 3D objects in 3D scenes. To learn how to use Scene Kit in your app, see *[SceneKit Programming Guide](https://developer.apple.com/library/archive/documentation/3DDrawing/Conceptual/SceneKit_PG/Introduction/Introduction.html#//apple_ref/doc/uid/TP40012282)*.
 
+Scene Kit 框架提供了高级的 OC API 来帮助你有效率的 加载、控制和渲染 3D 场景。Scene Kit 允许你导入  由流行的内容创建应用程序创建的 数字资源交换文件（`.dae` 文件），并允许您访问定义三维场景的对象、灯光、相机和几何数据 。使用 基于场景图的方法，Scene Kit  使修改、动画制作和渲染三维场景变得简单。
 
+Scene Kit  集成了 Image Kit, SpriteKit, and Core Animation，因此你不需要高级的三维图形编程技能。
 
+比如，你可以将 3D 场景 嵌入 layer 中，然后使用核心动画合成功能 添加覆盖和背景。也可以将核心动画层用作三维场景中三维对象的纹理。要了解如何在应用程序中使用 Scene Kit，请参阅  *[SceneKit Programming Guide](https://developer.apple.com/library/archive/documentation/3DDrawing/Conceptual/SceneKit_PG/Introduction/Introduction.html#//apple_ref/doc/uid/TP40012282)*。
+
+***
 ### 13、Sprite Kit
 
 The Sprite Kit framework (`SpriteKit.framework`) provides a graphics rendering and animation infrastructure that you can use to animate arbitrary textured images, or sprites. You use graphical tools to create the sprites. You then create scenes including sprites, light sources, emitters, and physics fields. Sprite Kit animates the scene you specify using a traditional animation loop, doing the work to render frames of animation efficiently using the graphics hardware.
 
+ Sprite Kit 框架提供 图形渲染和动画基础设施的功能，你可以用来 设置任意纹理图像或精灵的动画。使用图形工具创建精灵。然后创建场景，包括精灵、光源、发射器和物理场。 Sprite Kit  使用传统动画循环设置指定场景的动画，使用图形硬件 有效地渲染动画帧。
+
 Sprite kit includes basic sound playback support in addition to physics simulation. In addition, you can create complex special effects and texture atlases directly in Xcode. This combination of framework and tools makes Sprite Kit a good choice for games and other apps that require similar kinds of animation. Animated images created with Sprite Kit work well with SceneKit. To learn how to use Sprite Kit, see *[SpriteKit Programming Guide](https://developer.apple.com/library/archive/documentation/GraphicsAnimation/Conceptual/SpriteKit_PG/Introduction/Introduction.html#//apple_ref/doc/uid/TP40013043)*.
 
+除了物理模拟之外，Sprite 工具包还包括基本的声音回放支持。此外，您可以直接在 Xcode中创建复杂的特殊效果和纹理图谱。这种 框架和工具的结合 使得Sprite工具包成为需要类似动画的游戏和其他应用程序的不错选择。使用Sprite工具包创建的动画图像 与 SceneKit很好地配合使用。更多  Sprite Kit 的信息, 可参阅 *[SpriteKit Programming Guide](https://developer.apple.com/library/archive/documentation/GraphicsAnimation/Conceptual/SpriteKit_PG/Introduction/Introduction.html#//apple_ref/doc/uid/TP40013043)*。
 
 
-### 14、Other Media Layer Frameworks
+
+***
+### 14、Other Media Layer Frameworks 其他媒体框架
 
 The Media layer of OS X also has the following frameworks:
 
 - **Audio Video Bridging** (`AudioVideoBridging.framework`). The Audio Video Bridging framework supports Audio Video Bridging (AVB) and implements the IEEE P1722.1 draft standard. AVB enhances the quality of service and provides guaranteed latency and bandwidth for media streams over an AVB network. Audio Video Bridging gives you access to the Entity discovery and control protocols of IEEE P1722.1 over an Ethernet network.
 
+  Audio Video Bridging 框架支持 AVB 和  IEEE P1722.1 标准草案的实现。AVB提高了服务质量，并为 AVB 网络上的媒体流提供有保证的延迟和带宽。音频视频桥接 允许您通过以太网访问 IEEE P1722.1 的实体发现和控制协议。
+
+  
+
 - **Core Media** (`CoreMedia.framework`). The Core Media framework provides low-level audiovisual media objects and tools for managing them. It also defines the fundamental time representation used uniformly throughout AV Foundation.
 
   For information about using the Core Media framework, see *[Core Media Framework Reference](https://developer.apple.com/documentation/coremedia)*.
 
+  核心媒体框架提供低级视听媒体对象和管理它们的工具。它还定义了在整个 AV Foundation 中统一使用的基本时间表示。关于使用  Core Media 框架的信息，可参阅  *[Core Media Framework Reference](https://developer.apple.com/documentation/coremedia)*。
+
+  
+
 - **Core Media I/O** (`CoreMediaIO.framework`). The Core Media I/O framework publishes the Device Abstraction Layer (DAL) plug-in API. This technology enables you to create plug-ins that can access media hardware and capture video and “muxed” (video combined with audio) streams. Core Media I/O is a replacement for the QuickTime VDig API.
+
+  核心媒体I/O框架发布设备抽象层（DAL）插件API。此技术使您能够创建可以访问媒体硬件并捕获视频和“muxed”（视频与音频组合）流的插件。核心媒体I/O是QuickTime VDig API的替代品。
+
+  
 
 - **Core Video** (`CoreVideo.framework`). Core Video creates a bridge between QuickTime and the graphics card’s GPU to deliver hardware-accelerated video processing. Benefits of Core Video include filters and effects, per-pixel accuracy, and hardware scalability.
 
   For information about using the Core Video framework, see *[Core Video Programming Guide](https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/CoreVideo/CVProg_Intro/CVProg_Intro.html#//apple_ref/doc/uid/TP40001536)*. 
+
+  核心视频在QuickTime 和 图形卡的GPU之间建立了一个桥梁，以提供硬件加速的视频处理。核心视频的好处包括过滤器和效果、每像素精度和硬件可扩展性。Core Video 的好处包括过滤器和效果、每像素精度和硬件可扩展性。
+
+  
 
 - **Disc Recording** (`DiscRecording.framework`). Disc Recording gives apps the ability to burn and erase CDs and DVDs. Your app specifies the content to be burned but the framework (`DiscRecording.framework`) takes over the process of buffering the data, generating the proper file format information, and communicating everything to the burner. 
 
@@ -640,20 +826,39 @@ The Media layer of OS X also has the following frameworks:
 
   For more information about the Disc Recording frameworks, see *Disc Recording Framework Reference* and *Disc Recording UI Framework Reference*. 
 
+  Disc Recording 使应用程序能够刻录和擦除CD和DVD。您的应用程序指定要刻录的内容，但框架（DiscRecording.framework）接管缓冲数据、生成正确文件格式信息以及将所有内容传送到刻录机的过程。
+
+  Disc Recording UI 框架 (`DiscRecordingUI.framework`) 提供一组完整的标准窗口，用于从用户收集信息并显示刻录操作的进度。
+  有关光盘录制框架的详细信息，请参阅 `Disc Recording Framework Reference` and `Disc Recording UI Framework Reference`。 
+
+
+
 - **DVD Playback** (`DVDPlayback.framework`). The DVD Playback framework embeds DVD viewer capabilities into an app. You use the framework to control various aspects of playback, including menu navigation, viewer location, angle selection, and audio track selection. You can play back DVD data from disc or from a local `VIDEO_TS` directory. 
 
   For more information about using the DVD Playback framework, see *[DVD Playback Services Programming Guide](https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/DVDPlaybackGuide/dvdguide_intro/dvdguide_intro.html#//apple_ref/doc/uid/TP40002163)*.
+
+  DVD Playback 框架 将 DVD查看器功能 嵌入到应用程序中。使用该框架可以控制回放的各个方面，包括菜单导航、查看器位置、角度选择和音频曲目选择。您可以从 光盘 或 本地视频目录（`VIDEO_TS`） 播放DVD数据。
+  有关使用DVD播放框架的详细信息，请参见 *[DVD Playback Services Programming Guide](https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/DVDPlaybackGuide/dvdguide_intro/dvdguide_intro.html#//apple_ref/doc/uid/TP40002163)*.
+
+  
 
 - **Image Capture Core** (`ImageCaptureCore.framework`). Image Capture Core helps you capture image data from scanners and digital cameras. The interfaces of the framework are device independent, so you can use them to gather data from any devices connected to the system. You can get a list of devices, retrieve information about a specific device or image, and retrieve the image data itself.
 
   This framework works in conjunction with the Image Capture Devices framework (`ICADevices.framework`) to communicate with imaging hardware. For information on using these frameworks, see *[Image Capture Applications Programming Guide](https://developer.apple.com/library/archive/documentation/Carbon/Conceptual/ImageCaptureServicesProgrammingGuide/01Introduction/01Introduction.html#//apple_ref/doc/uid/TP40005196)*. 
 
+  Image Capture Core 帮助您从扫描仪和数码相机捕获图像数据。框架的接口与设备无关，因此可以使用它们从连接到系统的任何设备收集数据。您可以获取设备列表、检索有关特定设备或图像的信息，以及检索图像数据本身。
+
+  此框架与  Capture Devices framework (`ICADevices.framework`) 一起与 与成像硬件通信。更多使用这些框架的信息，可以阅读  *[Image Capture Applications Programming Guide](https://developer.apple.com/library/archive/documentation/Carbon/Conceptual/ImageCaptureServicesProgrammingGuide/01Introduction/01Introduction.html#//apple_ref/doc/uid/TP40005196)*。
+
+  
+
 - **Video Toolbox** (`VideoToolbox.framework`). The Video Toolbox framework comprises the 64-bit replacement for the QuickTime Image Compression Manager. Video Toolbox provide services for video compression and decompression, and for conversion between raster image formats stored in Core Video pixel buffers.
 
-
+  视频工具箱框架包含 QuickTime 图像压缩管理器（QuickTime Image Compression Manager ） 的64位替换。视频工具箱 为 视频压缩 和 解压缩，以及存储在 核心视频 像素缓冲区中的 光栅图像格式之间的转换提供服务。
 
 
 
 ***
 
-伊织 2019-12-22（日）
+伊织 2019-12-22（日）小雨
+
