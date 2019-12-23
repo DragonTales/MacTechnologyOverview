@@ -199,27 +199,67 @@ The compiler provides support for blocks using the C, C++, and Objective-C langu
 
 Grand Central Dispatch (GCD) provides a simple and efficient API for achieving the concurrent execution of code in your app. Instead of providing threads, GCD provides the infrastructure for executing any task in your app asynchronously using a dispatch queue. Dispatch queues collect your tasks and work with the kernel to facilitate their execution on an underlying thread. A single dispatch queue can execute tasks serially or concurrently, and apps can have multiple dispatch queues executing tasks in parallel.
 
+
+
+Grand Central Dispatch (GCD) 为实现应用中 代码的并发执行 提供了一个简单高效的API。GCD不提供线程，而是提供了 使用调度队列异步执行应用程序 中任何任务的基础结构。调度队列收集您的任务，并与内核一起工作，以促进它们在底层线程上的执行。单个调度队列 可以串行或并发执行任务，应用程序可以有多个调度队列并行执行任务。
+
+
+
 There are several advantages to using dispatch queues over traditional threads. One of the most important is performance. Dispatch queues work more closely with the kernel to eliminate the normal overhead associated with creating threads. Serial dispatch queues also provide built-in synchronization for queued tasks, eliminating many of the problems normally associated with synchronization and memory contention normally encountered when using threads. 
+
+与传统线程相比，使用调度队列有几个优点。其中最重要的是 性能（performance）。调度队列与内核更紧密地协作，以消除与创建线程相关的常用开销。串行调度队列还为队列任务提供内置同步，消除了许多通常与使用线程时遇到的同步和内存争用相关的问题。
+
+
 
 In addition to providing dispatch queues, GCD provides three other dispatch interfaces to support the asynchronous design approach offered by dispatch queues: 
 
+除了提供调度队列外，GCD还提供了三个其他调度接口，以支持调度队列提供的异步设计方法：
+
+
+
 Dispatch sources provide a way to handle the following types of kernel-level events that is more efficient than BSD alternatives:
 
+调度源提供了一种处理以下类型内核级事件的，比BSD替代方法更有效的方法：
+
 - Timer notifications
+
+  计时器通知
+
 - Signal handling 
+
+  信号处理
+
 - Events associated with file and socket operations
+
+  与文件和套接字操作关联的事件
+
 - Significant process-related events
+
+  重大过程相关事件
+
 - Mach-related events
+
+  Mach 相关事件
+
 - Custom events that you define and trigger
+
+  定义并触发的自定义事件
+
 - Asynchronous I/O through dispatch data and dispatch I/O
+
+  通过 调度数据和 调度I/O 实现 异步I/O
 
 Dispatch groups allow one thread (or *task*) to block while it waits for one or more other tasks to finish executing.
 
+调度组 允许一个线程（或任务）在 等待一个或多个其他任务完成执行时阻塞。
+
 Dispatch semaphores provide a more efficient alternative to the traditional semaphore mechanism. 
+
+调度信号量 为传统的信号量机制 提供了更有效的替代方案。
 
 For more information about how to use GCD in your apps, see *[Concurrency Programming Guide](https://developer.apple.com/library/archive/documentation/General/Conceptual/ConcurrencyProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008091)*.
 
-
+关于更多在你的应用中使用 GCD 的信息，可参阅 *[Concurrency Programming Guide](https://developer.apple.com/library/archive/documentation/General/Conceptual/ConcurrencyProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008091)*。
 
 ***
 ### 9、Bonjour
@@ -234,23 +274,62 @@ For information on how to incorporate Bonjour services into a Cocoa app, see *[B
 
 
 
+Bonjour 是零配置网络架构的 Apple 实现，一个 通过 IP 网络 发布和发现服务的 强大的系统，它与软件和硬件都相关。
+
+将 Bonjour 支持集成到您的软件中，可以改善总体用户体验。您可以使用 Bonjour 获得可用设备的列表，并让用户从该列表中进行选择，而不是提示用户输入网络设备的确切名称和地址。例如，您可以使用它来查找可用的打印服务，其中包括任何打印机或基于软件的打印服务，例如从打印作业创建PDF文件的服务。
+
+强烈建议 基于网络的硬件设备的开发人员支持 Bonjour。Bonjour 减轻了对基于网络的设备（如打印机、扫描仪、RAID 服务器 和 无线路由器）的复杂设置指令的需求。插入后，这些设备会自动向网络上的客户端发布它们提供的服务。
+
+有关如何将Bonjour 服务并入 Cocoa应用程序的信息，请参见 *[Bonjour Overview](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/NetServices/Introduction.html#//apple_ref/doc/uid/10000119i)*. 要将Bonjour并入非Cocoa应用程序，请参见  *[DNS Service Discovery Programming Guide](https://developer.apple.com/library/archive/documentation/Networking/Conceptual/dns_discovery_api/Introduction.html#//apple_ref/doc/uid/TP30000964)*。
+
+
+
 ***
 ### 10、Security Services 安全服务
 
 OS X security is built upon several open source technologies—including BSD and Kerberos—adds its own features to those technologies. The Security framework (`Security.framework`) implements a layer of high-level services to simplify your security solutions. These high-level services provide a convenient abstraction and make it possible for Apple and third parties to implement new security features without breaking your code. They also make it possible for Apple to combine security technologies in unique ways. 
 
+OSX 的安全 建立在几个开源技术之上，包括 BSD 和 Kerberos，它们为这些技术添加了自己的特性。Security 框架  实现一层高级服务以简化安全解决方案。这些高级服务提供了方便的抽象，使苹果和第三方能够在不破坏代码的情况下，实现新的安全功能。它们还使苹果能够以独特的方式将安全技术结合起来。
+
+
+
 OS X provides high-level interfaces for the following features:
 
+OSX为以下功能提供了高级接口：
+
 - User authentication
+
+  用户身份验证
+
 - Certificate, Key, and Trust Services
+
+  证书、秘钥 和 信任服务
+
 - Authorization Services
+
+  授权服务
+
 - Secure Transport
+
+  加密传输
+
 - Keychain Services
+
+  钥匙串服务
+
 - Smart cards with the CryptoTokenKit framework
+
+  CryptoTokenKit 框架的 Smart cards 
+
+  
 
 Security Transforms, provide a universal context for all cryptographic work. A cryptographic unit in Security Transforms, also known as a *transform*, can be used to perform tasks such as encryption, decryption, signing, verifying, digesting, and encoding. You can also create custom transforms. Transforms are built upon GCD and define a data-flow model for processing data that allows high throughput on multicore machines. 
 
 OS X supports many network-based security standards; for a complete list of network protocols, see [Standard Network Protocols](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SystemTechnology/SystemTechnology.html#//apple_ref/doc/uid/TP40001067-CH207-TPXREF117). For more information about the security architecture and security-related technologies of OS X, see *[Security Overview](https://developer.apple.com/library/archive/documentation/Security/Conceptual/Security_Overview/Introduction/Introduction.html#//apple_ref/doc/uid/TP30000976)*.
+
+安全转换，为所有加密工作提供通用上下文。安全转换中的加密单元（也称为转换）可用于执行加密、解密、签名、验证、摘要和编码等任务。您还可以创建自定义转换。转换是建立在GCD的基础上的，定义了一个数据流模型，用于处理多核机器上允许高吞吐量的数据。
+
+
 
 
 
@@ -299,7 +378,9 @@ Time Machine protects user data from accidental loss by automatically backing up
 
 For information about using the Backup Core API, see *[Backup Core Reference](https://developer.apple.com/documentation/coreservices/backup_core)*.
 
+Time Machine 通过 自动将数据备份到不同的硬盘驱动器 来保护用户数据，以免意外丢失。此功能包括一组编程级函数，可用于从备份集中排除不重要的文件。例如，您可以使用这些函数排除应用程序的缓存文件 或 任何可以轻松重新创建的文件。排除这些类型的文件可以提高备份性能，并减少备份用户系统所需的空间。
 
+更多关于 Backup Core API 的信息，可参阅  *[Backup Core Reference](https://developer.apple.com/documentation/coreservices/backup_core)*。
 
 ***
 ### 16、Keychain Services  钥匙串服务
@@ -315,9 +396,17 @@ If your app handles passwords or sensitive information, you should support Keych
 
 OS X includes several XML parsing technologies. Most apps should use these Foundation classes: `NSXMLParser` for parsing XML streams, and the NSXML classes (for example, `NSXMLNode`) for representing XML documents internally as tree structures. Core Foundation also provides a set of functions for parsing XML content.
 
+OSX包括几种 XML 解析技术。大多数应用程序应该使用这些基础类：`NSXMLParser` 用于解析XML流，`NSXML` 类（例如，`NSXMLNode`）用于在内部将XML文档表示为树结构。Core Foundation还提供了一组用于解析 XML 内容的函数。
+
+
+
 The open source `libXML2` library allows your app to parse or write arbitrary XML data quickly. The headers for this library are located in the `/usr/include/libxml2` directory.
 
 For information on parsing XML from a Cocoa app, see *[Event-Driven XML Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/XMLParsing/XMLParsing.html#//apple_ref/doc/uid/10000186i)* and *[Tree-Based XML Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/NSXML_Concepts/NSXML.html#//apple_ref/doc/uid/TP40001269)*.
+
+开源 `libXML2` 库允许应用程序快速解析或写入任意XML数据。这个库的头位于 `/usr/include/libxml2` 目录中。
+
+更多在 Cocoa 应用中解析 XML 的信息，可参阅 *[Event-Driven XML Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/XMLParsing/XMLParsing.html#//apple_ref/doc/uid/10000186i)* 和 *[Tree-Based XML Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/NSXML_Concepts/NSXML.html#//apple_ref/doc/uid/TP40001269)*。
 
 
 
