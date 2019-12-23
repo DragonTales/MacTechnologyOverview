@@ -1,16 +1,20 @@
 # 【Mac Technology Overview】（六）Core OS Layer
 
-[toc]
+[TOC]
 
 ***
 
-https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreOSLayer/CoreOSLayer.html
+原文地址：[https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreOSLayer/CoreOSLayer.html](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreOSLayer/CoreOSLayer.html)
 
 ***
 
 ## 一、概述
 
 The technologies and frameworks in the Core OS layer provide low-level services related to hardware and networks. These services are based on facilities in the Kernel and Device Drivers layer.
+
+Core OS 层的技术和框架提供与硬件和网络相关的底层服务。这些服务基于  Kernel and Device Drivers 的功能。 
+
+
 
 ![../art/osx_architecture-core_os_2x.png](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/art/osx_architecture-core_os_2x.png)
 
@@ -24,32 +28,56 @@ The technologies and frameworks in the Core OS layer provide low-level services 
 
 The Core OS layer implements features related to app security.
 
+Core OS  层 实现与应用程序安全性相关的功能。
 
 
-### 1、Gatekeeper
+
+***
+### 1、Gatekeeper 门禁
 
 Gatekeeper, allows users to block the installation of software that does not come from the Mac App Store and identified developers. If your app is not signed with a Developer ID certificate issued by Apple, it will not launch on systems that have this security option selected. If you plan to distribute your app outside of the Mac App Store, be sure to test the installation of your app on a Gatekeeper enabled system so that you can provide a good user experience.
 
 Xcode supports most of the tasks that you need to perform to get a Developer ID certificate and code sign your app. To learn how to submit your app to the Mac App Store—or test app installation on a Gatekeeper enabled system—read *Tools Workflow Guide for Mac*.
 
+Gatekeeper 允许用户阻止安装 非  Mac App Store  和认证开发者的软件。如果选中了这个安全选项，不是使用 Apple 发行的  Developer ID 证书签名的应用，不会再系统中启动。如果你想在 Mac App Store   之外发型应用，需要测试你的应用在一个启用了 Gatekeeper 的系统上的安装，来保证一个良好的用户体验。
 
+Xcode 支持大多数需要执行的任务，以便获得 开发人员ID证书（Developer ID certificate ） 并对应用程序进行代码签名。关于更多提交你的应用到  Mac App Store，或者测试应用在 启用 Gatekeeper 的系统上的安装，可以阅读 Tools Workflow Guide for Mac 。
 
-### 2、App Sandbox
+***
+### 2、App Sandbox 沙盒
 
 App Sandbox provides a last line of defense against stolen, corrupted, or deleted user data if malicious code exploits your app. App Sandbox also minimizes the damage from coding errors. Its strategy is twofold:
 
+如果恶意代码利用你的应用，App Sandbox 提供了防止被盗、损坏或删除用户数据的最后一道防线。App Sandbox还可以将编码错误造成的损害降到最低。其战略有两个方面：
+
+
+
 - App Sandbox enables you to describe how your app interacts with the system. The system then grants your app only the access it needs to get its job done, and no more.
+
+  应用程序沙盒使您能够描述 应用程序如何与系统交互。然后，系统只授予你的应用程序 完成任务所需的访问权限，而不再授予。
+
 - App Sandbox allows the user to transparently grant your app additional access by using Open and Save dialogs, drag and drop, and other familiar user interactions.
 
+  App Sandbox 允许用户通过使用 Open 和 Save 对话框、拖放和其他熟悉的用户交互 透明地授予应用程序额外的访问权限。
+
+  
+
 You describe your app’s interaction with the system by setting entitlements in Xcode. For details on all the entitlements available in OS X, see *[Entitlement Key Reference](https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/EntitlementKeyReference/Chapters/AboutEntitlements.html#//apple_ref/doc/uid/TP40011195)*.
+
+您可以通过在 Xcode 中设置 权限（entitlements） 来描述应用程序与系统的交互。有关 OS X中所有可用权利的详细信息，请参阅 *[Entitlement Key Reference](https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/EntitlementKeyReference/Chapters/AboutEntitlements.html#//apple_ref/doc/uid/TP40011195)*.
+
+
 
 When you adopt App Sandbox, you must code sign your app (for more information, see [Code Signing](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreOSLayer/CoreOSLayer.html#//apple_ref/doc/uid/TP40001067-CH9-SW4)). This is because entitlements, including the special entitlement that enables App Sandbox, are built into an app’s code signature.
 
 For a complete explanation of App Sandbox and how to use it, read *[App Sandbox Design Guide](https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AboutAppSandbox/AboutAppSandbox.html#//apple_ref/doc/uid/TP40011183)*.
 
+采用应用程序沙盒时，必须对应用程序进行代码签名（有关详细信息可参阅 [Code Signing](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreOSLayer/CoreOSLayer.html#//apple_ref/doc/uid/TP40001067-CH9-SW4) ）。这是因为授权，包括 启用应用程序沙盒的特殊授权，都内置到应用程序的代码签名中。
 
+对于应用程序沙盒以及如何使用它的完整解释，可以阅读  *[App Sandbox Design Guide](https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AboutAppSandbox/AboutAppSandbox.html#//apple_ref/doc/uid/TP40011183)*。
 
-### 3、Code Signing
+***
+### 3、Code Signing 代码签名
 
 OS X employs the security technology known as *code signing* to allow you to certify that your app was indeed created by you. After an app is code signed, the system can detect any change to the app—whether the change is introduced accidentally or by malicious code. Various security technologies, including App Sandbox and parental controls, depend on code signing.
 
@@ -59,12 +87,14 @@ For a complete explanation of code signing in the context of App Sandbox, read [
 
 
 
+***
 ## 三、Core OS Frameworks
 
 The following technologies and frameworks are in the Core OS layer of OS X:
 
 
 
+***
 ### 1、Accelerate
 
 The Accelerate framework (`Accelerate.framework`) contains APIs that help you accelerate complex operations—and potentially improve performance—by using the available vector unit. Hardware-based vector units boost the performance of any app that exploits data parallelism, such as those that perform 3D graphic imaging, image processing, video processing, audio compression, and software-based cell telephony. (Because Quartz and QuickTime Kit incorporate vector capabilities, any app that uses these APIs can tap into this hardware acceleration without making any changes.)
@@ -77,6 +107,7 @@ For information on how to use the components of the Accelerate framework, see *[
 
 
 
+***
 ### 2、Disk Arbitration
 
 The Disk Arbitration framework (`DiskArbitration.framework`) notifies your app when local and remote volumes are mounted and unmounted. It also furnishes other updates on the status of remote and local mounts and returns information about mounted volumes. For example, if you provide the framework with the BSD disk identifier of a volume, you can get the volume’s mount-point path.
@@ -85,6 +116,7 @@ For more information on Disk Arbitration, see *[Disk Arbitration Framework Refer
 
 
 
+***
 ### 3、OpenCL
 
 The Open Computing Language (OpenCL) makes the high-performance parallel processing power of GPUs available for general-purpose computing. The OpenCL language is a general purpose computer language, not specifically a graphics language, that abstracts out the lower-level details needed to perform parallel data computation tasks on GPUs and CPUs. Using OpenCL, you create compute kernels that are then offloaded to a graphics card or CPU for processing. Multiple instances of a compute kernel can be run in parallel on one or more GPU or CPU cores, and you can link to your compute kernels from Cocoa, C, or C++ apps.
@@ -95,6 +127,7 @@ For information about OpenCL and how to write compute kernels, see *[OpenCL Prog
 
 
 
+***
 ### 4、Open Directory (Directory Services)
 
 Open Directory is a directory services architecture that provides a centralized way to retrieve information stored in local or network databases. Directory services typically provide access to collected information about users, groups, computers, printers, and other information that exists in a networked environment (although they can also store information about the local system). You use Open Directory to retrieve information from these local or network databases. For example, if you’re writing an email app, you can use Open Directory to connect to a corporate LDAP server and retrieve the list of individual and group email addresses for the company. 
@@ -107,6 +140,7 @@ For more information on this technology, see *[Open Directory Programming Guide]
 
 
 
+***
 ### 5、System Configuration
 
 System Configuration (`SystemConfiguration.framework`) is a framework that helps apps configure networks and determine if networks can be reached prior to connecting with them. The framework includes calls for a user experience when interacting with a captive network. (A captive network, such as a public Wi-Fi hotspot, requires user interaction before providing Internet access.)
