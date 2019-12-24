@@ -171,24 +171,54 @@ Packages 是另一种技术，跟 bundles 一样，它使软件的分发更加�
 
 Localization (which is the process of adapting your app for use in another region) is necessary for success in many foreign markets. Users in other countries are much more likely to buy your software if the text and graphics reflect their own language and culture. Before you can localize an app, though, you must design it in a way that supports localization, a process called internationalization. Properly internationalizing an app makes it possible for your code to load localized content and display it correctly. 
 
+本地化（这将应用程序调整为在其他地区使用的过程）对于在许多外国市场取得成功是必要的。如果文字和图形反映了其他国家的语言和文化，那么其他国家的用户更可能购买您的软件。不过，在本地化应用程序之前，必须以支持本地化的方式进行设计，这一过程称为国际化。对应用程序进行适当的国际化可以使代码加载本地化内容并正确显示。
+
 Internationalizing an app involves the following steps:
 
+应用程序国际化包括以下步骤：
+
 - Use Unicode strings for storing user-visible text.
+
+  使用 Unicode 字符串存储用户可见的文本。
+
 - Extract user-visible text into “strings” resource files.
+
+  将用户 可见文本 提取到字符串资源文件中。
+
 - Use nib files to store window and control layouts whenever possible.
+
+  尽可能使用 nib 文件 来存储窗口和控制布局。
+
 - Use international or culture-neutral icons and graphics whenever possible.
+
+  尽可能使用 国际 或 文化中性的图标和图形。
+
 - Use Cocoa or Core Text to handle text layout.
+
+  使用 Cocoa 或 Core 文本 处理文本布局。
+
 - Support localized file-system names (also known as *display names*).
+
+  支持本地化的文件系统名称（也称为*显示名称*）。
+
 - Use formatter objects in Core Foundation and Cocoa to format numbers, currencies, dates, and times based on the current locale.
+
+  使用 Core Foundation 和 Cocoa 中的格式化程序对象，根据当前区域设置格式化数字、货币、日期和时间。
+
+  
 
 For details on how to support localized versions of your software, see *[Internationalization and Localization Guide](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPInternational/Introduction/Introduction.html#//apple_ref/doc/uid/10000171i)*. For information on Core Foundation formatters, see *[Data Formatting Guide for Core Foundation](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFDataFormatting/Articles/CFDataFormatting.html#//apple_ref/doc/uid/10000176i)*. 
 
-
+有关如何支持软件本地化版本的详细信息，请参阅 *[Internationalization and Localization Guide](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPInternational/Introduction/Introduction.html#//apple_ref/doc/uid/10000171i)*。Core Foundation 的格式问题，可参阅  *[Data Formatting Guide for Core Foundation](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFDataFormatting/Articles/CFDataFormatting.html#//apple_ref/doc/uid/10000176i)* 。
 
 ***
 ### 7、Block Objects
 
 Block objects, or *blocks*, are a C-level mechanism that you can use to create an ad hoc function body as an inline expression in your code. In other languages and environments, a block is sometimes called a *closure* or a *lambda*. You use blocks when you need to create a reusable segment of code but defining a function or method might be a heavyweight (and perhaps inflexible) solution. For example, blocks are a good way to implement callbacks with custom data or to perform an operation on all the items in a collection. Many OS X technologies—for example Game Kit, Core Animation, and many Cocoa classes—use blocks to implement callbacks.
+
+Block objects或*blocks*是一种C级机制，可用于在代码中创建一个特殊的函数体作为内联表达式。在其他语言和环境中，块有时称为*闭包*或*lambda*。当需要创建可重用代码段时，使用块，但定义函数或方法可能是一种重量级（或许是不灵活的）解决方案。例如，块是使用自定义数据实现回调或对集合中的所有项执行操作的好方法。许多OS X技术，例如游戏工具包、核心动画和许多Cocoa类，都使用块来实现回调。
+
+
 
 The compiler provides support for blocks using the C, C++, and Objective-C languages. For more information about how to create and use blocks, see *[Blocks Programming Topics](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Blocks/Articles/00_Introduction.html#//apple_ref/doc/uid/TP40007502)*.
 
