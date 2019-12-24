@@ -12,18 +12,22 @@ https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_
 
 The lowest layer of OS X includes the kernel, drivers, and BSD portions of the system and is based primarily on open source technologies. OS X extends this low-level environment with several core infrastructure technologies that make it easier for you to develop software. 
 
+
+
 ![../art/osx_architecture-kernels_drivers_2x.png](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/art/osx_architecture-kernels_drivers_2x.png)
 
 
 
 
 
+***
 ## 二、High-Level Features 高级特性
 
 The following sections describe features in the Kernel and Device Drivers layer of OS X.
 
 
 
+***
 ### 1、XPC Interprocess Communication and Services XPC进程间通信和服务
 
 XPC is an OS X interprocess communication technology that complements App Sandbox by enabling privilege separation. Privilege separation, in turn, is a development strategy in which you divide an app into pieces according to the system resource access that each piece needs. The component pieces that you create are called *XPC services*.
@@ -62,6 +66,7 @@ For more information, see the `IOVideoDevice.h` header file in the Kernel framew
 
 
 
+***
 ## 三、The Kernel
 
 Beneath the appealing, easy-to-use interface of OS X is a rock-solid, UNIX-based foundation that is engineered for stability, reliability, and performance. The kernel environment is built on top of Mach 3.0 and provides high-performance networking facilities and support for multiple, integrated file systems.
@@ -70,6 +75,7 @@ The following sections describe some of the key features of the kernel and drive
 
 
 
+***
 ### 1、Mach
 
 Mach is at the heart of Darwin because it provides some of the most critical functions of the operating system. Much of what Mach provides is transparent to apps. It manages processor resources such as CPU usage and memory, handles scheduling, enforces memory protection, and implements a messaging-centered infrastructure for untyped interprocess communication, both local and remote. Mach provides the following important advantages to Mac computing:
@@ -83,6 +89,7 @@ Mach also enables cooperative multitasking, preemptive threading, and cooperativ
 
 
 
+***
 ### 2、64-Bit Kernel 64位内核
 
 As of v10.8, OS X requires a Mac that uses the 64-bit kernel. A 64-bit kernel provides several benefits:
@@ -95,6 +102,7 @@ Because a 64-bit kernel does not support 32-bit drivers and kernel extensions (K
 
 
 
+***
 ### 3、Device-Driver Support 设备驱动支持
 
 Darwin offers an object-oriented framework for developing device drivers called the *I/O Kit framework*. This framework facilitates the creation of drivers for OS X and provides much of the infrastructure that they need. Written in a restricted subset of C++ and designed to support a range of device families, the I/O Kit is both modular and extensible. 
@@ -111,6 +119,7 @@ For information on creating device drivers, see *[IOKit Device Driver Design Gui
 
 
 
+***
 ### 4、Network Kernel Extensions 网络内核驱动
 
 Darwin allows kernel developers to add networking capabilities to the operating system by creating network kernel extensions (NKEs). The NKE facility allows you to create networking modules and even entire protocol stacks that can be dynamically loaded into the kernel and unloaded from it. NKEs also make it possible to configure protocol stacks automatically.
@@ -121,6 +130,7 @@ For information on how to write an NKE, see *[Network Kernel Extensions Programm
 
 
 
+***
 ## 四、BSD
 
 Integrated with Darwin is a customized version of the Berkeley Software Distribution (BSD) operating system. Darwin’s implementation of BSD includes much of the POSIX API, which higher-level apps can also use to implement basic app features. BSD serves as the basis for the file systems and networking facilities of OS X. In addition, it provides several programming interfaces and services, including:
@@ -140,6 +150,7 @@ The following sections describe some of the key features of the BSD layer of OS 
 
 
 
+***
 ### 1、IPC and Notification Mechanisms 进程间通信和通知机制
 
 OS X supports the following technologies for interprocess communication (IPC) and for delivering notifications across the system:
@@ -178,6 +189,7 @@ OS X supports the following technologies for interprocess communication (IPC) an
 
 
 
+***
 ### 2、Network Support
 
 OS X is one of the premier platforms for computing in an interconnected world. It supports the dominant media types, protocols, and services in the industry, as well as differentiated and innovative services from Apple. 
@@ -186,7 +198,8 @@ The OS X network protocol stack is based on BSD. The extensible architecture pro
 
 
 
-#### 1）Standard Network Protocols 标准网络协议
+***
+#### 2.1 Standard Network Protocols 标准网络协议
 
 OS X provides built-in support for a large number of network protocols that are standard in the computing industry. Table 6-1 summarizes these protocols.
 
@@ -218,7 +231,7 @@ OS X also implements a number of file-sharing protocols; see [Table 6-4](https:/
 
 ***
 
-#### 2）Network Technologies 网络技术
+#### 2.2 Network Technologies 网络技术
 
 OS X supports the network technologies listed in Table 6-2.
 
@@ -240,7 +253,10 @@ OS X supports the network technologies listed in Table 6-2.
 
 
 
-#### 3）Network Diagnostics 网络诊断
+
+
+***
+#### 2.3 Network Diagnostics 网络诊断
 
 Network diagnostics is a way of helping the user solve network problems. Although modern networks are generally reliable, there are still times when network services may fail. Sometimes the cause of the failure is beyond the ability of the desktop user to fix, but sometimes the problem is in the way the user’s computer is configured. The network diagnostics feature provides a diagnostic app to help the user locate problems and correct them. 
 
@@ -250,6 +266,7 @@ For more information on using this feature, see [Using Network Diagnostics](http
 
 
 
+***
 ### 3、File-System Support 文件系统支持
 
 The file-system component of Darwin is based on extensions to BSD and an enhanced Virtual File System (VFS) design. The file-system component includes the following features:
@@ -277,6 +294,8 @@ Because of its multiple app environments and the various kinds of devices it sup
 | MS-DOS (FAT)           | The FAT file system is used by many Windows computers, digital cameras, video cameras, SD and SDHC memory cards, and other digital devices. OS X can read and write FAT-formatted volumes. |
 | ExFAT                  | The ExFAT file system is an extension of the FAT file system, and is also used on Windows computers, some digital cameras and video cameras, SDXC memory cards, and other digital devices. OS X can read and write ExFAT-formatted volumes. |
 
+
+
 HFS+ volumes support aliases, symbolic links, and hard links, whereas UFS volumes support symbolic links and hard links but not aliases. Although an alias and a symbolic link are both lightweight references to a file or directory elsewhere in the file system, they are semantically different in significant ways. For more information, see [Aliases and Symbolic Links](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPFileSystem/Articles/Aliases.html#//apple_ref/doc/uid/20002288) in *[File System Overview](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPFileSystem/BPFileSystem.html#//apple_ref/doc/uid/10000185i)*.
 
 
@@ -294,10 +313,11 @@ Because OS X is intended to be deployed in heterogeneous networks, it also suppo
 | AFP           | Apple Filing Protocol, the principal file-sharing protocol in Mac OS 9 systems (available only over TCP/IP transport). |
 | NFS           | Network File System, the dominant file-sharing protocol in the UNIX world. |
 | WebDAV        | Web-based Distributed Authoring and Versioning, an HTTP extension that allows collaborative file management on the web. |
-| SMB/CIFS      | SMB/CIFS, a file-sharing protocol used on Windows and UNIX systems. |
+| SMB/CIFS      | SMB/CIFS, a file-sharing protocol used on Windows and UNIX systems.<br> Windows 和 UNIX 系统上使用的 文件共享协议。 |
 
 
 
+***
 ### 4、Security 安全
 
 The roots of OS X in the UNIX operating system provide a robust and secure computing environment whose track record extends back many decades. OS X security services are built on top of BSD (Berkeley Software Distribution), an open-source standard. BSD is a form of the UNIX operating system that provides basic security for fundamental services, such as file and network access. 
@@ -321,6 +341,7 @@ For an introduction to OS X security features, see *[Security Overview](https://
 
 
 
+***
 ### 5、Scripting Support 脚本支持
 
 Darwin includes all of the scripting languages commonly found in UNIX-based operating systems. In addition to the scripting languages associated with command-line shells (such as `bash` and `csh`), Darwin also includes support for Perl, Python, Ruby, Ruby on Rails, and others. 
@@ -329,6 +350,7 @@ OS X provides scripting bridges to the Objective-C classes of Cocoa. These bridg
 
 
 
+***
 ### 6、Threading Support 线程支持
 
 OS X provides full support for creating multiple preemptive threads of execution inside a single process. Threads let your program perform multiple tasks in parallel. For example, you might create a thread to perform some lengthy calculations in the background while a separate thread responds to user events and updates the windows in your app. Using multiple threads can often lead to significant performance improvements in your app, especially on computers with multiple CPU cores. Multithreaded programming is not without its dangers though. It requires careful coordination to ensure your app’s state does not get corrupted. 
@@ -339,25 +361,29 @@ In general, you should try to use Grand Central Dispatch or operation objects to
 
 
 
+***
 ### 7、X11
 
 The X11 windowing system is provided as an optional installation component for the system. This windowing system is used by many UNIX applications to draw windows, controls, and other elements of graphical user interfaces. The OS X implementation of X11 uses the Quartz drawing environment to give X11 windows a native OS X feel. This integration also makes it possible to display X11 windows alongside windows from native apps written in Cocoa.
 
 
 
+***
 ### 8、Software Development Support 软件开发支持
 
 The following sections describe some additional features of OS X that affect the software development process.
 
 
 
-#### 1）Binary File Architecture 二进制文件架构
+***
+#### 8.1 Binary File Architecture 二进制文件架构
 
 The underlying architecture of OS X executables was built from the beginning with flexibility in mind. This flexibility became important as Mac computers have transitioned from using PowerPC to Intel CPUs and from supporting only 32-bit apps to 64-bit apps. The following sections provide an overview of the types of architectures you can support in your OS X executables along with other information about the runtime and debugging environments available to you.
 
 
 
-##### Hardware Architectures
+***
+##### 8.1.1 Hardware Architectures
 
 When OS X was first introduced, it was built to support a 32-bit PowerPC hardware architecture. With Apple’s transition to Intel-based Mac computers, OS X added initial support for 32-bit Intel hardware architectures. In addition to 32-bit support, OS X v10.4 added some basic support for 64-bit architectures as well and this support was expanded in OS X v10.5. This means that apps and libraries can now support two different architectures:
 
@@ -372,7 +398,8 @@ Xcode provides integral support for creating apps that support multiple hardware
 
 
 
-##### 64-Bit Support
+***
+##### 8.1.2 64-Bit Support
 
 OS X was initially designed to support binary files on computers using a 32-bit architecture. In OS X v10.4, however, support was introduced for compiling, linking, and debugging binaries on a 64-bit architecture. This initial support was limited to code written using C or C++ only. In addition, 64-bit binaries could link against the Accelerate framework and `libSystem.dylib` only. 
 
@@ -389,7 +416,8 @@ OS X uses the LP64 model that is in use by other 64-bit UNIX systems, which mean
 
 
 
-##### Object File Formats
+***
+##### 8.1.3 Object File Formats
 
 OS X is capable of loading object files that use several different object-file formats. Mach-O format is the format used for all native OS X app development.
 
@@ -397,7 +425,7 @@ For information about the Mach-O file format, see *OS X ABI Mach-O File Format R
 
 
 
-##### Debug File Formats
+##### 8.1.4 Debug File Formats
 
 Whenever you debug an executable file, the debugger uses symbol information generated by the compiler to associate user-readable names with the procedure and data address it finds in memory. Normally, this user-readable information is not needed by a running program and is stripped out (or never generated) by the compiler to save space in the resulting binary file. For debugging, however, this information is very important to be able to understand what the program is doing. 
 
@@ -407,13 +435,15 @@ For information about the DWARF standard, go to [The DWARF Debugging Standard](h
 
 
 
-##### Runtime Environments
+***
+##### 8.1.5 Runtime Environments 运行时环境
 
 Since its first release, OS X has supported several different environments for running apps. The most prominent of these environments is the dynamic link editor (`dyld`) environment, which is also the only environment supported for active development. Most of the other environments provided legacy support during the transition from Mac OS 9 to OS X and are no longer supported for active development. The following sections describe the runtime environments you may encounter in various versions of OS X. 
 
 
 
-##### dyld Runtime Environment
+***
+##### 8.1.6 dyld Runtime Environment
 
 The `dyld` runtime environment is the native environment in OS X and is used to load, link, and execute Mach-O files. At the heart of this environment is the `dyld` dynamic loader program, which handles the loading of a program’s code modules and associated dynamic libraries, resolves any dependencies between those libraries and modules, and begins the execution of the program. 
 
@@ -423,6 +453,10 @@ For more information about the dynamic loader program, see the `dyld` man page. 
 
 
 
-#### 2）Language Support 语言支持
+***
+#### 8.2 Language Support 语言支持
 
-The tools that come with OS X provide direct support for developing software using the Swift, C, C++, Objective-C, and Objective-C++ languages along with numerous scripting languages. Support for other languages may also be provided by third-party developers. For more information on the key features of Swift and Objective-C, see [Development Languages](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SoftwareProducts/SoftwareProducts.html#//apple_ref/doc/uid/TP40001067-CH206-SW4)
+The tools that come with OS X provide direct support for developing software using the Swift, C, C++, Objective-C, and Objective-C++ languages along with numerous scripting languages. Support for other languages may also be provided by third-party developers. For more information on the key features of Swift and Objective-C, see [Development Languages](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SoftwareProducts/SoftwareProducts.html#//apple_ref/doc/uid/TP40001067-CH206-SW4)。 
+
+
+
