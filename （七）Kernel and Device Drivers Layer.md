@@ -1,6 +1,6 @@
 # 【Mac Technology Overview】（七）Kernel and Device Drivers Layer
 
-[toc]
+[TOC]
 
 ***
 
@@ -80,9 +80,16 @@ The following sections describe some of the key features of the kernel and drive
 
 Mach is at the heart of Darwin because it provides some of the most critical functions of the operating system. Much of what Mach provides is transparent to apps. It manages processor resources such as CPU usage and memory, handles scheduling, enforces memory protection, and implements a messaging-centered infrastructure for untyped interprocess communication, both local and remote. Mach provides the following important advantages to Mac computing:
 
+Mach 是 Darwin 的核心，因为它提供一些操作系统中最重要的功能。Mach 提供的大部分功能 对于用户是不可见的。它管理处理器资源，比如 CPU 的使用、内存，管理，内存保护，和实现消息中心架构。Mach 为 Mac 运算提供以下重要的功能：
+
 - **Protected memory.** The stability of an operating system should not depend on all executing apps being good citizens. Even a well-behaved process can accidentally write data into the address space of the system or another process, which can result in the loss or corruption of data or even precipitate system crashes. Mach ensures that an app cannot write in another app’s memory or in the operating system’s memory. By walling off apps from each other and from system processes, Mach makes it virtually impossible for a single poorly behaved app to damage the rest of the system. Best of all, if an app crashes as the result of its own misbehavior, the crash affects only that app and not the rest of the system.
+
+  内存保护：操作系统的稳定性，不应该基于所有运行的应用都是安全的。即使是一个表现良好的进程，也可能会往其他进程的地址空间写入数据，这将会导致数据的丢失和污染，甚至系统突然崩溃。
+
 - **Preemptive multitasking.** With Mach, processes share the CPU efficiently. Mach watches over the computer’s processor, prioritizing tasks, making sure activity levels are at the maximum, and ensuring that every task gets the resources it needs. It uses certain criteria to decide how important a task is and therefore how much time to allocate to it before giving another task its turn. Your process is not dependent on another process yielding its processing time.
+
 - **Advanced virtual memory.** In OS X, virtual memory is “on” all the time. The Mach virtual memory system gives each process its own private virtual address space. For 64-bit apps, the theoretical maximum is approximately 18 exabytes, or 18 billion billion bytes. Mach maintains address maps that control the translation of a task’s virtual addresses into physical memory. Typically only a portion of the data or code contained in a task’s virtual address space resides in physical memory at any given time. As pages are needed, they are loaded into physical memory from storage. Mach augments these semantics with the abstraction of memory objects. Named memory objects enable one task (at a sufficiently low level) to map a range of memory, unmap it, and send it to another task. This capability is essential for implementing separate execution environments on the same system. 
+
 - **Real-time support.** This feature guarantees low-latency access to processor resources for time-sensitive media apps.
 
 Mach also enables cooperative multitasking, preemptive threading, and cooperative threading.
@@ -207,23 +214,23 @@ OS X provides built-in support for a large number of network protocols that are 
 
 | Protocol          | Description                                                  |
 | :---------------- | :----------------------------------------------------------- |
-| 802.1x            | 802.1x is a protocol for implementing port-based network access over wired or wireless LANs. It supports a wide range of authentication methods, including TLS, TTLS, LEAP, MDS, and PEAP (MSCHAPv2, MD5, GTC). |
-| DHCP and BOOTP    | The Dynamic Host Configuration Protocol and the Bootstrap Protocol automate the assignment of IP addresses in a particular network. |
-| DNS               | Domain Name Services is the standard Internet service for mapping host names to IP addresses. |
-| FTP and SFTP      | The File Transfer Protocol and Secure File Transfer Protocol are two standard means of moving files between computers on TCP/IP networks. |
-| HTTP and HTTPS    | The Hypertext Transport Protocol is the standard protocol for transferring webpages between a web server and browser. OS X provides support for both the insecure and secure versions of the protocol. |
-| LDAP              | The Lightweight Directory Access Protocol lets users locate groups, individuals, and resources such as files and devices in a network, whether on the Internet or on a corporate intranet. |
-| NBP               | The Name Binding Protocol is used to bind processes across a network. |
-| NTP               | The Network Time Protocol is used for synchronizing client clocks. |
-| PAP               | The Printer Access Protocol is used for spooling print jobs and printing to network printers. |
-| PPP               | For dial-up (modem) access, OS X includes PPP (Point-to-Point Protocol). PPP support includes TCP/IP as well as the PAP and CHAP authentication protocols. |
-| PPPoE             | The Point-to-Point Protocol over Ethernet protocol provides an Ethernet-based dial-up connection for broadband users. |
-| S/MIME            | The Secure/Multipurpose Internet Mail Extensions protocol supports encryption of email and the attachment of digital signatures to validate email addresses. |
-| SLP               | Service Location Protocol is designed for the automatic discovery of resources (servers, fax machines, and so on) on an IP network. |
-| SOAP              | The Simple Object Access Protocol is a lightweight protocol for exchanging encapsulated messages over the web or other networks. |
-| SSH               | The Secure Shell protocol is a safe way to perform a remote login to another computer. Session information is encrypted to prevent unauthorized access of data. |
+| 802.1x            | 802.1x is a protocol for implementing port-based network access over wired or wireless LANs. It supports a wide range of authentication methods, including TLS, TTLS, LEAP, MDS, and PEAP (MSCHAPv2, MD5, GTC).<br> |
+| DHCP and BOOTP    | The Dynamic Host Configuration Protocol and the Bootstrap Protocol automate the assignment of IP addresses in a particular network.<br> |
+| DNS               | Domain Name Services is the standard Internet service for mapping host names to IP addresses.<br> |
+| FTP and SFTP      | The File Transfer Protocol and Secure File Transfer Protocol are two standard means of moving files between computers on TCP/IP networks.<br> |
+| HTTP and HTTPS    | The Hypertext Transport Protocol is the standard protocol for transferring webpages between a web server and browser. OS X provides support for both the insecure and secure versions of the protocol.<br> |
+| LDAP              | The Lightweight Directory Access Protocol lets users locate groups, individuals, and resources such as files and devices in a network, whether on the Internet or on a corporate intranet.<br> |
+| NBP               | The Name Binding Protocol is used to bind processes across a network.<br> |
+| NTP               | The Network Time Protocol is used for synchronizing client clocks.<br> |
+| PAP               | The Printer Access Protocol is used for spooling print jobs and printing to network printers.<br> |
+| PPP               | For dial-up (modem) access, OS X includes PPP (Point-to-Point Protocol). PPP support includes TCP/IP as well as the PAP and CHAP authentication protocols.<br> |
+| PPPoE             | The Point-to-Point Protocol over Ethernet protocol provides an Ethernet-based dial-up connection for broadband users.<br> |
+| S/MIME            | The Secure/Multipurpose Internet Mail Extensions protocol supports encryption of email and the attachment of digital signatures to validate email addresses.<br> |
+| SLP               | Service Location Protocol is designed for the automatic discovery of resources (servers, fax machines, and so on) on an IP network.<br> |
+| SOAP              | The Simple Object Access Protocol is a lightweight protocol for exchanging encapsulated messages over the web or other networks.<br> |
+| SSH               | The Secure Shell protocol is a safe way to perform a remote login to another computer. Session information is encrypted to prevent unauthorized access of data.<br> |
 | TCP/IP and UDP/IP | OS X provides two transmission-layer protocols, TCP (Transmission Control Protocol) and UDP (User Datagram Protocol), to work with the network-layer Internet Protocol (IP). (OS X includes support for IPv6 and IPSec.) |
-| XML-RPC           | XML-RPC is a protocol for sending remote procedure calls using XML over the web. |
+| XML-RPC           | XML-RPC is a protocol for sending remote procedure calls using XML over the web.<br> |
 
 OS X also implements a number of file-sharing protocols; see [Table 6-4](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SystemTechnology/SystemTechnology.html#//apple_ref/doc/uid/TP40001067-CH207-BCIGEGHA) for a summary of these protocols.
 
@@ -240,16 +247,16 @@ OS X supports the network technologies listed in Table 6-2.
 | Technology                    | Description                                                  |
 | :---------------------------- | :----------------------------------------------------------- |
 | Ethernet 10/100Base-T         | For the Ethernet ports built into every new Macintosh.       |
-| Ethernet 1000Base-T           | Also known as Gigabit Ethernet. For data transmission over fiber-optic cable and standardized copper wiring. |
-| Jumbo Frame                   | This Ethernet format uses 9 KB frames for interserver links rather than the standard 1.5 KB frame. Jumbo Frame decreases network overhead and increases the flow of server-to-server and server-to-app data. |
-| Serial                        | Supports modem and ISDN capabilities.                        |
-| Wireless                      | Supports the 802.11b, 802.11g, 80211n, and 802.11ac wireless network technologies using AirPort Extreme and AirPort Express. |
-| IP Routing/RIP                | IP routing provides routing services for small networks. It uses Routing Information Protocol (RIP) in its implementation. |
-| Multihoming                   | Enables a computer host to be physically connected to multiple data links that can be on the same or different networks. |
-| IP aliasing                   | Allows a network administrator to assign multiple IP addresses to a single network interface. |
-| Zero-configuration networking | See [Bonjour](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-SW2). |
-| NetBoot                       | Allows computers to share a single System folder, which is installed on a centralized server that the system administrator controls. Users store their data in home directories on the server and have access to a common Applications folder, both of which are also commonly installed on the server. |
-| Personal web sharing          | Allows users to share information with other users on an intranet, no matter what type of computer or browser they are using. The Apache web server is integrated as the system’s HTTP service. |
+| Ethernet 1000Base-T           | Also known as Gigabit Ethernet. For data transmission over fiber-optic cable and standardized copper wiring.<br> |
+| Jumbo Frame                   | This Ethernet format uses 9 KB frames for interserver links rather than the standard 1.5 KB frame. Jumbo Frame decreases network overhead and increases the flow of server-to-server and server-to-app data.<br> |
+| Serial                        | Supports modem and ISDN capabilities.<br> 1                  |
+| Wireless                      | Supports the 802.11b, 802.11g, 80211n, and 802.11ac wireless network technologies using AirPort Extreme and AirPort Express.<br> |
+| IP Routing/RIP                | IP routing provides routing services for small networks. It uses Routing Information Protocol (RIP) in its implementation.<br> |
+| Multihoming                   | Enables a computer host to be physically connected to multiple data links that can be on the same or different networks.<br> |
+| IP aliasing                   | Allows a network administrator to assign multiple IP addresses to a single network interface.<br> |
+| Zero-configuration networking | See [Bonjour](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-SW2).<br> 请查看 [Bonjour](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-SW2) |
+| NetBoot                       | Allows computers to share a single System folder, which is installed on a centralized server that the system administrator controls. Users store their data in home directories on the server and have access to a common Applications folder, both of which are also commonly installed on the server.<br> |
+| Personal web sharing          | Allows users to share information with other users on an intranet, no matter what type of computer or browser they are using. The Apache web server is integrated as the system’s HTTP service.<br> |
 
 
 
@@ -285,14 +292,14 @@ Because of its multiple app environments and the various kinds of devices it sup
 
 | Volume format          | Description                                                  |
 | :--------------------- | :----------------------------------------------------------- |
-| Mac OS Extended Format | Also called HFS (hierarchical file system) Plus, or HFS+. This is the default root and booting volume format in OS X. This extended version of HFS optimizes the storage capacity of large hard disks by decreasing the minimum size of a single file. |
-| Mac OS Standard Format | Also called hierarchical file system, or HFS. This is the legacy volume format in Mac OS systems prior to Mac OS 8.1. HFS (like HFS+) stores resources and data in separate forks of a file and makes use of various file attributes, including type and creator codes. |
-| UDF                    | Universal Disk Format, used for hard drives and optical disks, including most types of CDs and DVDs. OS X supports reading UDF revisions 1.02 through 2.60 on both block devices and most optical media, and it supports writing to block devices and to DVD-RW and DVD+RW media using UDF 2.00 through 2.50 (except for mirrored metadata partitions in 2.50). You can find the UDF specification at [http://www.osta.org](http://www.osta.org/). |
+| Mac OS Extended Format | Also called HFS (hierarchical file system) Plus, or HFS+. This is the default root and booting volume format in OS X. This extended version of HFS optimizes the storage capacity of large hard disks by decreasing the minimum size of a single file.<br> |
+| Mac OS Standard Format | Also called hierarchical file system, or HFS. This is the legacy volume format in Mac OS systems prior to Mac OS 8.1. HFS (like HFS+) stores resources and data in separate forks of a file and makes use of various file attributes, including type and creator codes.<br> |
+| UDF                    | Universal Disk Format, used for hard drives and optical disks, including most types of CDs and DVDs. OS X supports reading UDF revisions 1.02 through 2.60 on both block devices and most optical media, and it supports writing to block devices and to DVD-RW and DVD+RW media using UDF 2.00 through 2.50 (except for mirrored metadata partitions in 2.50). You can find the UDF specification at [http://www.osta.org](http://www.osta.org/).<br> |
 | ISO 9660               | The standard format for CD-ROM volumes.                      |
-| NTFS                   | The NT File System, used by Windows computers. OS X can read NTFS-formatted volumes but cannot write to them. |
-| UFS                    | UNIX File System, a flat (that is, single-fork) disk volume format, based on the BSD FFS (Fast File System), that is similar to the standard volume format of most UNIX operating systems; it supports POSIX file-system semantics, which are important for many server applications. Although UFS is supported in OS X, its use is discouraged. |
-| MS-DOS (FAT)           | The FAT file system is used by many Windows computers, digital cameras, video cameras, SD and SDHC memory cards, and other digital devices. OS X can read and write FAT-formatted volumes. |
-| ExFAT                  | The ExFAT file system is an extension of the FAT file system, and is also used on Windows computers, some digital cameras and video cameras, SDXC memory cards, and other digital devices. OS X can read and write ExFAT-formatted volumes. |
+| NTFS                   | The NT File System, used by Windows computers. OS X can read NTFS-formatted volumes but cannot write to them.<br> |
+| UFS                    | UNIX File System, a flat (that is, single-fork) disk volume format, based on the BSD FFS (Fast File System), that is similar to the standard volume format of most UNIX operating systems; it supports POSIX file-system semantics, which are important for many server applications. Although UFS is supported in OS X, its use is discouraged.<br> |
+| MS-DOS (FAT)           | The FAT file system is used by many Windows computers, digital cameras, video cameras, SD and SDHC memory cards, and other digital devices. OS X can read and write FAT-formatted volumes.<br> |
+| ExFAT                  | The ExFAT file system is an extension of the FAT file system, and is also used on Windows computers, some digital cameras and video cameras, SDXC memory cards, and other digital devices. OS X can read and write ExFAT-formatted volumes.<br> |
 
 
 
@@ -310,9 +317,9 @@ Because OS X is intended to be deployed in heterogeneous networks, it also suppo
 
 | File protocol | Description                                                  |
 | :------------ | :----------------------------------------------------------- |
-| AFP           | Apple Filing Protocol, the principal file-sharing protocol in Mac OS 9 systems (available only over TCP/IP transport). |
-| NFS           | Network File System, the dominant file-sharing protocol in the UNIX world. |
-| WebDAV        | Web-based Distributed Authoring and Versioning, an HTTP extension that allows collaborative file management on the web. |
+| AFP           | Apple Filing Protocol, the principal file-sharing protocol in Mac OS 9 systems (available only over TCP/IP transport).<br> |
+| NFS           | Network File System, the dominant file-sharing protocol in the UNIX world.<br> |
+| WebDAV        | Web-based Distributed Authoring and Versioning, an HTTP extension that allows collaborative file management on the web.<br> |
 | SMB/CIFS      | SMB/CIFS, a file-sharing protocol used on Windows and UNIX systems.<br> Windows 和 UNIX 系统上使用的 文件共享协议。 |
 
 
