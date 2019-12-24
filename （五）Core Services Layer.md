@@ -4,7 +4,7 @@
 
 ***
 
-https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html
+原文地址：[https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html)
 
 ***
 
@@ -64,13 +64,13 @@ The Social framework provides a simple interface for accessing the user’s soci
 
 From a user’s perspective, iCloud is a simple feature that automatically makes their personal content available on all of their devices. When you adopt iCloud, OS X initiates and manages uploading and downloading of data for the devices associated with an iCloud account.
 
-从用户的角度来看，iCloud是一个简单的功能，它可以自动让他们的个人内容在所有设备上都可用。当您采用iCloud时，OS X 会启动并管理与iCloud帐户关联的设备的数据上载和下载。
+从用户的角度来看，iCloud是一个简单的功能，它可以自动让他们的个人内容在所有设备上都可用。当你采用iCloud时，OS X 会启动并管理与iCloud帐户关联的设备的数据上载和下载。
 
 
 
 There are three types of iCloud storage that your app can take advantage of:
 
-您的应用程序可以利用三种类型的iCloud存储：
+你的应用程序可以利用三种类型的iCloud存储：
 
 - **Document storage**. Document storage is for user-visible file-based content, such as presentations or documents, or for other substantial file-based content, such as the state of a complex game.
 
@@ -96,7 +96,7 @@ Many apps can benefit from using more than one type of storage. For example, a c
 
 To learn more about adding iCloud storage to your app, read *[iCloud Design Guide](https://developer.apple.com/library/archive/documentation/General/Conceptual/iCloudDesignGuide/Chapters/Introduction.html#//apple_ref/doc/uid/TP40012094)*.
 
-重要： 要在应用程序中使用iCloud存储，您需要为开发设备获取适当的 配置文件，并在Xcode项目中请求适当的权限（entitlements）。若要了解有关这些任务的详细信息，请参阅 `Tools Workflow Guide for Mac`中的 `设置系统和配置权利`。
+重要： 要在应用程序中使用iCloud存储，你需要为开发设备获取适当的 配置文件，并在Xcode项目中请求适当的权限（entitlements）。若要了解有关这些任务的详细信息，请参阅 `Tools Workflow Guide for Mac`中的 `设置系统和配置权利`。
 
 要了解有关在应用程序中添加iCloud存储的更多信息，请阅读  *[iCloud Design Guide](https://developer.apple.com/library/archive/documentation/General/Conceptual/iCloudDesignGuide/Chapters/Introduction.html#//apple_ref/doc/uid/TP40012094)*。
 
@@ -132,7 +132,7 @@ File coordination eliminates file-system inconsistencies due to overlapping read
 
 The file coordination APIs let you assert your app’s ownership of files and directories. When another process attempts access, you have a chance to respond. For example, if another app attempts to read a document that your app is editing, you have a chance to write unsaved changes to disk before the other app is allowed to do its reading.
 
-File Coordination API 允许您断言应用程序对文件和目录的所有权。当另一个进程尝试访问时，您有机会做出响应。例如，如果另一个应用程序试图读取您的应用程序正在编辑的文档，则在允许另一个应用进行读取之前，您有机会将未保存的更改写入磁盘。
+File Coordination API 允许你断言应用程序对文件和目录的所有权。当另一个进程尝试访问时，你有机会做出响应。例如，如果另一个应用程序试图读取你的应用程序正在编辑的文档，则在允许另一个应用进行读取之前，你有机会将未保存的更改写入磁盘。
 
 
 
@@ -171,7 +171,7 @@ Packages 是另一种技术，跟 bundles 一样，它使软件的分发更加�
 
 Localization (which is the process of adapting your app for use in another region) is necessary for success in many foreign markets. Users in other countries are much more likely to buy your software if the text and graphics reflect their own language and culture. Before you can localize an app, though, you must design it in a way that supports localization, a process called internationalization. Properly internationalizing an app makes it possible for your code to load localized content and display it correctly. 
 
-本地化（这将应用程序调整为在其他地区使用的过程）对于在许多外国市场取得成功是必要的。如果文字和图形反映了其他国家的语言和文化，那么其他国家的用户更可能购买您的软件。不过，在本地化应用程序之前，必须以支持本地化的方式进行设计，这一过程称为国际化。对应用程序进行适当的国际化可以使代码加载本地化内容并正确显示。
+本地化（这将应用程序调整为在其他地区使用的过程）对于在许多外国市场取得成功是必要的。如果文字和图形反映了其他国家的语言和文化，那么其他国家的用户更可能购买你的软件。不过，在本地化应用程序之前，必须以支持本地化的方式进行设计，这一过程称为国际化。对应用程序进行适当的国际化可以使代码加载本地化内容并正确显示。
 
 Internationalizing an app involves the following steps:
 
@@ -216,13 +216,13 @@ For details on how to support localized versions of your software, see *[Interna
 
 Block objects, or *blocks*, are a C-level mechanism that you can use to create an ad hoc function body as an inline expression in your code. In other languages and environments, a block is sometimes called a *closure* or a *lambda*. You use blocks when you need to create a reusable segment of code but defining a function or method might be a heavyweight (and perhaps inflexible) solution. For example, blocks are a good way to implement callbacks with custom data or to perform an operation on all the items in a collection. Many OS X technologies—for example Game Kit, Core Animation, and many Cocoa classes—use blocks to implement callbacks.
 
-Block objects或*blocks*是一种C级机制，可用于在代码中创建一个特殊的函数体作为内联表达式。在其他语言和环境中，块有时称为*闭包*或*lambda*。当需要创建可重用代码段时，使用块，但定义函数或方法可能是一种重量级（或许是不灵活的）解决方案。例如，块是使用自定义数据实现回调或对集合中的所有项执行操作的好方法。许多OS X技术，例如游戏工具包、核心动画和许多Cocoa类，都使用块来实现回调。
+Block objects 或 `blocks` 是一种 C 级机制，可用于在代码中创建一个特殊的函数体 作为内联表达式。在其他语言和环境中，块有时称为 `闭包` 或 `lambda`。当需要创建可重用代码段，但定义函数或方法可能是一种重量级（或许是不灵活的）解决方案时，使用 blocks。例如，blocks 是使用自定义数据 实现回调 或 对集合中的所有项执行操作的好方法。许多OS X技术，例如 Game Kit, Core Animation 和许多 Cocoa类，都使用块来实现回调。
 
 
 
 The compiler provides support for blocks using the C, C++, and Objective-C languages. For more information about how to create and use blocks, see *[Blocks Programming Topics](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Blocks/Articles/00_Introduction.html#//apple_ref/doc/uid/TP40007502)*.
 
-
+编译器提供  C, C++ 和 OC 编写的 blocks, 更多关于创建和使用 blocks 的信息，可见  *[Blocks Programming Topics](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Blocks/Articles/00_Introduction.html#//apple_ref/doc/uid/TP40007502)* 。
 
 ***
 ### 8、Grand Central Dispatch 大中枢派发
@@ -231,7 +231,7 @@ Grand Central Dispatch (GCD) provides a simple and efficient API for achieving t
 
 
 
-Grand Central Dispatch (GCD) 为实现应用中 代码的并发执行 提供了一个简单高效的API。GCD不提供线程，而是提供了 使用调度队列异步执行应用程序 中任何任务的基础结构。调度队列收集您的任务，并与内核一起工作，以促进它们在底层线程上的执行。单个调度队列 可以串行或并发执行任务，应用程序可以有多个调度队列并行执行任务。
+Grand Central Dispatch (GCD) 为实现应用中 代码的并发执行 提供了一个简单高效的API。GCD不提供线程，而是提供了 使用调度队列异步执行应用程序 中任何任务的基础结构。调度队列收集你的任务，并与内核一起工作，以促进它们在底层线程上的执行。单个调度队列 可以串行或并发执行任务，应用程序可以有多个调度队列并行执行任务。
 
 
 
@@ -291,6 +291,8 @@ For more information about how to use GCD in your apps, see *[Concurrency Progra
 
 关于更多在你的应用中使用 GCD 的信息，可参阅 *[Concurrency Programming Guide](https://developer.apple.com/library/archive/documentation/General/Conceptual/ConcurrencyProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008091)*。
 
+
+
 ***
 ### 9、Bonjour
 
@@ -306,7 +308,7 @@ For information on how to incorporate Bonjour services into a Cocoa app, see *[B
 
 Bonjour 是零配置网络架构的 Apple 实现，一个 通过 IP 网络 发布和发现服务的 强大的系统，它与软件和硬件都相关。
 
-将 Bonjour 支持集成到您的软件中，可以改善总体用户体验。您可以使用 Bonjour 获得可用设备的列表，并让用户从该列表中进行选择，而不是提示用户输入网络设备的确切名称和地址。例如，您可以使用它来查找可用的打印服务，其中包括任何打印机或基于软件的打印服务，例如从打印作业创建PDF文件的服务。
+将 Bonjour 支持集成到你的软件中，可以改善总体用户体验。你可以使用 Bonjour 获得可用设备的列表，并让用户从该列表中进行选择，而不是提示用户输入网络设备的确切名称和地址。例如，你可以使用它来查找可用的打印服务，其中包括任何打印机或基于软件的打印服务，例如从打印作业创建PDF文件的服务。
 
 强烈建议 基于网络的硬件设备的开发人员支持 Bonjour。Bonjour 减轻了对基于网络的设备（如打印机、扫描仪、RAID 服务器 和 无线路由器）的复杂设置指令的需求。插入后，这些设备会自动向网络上的客户端发布它们提供的服务。
 
@@ -357,7 +359,7 @@ Security Transforms, provide a universal context for all cryptographic work. A c
 
 OS X supports many network-based security standards; for a complete list of network protocols, see [Standard Network Protocols](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SystemTechnology/SystemTechnology.html#//apple_ref/doc/uid/TP40001067-CH207-TPXREF117). For more information about the security architecture and security-related technologies of OS X, see *[Security Overview](https://developer.apple.com/library/archive/documentation/Security/Conceptual/Security_Overview/Introduction/Introduction.html#//apple_ref/doc/uid/TP30000976)*.
 
-安全转换，为所有加密工作提供通用上下文。安全转换中的加密单元（也称为转换）可用于执行加密、解密、签名、验证、摘要和编码等任务。您还可以创建自定义转换。转换是建立在GCD的基础上的，定义了一个数据流模型，用于处理多核机器上允许高吞吐量的数据。
+安全转换，为所有加密工作提供通用上下文。安全转换中的加密单元（也称为转换）可用于执行加密、解密、签名、验证、摘要和编码等任务。你还可以创建自定义转换。转换是建立在GCD的基础上的，定义了一个数据流模型，用于处理多核机器上允许高吞吐量的数据。
 
 
 
@@ -379,12 +381,28 @@ Address Book gives users control over their contacts data by requiring your app 
 
 
 
+通讯录是一种技术，它包含一个集中的联系人和组信息数据库，一个用于查看该信息的应用程序，以及一个用于在应用程序中访问该信息的编程接口。该数据库包含用户名、街道地址、电子邮件地址、电话号码和通讯录等信息。支持通讯录框架的应用程序，可以直接使用这些数据，或者将其扩展为 包含特定于应用程序的信息。它们还可以与系统应用程序共享用户记录，如联系人和邮件。有关通讯录框架的更多信息，请参见 [Address Book](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-TPXREF130)。
+
+通讯录 通过要求你的应用程序在访问通讯录数据库之前获得权限，用户控制他们的联系人数据。当用户启用iCloud时，通讯录通过使用 `CardDAV 协议`使所有设备上的数据保持同步。要了解如何将通讯录集成到你的应用程序中，请参阅  *[Address Book Programming Guide for Mac](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AddressBook/AddressBook.html#//apple_ref/doc/uid/10000117i)*。
+
+
+
+
+
 ***
 ### 13、Speech Technologies 语音技术
 
 OS X contains speech technologies that recognize and speak U.S. English. 
 
+OS X包含 识别和说 美式英语 的语音技术。
+
+
+
 Speech recognition is the ability for the computer to recognize and respond to a person’s speech. Using speech recognition, users can accomplish tasks comprising multiple steps with one spoken command. Because users control the computer by voice, speech-recognition technology is very important for people with special needs. You can take advantage of the speech engine and API included with OS X to incorporate speech recognition into your apps.
+
+语音识别是 计算机识别和响应人的语音的能力。使用语音识别，用户可以用一个语音命令 完成包含多个步骤的任务。由于用户可以通过语音控制计算机，语音识别技术对有特殊需求的人来说是非常重要的。你可以使用 OS X 中包含的 语音引擎和API 将语音识别整合到你的应用程序中。
+
+
 
 Speech synthesis, also called text-to-speech (TTS), converts text into audible speech. TTS provides a way to deliver information to users without forcing them to shift attention from their current task. For example, the computer could deliver messages such as “Your download is complete” and “You have email from your boss; would you like to read it now?” in the background while you work. TTS is crucial for users with vision or attention disabilities. As with speech recognition, TTS provides an API and several user interface features to help you incorporate speech synthesis into your apps. You can also use speech synthesis to replace digital audio files of spoken text. Eliminating these files can reduce the overall size of your software bundle.
 
@@ -392,12 +410,22 @@ For more information, see *[Speech Synthesis Programming Guide](https://develope
 
 
 
+语音合成，也称为 文本-语音转换(TTS：text-to-speech)，将文本转换为可听语音。TTS 提供了一种向用户交付信息的方法，而不必强迫用户转移对当前任务的注意力。例如，电脑可以在你工作的时候 发送诸如 “你的下载完成了” 和 “你有老板的邮件;你想现在读吗?“ 。TTS 对有视力或注意力障碍的用户至关重要。与语音识别一样，TTS 提供了一个API 和几个用户界面特性，来帮助你将语音合成整合到你的应用程序中。你还可以使用语音合成来代替语音文本的数字音频文件。消除这些文件可以减少软件包的总体大小。
+
+
+
 ***
-### 14、Identity Services 认证服务
+### 14、Identity Services 
 
 Identity Services encompasses features located in the Collaboration and Core Services frameworks. Identity Services provides a way to manage groups of users on a local system. In addition to standard login accounts, administrative users can now create sharing accounts, which use access control lists (ACLs) to restrict access to designated system or app resources. An access control list (ACL) gives fine-grained access to file-system objects. Sharing accounts do not have an associated home directory on the system and have much more limited privileges than traditional login accounts.
 
 For more information about the features of Identity Services and how you use those features in your apps, see *[Identity Services Programming Guide](https://developer.apple.com/library/archive/documentation/Networking/Conceptual/IdentityServices_ProgGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004490)* and *Identity Services Reference Collection*.
+
+
+
+Identity Services 包含位于 Collaboration 和 Core Services 框架的功能。Identity Services 提供了一个方式去在本地系统管理用户组。在标准的登录账户之外，管理员用户可以创建分享账户，这使用了 访问控制表（ACLs：access control lists）来限制 对指定系统或应用程序资源的访问。一个访问控制表(ACL) 提供对文件系统对象的细粒度访问。共享帐户在系统上没有相关联的 home目录，并且具有比传统登录帐户更有限的特权。
+
+更多关于 Identity Services 的特性，和关于如何在应用中使用这些特性，可以参阅  *[Identity Services Programming Guide](https://developer.apple.com/library/archive/documentation/Networking/Conceptual/IdentityServices_ProgGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004490)* and *Identity Services Reference Collection* 。
 
 
 
@@ -408,7 +436,7 @@ Time Machine protects user data from accidental loss by automatically backing up
 
 For information about using the Backup Core API, see *[Backup Core Reference](https://developer.apple.com/documentation/coreservices/backup_core)*.
 
-Time Machine 通过 自动将数据备份到不同的硬盘驱动器 来保护用户数据，以免意外丢失。此功能包括一组编程级函数，可用于从备份集中排除不重要的文件。例如，您可以使用这些函数排除应用程序的缓存文件 或 任何可以轻松重新创建的文件。排除这些类型的文件可以提高备份性能，并减少备份用户系统所需的空间。
+Time Machine 通过 自动将数据备份到不同的硬盘驱动器 来保护用户数据，以免意外丢失。此功能包括一组编程级函数，可用于从备份集中排除不重要的文件。例如，你可以使用这些函数排除应用程序的缓存文件 或 任何可以轻松重新创建的文件。排除这些类型的文件可以提高备份性能，并减少备份用户系统所需的空间。
 
 更多关于 Backup Core API 的信息，可参阅  *[Backup Core Reference](https://developer.apple.com/documentation/coreservices/backup_core)*。
 
@@ -418,6 +446,12 @@ Time Machine 通过 自动将数据备份到不同的硬盘驱动器 来保护�
 Keychain Services provides a secure way to store passwords, keys, certificates, and other sensitive information associated with a user. Users often have to manage multiple user IDs and passwords to access various login accounts, servers, secure websites, instant messaging services, and so on. A keychain is an encrypted container that holds passwords for multiple apps and secure services. Access to the keychain is provided through a single master password. Once the keychain is unlocked, Keychain Services–aware apps can access authorized information without bothering the user.
 
 If your app handles passwords or sensitive information, you should support Keychain Services in your app. For more information on this technology, see *Keychain Services Programming Guide*.
+
+
+
+Keychain Services 提供存储与用户相关的密码、密钥、证书和其他敏感信息的安全方法。用户常常必须管理多个用户id 和 密码 才能访问各种登录帐户、服务器、安全网站、即时消息服务等。keychain 是一个加密的容器，用于保存多个应用程序和安全服务的密码。通过单个主密码提供对 Keychain 的访问。一旦 Keychain 被解锁，支持密钥链服务的应用程序 就可以访问授权信息，而不会打扰用户。
+
+如果你的应用管理密码和敏感信息，你需要在应用中支持 Keychain Services。更多这方面的技术信息，可参阅  *Keychain Services Programming Guide* 。
 
 
 
@@ -451,10 +485,16 @@ For more information about using SQLite, go to [SQLite Home Page](http://www.sql
 
 
 
+SQLite 库让你在应用中嵌入一个 SQL 数据库引擎。与SQLite库 链接的程序可以访问 SQL数据库，而不需要运行单独的RDBMS（关系型数据库管理系统）进程。你可以创建本地数据库文件，并管理这些文件中的表和记录。该库是为通用目的而设计的，但仍进行了优化以提供对数据库记录的快速访问。
+
+SQLite 库位于  `/usr/lib/libsqlite3.dylib`,  `sqlite3.h` 头文件位于 `/usr/include`。   `sqlite3` 命令行接口 也可以用来 使用脚本  和 SQLite 数据库沟通。更多关于使用命令行接口的细节，可查看  `sqlite3` 。更多关于使用 SQLite 的信息，可查看  [SQLite Home Page](http://www.sqlite.org/) 。
+
+
+
 ***
 ### 19、Notification Center 通知中心 
 
-Apps can create and manage extensions in the Today view of the Notification Center. Extensions are used to give the user a summary of important pieces of information and can perform simple actions or launch the app. For more information, see *[Notification Center Framework Reference](https://developer.apple.com/documentation/notificationcenter)*
+Apps can create and manage extensions in the Today view of the Notification Center. Extensions are used to give the user a summary of important pieces of information and can perform simple actions or launch the app. For more information, see *[Notification Center Framework Reference](https://developer.apple.com/documentation/notificationcenter)* 。
 
 应用程序可以在通知中心的“今日”视图中创建和管理扩展。扩展用于向用户提供重要信息的摘要，并可以执行简单操作或启动应用程序。有关详细信息，请参见 *[Notification Center Framework Reference](https://developer.apple.com/documentation/notificationcenter)*。
 
@@ -471,10 +511,22 @@ For information on Core Foundation support for distributed notifications, see *[
 
 
 
+分布式通知 是任何进程向每台计算机的通知中心发送的消息，而通知中心 又将消息广播给 任何有兴趣接收消息的进程。通知中包含 发送者的ID 和一个包含附加信息的可选字典。分布式通知机制由  Core Foundation 的 `CFNotificationCenter` 对象和 Cocoa的 `NSDistributedNotificationCenter` 类实现。
+
+分布式通知 非常适合 简单的通知类型的事件。例如，通知可能会传递某个硬件的状态，例如网络接口。通知不应用于 向特定流程 传递关键信息，因为无法保证 向每个已注册的接收方 发送通知。
+
+分布式通知是真正的通知，因为接收者没有机会回复它们。也没有办法限制 接收分布式通知的进程集。任何注册给定通知的进程都可以接收它。因为分布式通知使用一个字符串 作为唯一的注册键，所以可能存在名称空间冲突。
+
+更多关于 Core Foundation 对 distributed notifications 的支持，可参见 *[CFNotificationCenter Reference](https://developer.apple.com/documentation/corefoundation/cfnotificationcenter)*. 更多关于 Cocoa 对 distributed notifications 的支持, 可参见 *[Notification Programming Topics](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Notifications/Introduction/introNotifications.html#//apple_ref/doc/uid/10000043i)* 。
+
+
+
 ***
 ## 三、Core Service Frameworks
 
 OS X includes several core services that make developing apps easier. These technologies range from utilities for managing your internal data structures to high-level frameworks for speech recognition and accessing calendar data. This section summarizes the technologies in the Core Services layer that are relevant to developers—that is, that have programmatic interfaces or have an impact on how you write software. 
+
+OS X包括几个核心服务，使开发应用程序更加容易。这些技术的范围从 管理内部数据结构的实用工具 到语音识别和 访问日历数据的高级框架。本节总结与开发人员相关的 Core Services 层中的技术 — 即具有编程接口或对软件编写方式有影响的技术。
 
 
 
@@ -483,11 +535,37 @@ OS X includes several core services that make developing apps easier. These tech
 
 The Core Services umbrella framework (`CoreServices.framework`) includes the following frameworks:
 
+Core Services 伞形框架 (`coreserve .framework`)包括以下框架:
+
 - **Launch Services** (`LaunchServices.framework`). Launch Services gives you a programmatic way to open apps, documents, URLs, or files with a given MIME type in a way similar to the Finder or the Dock. The Launch Services framework also provides interfaces for programmatically registering the document types your app supports. Launch Services is in the Core Services umbrella framework. For information on how to use Launch Services, see *[Launch Services Programming Guide](https://developer.apple.com/library/archive/documentation/Carbon/Conceptual/LaunchServicesConcepts/LSCIntro/LSCIntro.html#//apple_ref/doc/uid/TP30000999)*. 
+
+  Launch Services为你提供了一种程序化的方式 来打开 具有给定MIME类型的应用程序、文档、url或文件，其方式类似于 Finder 或 Dock。Launch Services 框架还提供了用于 以编程方式注册 应用程序支持的文档类型的接口。 Launch Services 包含在 Core Services 这个伞形框架中。有关如何使用 Launch Services 的信息，请参阅 *[Launch Services Programming Guide](https://developer.apple.com/library/archive/documentation/Carbon/Conceptual/LaunchServicesConcepts/LSCIntro/LSCIntro.html#//apple_ref/doc/uid/TP30000999)*。
+
+  
+
 - **Metadata** (`Metadata.framework`). The Metadata framework helps you to create Spotlight importer plug-ins. It also provides a query API that you can use in your app to search for files based on metadata values and then sort the results based on certain criteria. (The Foundation framework offers an Objective-C interface to the query API.) For more information on Spotlight importers, querying Spotlight, and the Metadata framework, see *[Spotlight Importer Programming Guide](https://developer.apple.com/library/archive/documentation/Carbon/Conceptual/MDImporters/MDImporters.html#//apple_ref/doc/uid/TP40001267)* and *[File Metadata Search Programming Guide](https://developer.apple.com/library/archive/documentation/Carbon/Conceptual/SpotlightQuery/Concepts/Introduction.html#//apple_ref/doc/uid/TP40001841)*.
+
+  元数据框架帮助你 创建 Spotlight导入器插件。它还提供了一个查询API，你可以在应用程序中使用它 根据元数据值 搜索文件，然后根据特定的条件对结果进行排序。( Foundation 框架为查询API 提供了一个Objective-C 接口。) 有关 Spotlight 导入器、查询 Spotlight 和 元数据框架的更多信息，请参见 *[Spotlight Importer Programming Guide](https://developer.apple.com/library/archive/documentation/Carbon/Conceptual/MDImporters/MDImporters.html#//apple_ref/doc/uid/TP40001267)* 和 *[File Metadata Search Programming Guide](https://developer.apple.com/library/archive/documentation/Carbon/Conceptual/SpotlightQuery/Concepts/Introduction.html#//apple_ref/doc/uid/TP40001841)*。
+
+  
+
 - **Search Kit** (`SearchKit.framework`). Search Kit lets you search, summarize, and retrieve documents written in most human languages. You can incorporate these capabilities into your app to support fast searching of content managed by your app. This framework is part of the Core Services umbrella framework. For detailed information about the available features, see *[Search Kit Reference](https://developer.apple.com/documentation/coreservices/search_kit)*. 
+
+  Search Kit允许你搜索、汇总和检索用大多数 人类语言编写的文档。你可以将这些功能 合并到应用程序中，以支持对应用程序管理的内容进行快速搜索。此框架是 Core Services 伞形框架的一部分。有关可用功能的详细信息，请参阅  *[Search Kit Reference](https://developer.apple.com/documentation/coreservices/search_kit)* 。
+
+  
+
 - **Web Services Core** (`WebServicesCore.framework`). Web Services Core provides support for the invocation of web services using CFNetwork. The available services cover a wide range of information and include things such as financial data and movie listings. Web Services Core is part of the Core Services umbrella framework. For a description of web services and information on how to use the Web Services Core framework, see *[Web Services Core Programming Guide](https://developer.apple.com/library/archive/documentation/Networking/Conceptual/UsingWebservices/Introduction/Introduction.html#//apple_ref/doc/uid/TP30000985)*. 
+
+  Web Services Core 提供了对使用 `CFNetwork` 调用Web服务的支持。可用的服务涵盖了广泛的信息，包括金融数据 和 电影列表。Web服务核心是核心服务伞形框架的一部分。有关web服务的描述和关于如何使用web服务核心框架的信息，请参见 *[Web Services Core Programming Guide](https://developer.apple.com/library/archive/documentation/Networking/Conceptual/UsingWebservices/Introduction/Introduction.html#//apple_ref/doc/uid/TP30000985)*. 
+
+  
+
 - **Dictionary Services** (`DictionaryServices.framework`). Dictionary Services lets you create custom dictionaries that users can access through the Dictionary app. Through these services, your app can also access dictionaries programmatically and can support user access to dictionary look-up through a contextual menu. For more information, see *[Dictionary Services Programming Guide](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/DictionaryServicesProgGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40006152)*.
+
+  Dictionary Services 允许你创建用户可以通过 Dictionary 应用程序 访问的自定义词典。通过这些服务，您的应用程序还可以以编程方式访问词典，并支持 用户通过上下文菜单 访问 Dictionary lookup。有关更多信息，请参见 *[Dictionary Services Programming Guide](https://developer.apple.com/library/archive/documentation/userexperience/conceptual/dictionaryservicesprogguide/tion/introduction .html#//apple_ref/doc/uid/TP40006152)*。
+
+  
 
 You should not link directly to any of these subframeworks; instead link to (and import) `CoreServices.framework`.
 
@@ -498,7 +576,7 @@ You should not link directly to any of these subframeworks; instead link to (and
 
 The Accounts framework (`Accounts.framework`) provides a single sign-on model for supported account types such as Twitter and Facebook. Single sign-on improves the user experience because it prevents your app from having to prompt a user separately for login information related to an account. It also simplifies the development model for you by managing the account authorization process for your app. 
 
-Accounts框架（Accounts.framework）为受支持的帐户类型（如Twitter和Facebook）提供了单点登录模型。单点登录提高了用户体验，因为它可以防止应用程序必须单独提示用户有关帐户的登录信息。它还通过管理应用程序的帐户授权过程，为您简化了开发模型。
+Accounts框架（Accounts.framework）为受支持的帐户类型（如Twitter和Facebook）提供了单点登录模型。单点登录提高了用户体验，因为它可以防止应用程序必须单独提示用户有关帐户的登录信息。它还通过管理应用程序的帐户授权过程，为你简化了开发模型。
 
 
 
@@ -507,13 +585,13 @@ Accounts框架（Accounts.framework）为受支持的帐户类型（如Twitter�
 
 The Address Book framework (`AddressBook.framework`) uses a centralized database to store the user’s contacts and other personal information. With the user’s permission, your app can use the Address Book to access Exchange and CardDAV contacts and allow users to display and edit contacts in a standardized user interface. 
 
-地址簿框架（Address Book.framework）使用一个集中的数据库来 存储用户的联系人和其他个人信息。如果用户允许，您的应用程序可以使用通讯簿访问 Exchange 和 CardDAV 联系人，并允许用户在标准用户界面中显示和编辑联系人。
+通讯录框架（Address Book.framework）使用一个集中的数据库来 存储用户的联系人和其他个人信息。如果用户允许，你的应用程序可以使用通讯簿访问 Exchange 和 CardDAV 联系人，并允许用户在标准用户界面中显示和编辑联系人。
 
 
 
 **Note:** Apps that target OS X 10.11 and later should use the Contacts framework instead of the Address Book framework.
 
-注意：针对OSX10.11 及更高版本的应用程序应该使用联系人框架（`Contacts`），而不是地址簿框架。
+注意：针对OSX10.11 及更高版本的应用程序应该使用联系人框架（`Contacts`），而不是通讯录框架。
 
 
 
@@ -531,8 +609,8 @@ The Automator framework (`Automator.framework`) enables your app to run workflow
 
 For information about incorporating workflows into your own apps, see *[Automator Framework Reference](https://developer.apple.com/documentation/automator)*. 
 
-Automator 框架（Automator.framework）使您的应用程序能够运行工作流。工作流将各种应用程序定义的操作 串在一起，以自动执行复杂的任务。与 AppleScript 不同，AppleScript 使用脚本语言实现相同的行为，工作流是可视化构建的，不需要编写代码或脚本来创建。
-有关将工作流合并到您自己的应用程序中的信息，请参见  *[Automator Framework Reference](https://developer.apple.com/documentation/automator)*. 
+Automator 框架（Automator.framework）使你的应用程序能够运行工作流。工作流将各种应用程序定义的操作 串在一起，以自动执行复杂的任务。与 AppleScript 不同，AppleScript 使用脚本语言实现相同的行为，工作流是可视化构建的，不需要编写代码或脚本来创建。
+有关将工作流合并到你自己的应用程序中的信息，请参见  *[Automator Framework Reference](https://developer.apple.com/documentation/automator)*. 
 
 
 
@@ -541,21 +619,61 @@ Automator 框架（Automator.framework）使您的应用程序能够运行工作
 
 The Core Data framework (`CoreData.framework`) manages the data model of an app in terms of the Model-View-Controller design pattern. Instead of defining data structures programmatically, you use the graphical tools in Xcode to build a schema representing your data model. At runtime, entities are created, managed, and made available through the Core Data framework with little or no coding on your part.
 
+Core Data 框架 (`CoreData.framework`) 根据 MVC 设计模式 管理应用程序的数据模型。您可以使用 Xcode 中的图形化工具 来构建表示数据模型的模式，而不是以编程方式定义数据结构。在运行时，创建、管理实体并通过Core Data 框架提供这些实体，您只需编写很少的代码，甚至不需要编写代码。
+
+
+
 Core Data provides the following features:
 
+Core Data 提供以下功能:
+
 - Storage of object data in mediums ranging from an XML file to a SQLite database
+
+  将 对象数据存储在 从 XML 文件 到 SQLite数据库 的各种介质中
+
 - Management of undo/redo operations beyond basic text editing
+
+  在基本的文本编辑之外，管理撤销/重做的操作
+
 - Support for validation of property values
+
+  支持验证属性值
+
 - Support for propagating changes and ensuring that the relationships between objects remain consistent
-- Grouping, filtering, and organizing data in memory and transferring those changes to the user interface through Cocoa bindings
+
+  支持 传播更改 并确保对象之间的关系保持一致
+
+- Grouping, filtering, and organizing data in memory and transferring those changes to the user interface through Cocoa bindings 
+
+  对内存中的数据 进行分组、过滤和组织，并通过 Cocoa 绑定将这些更改传递到用户界面
+
+  
 
 Core Data also includes incremental storage, a work concurrency model, and nested managed object contexts.
 
+Core Data 还包括增量存储、工作并发模型 和 嵌套的管理对象上下文。
+
+
+
 - Using the incremental store classes (`NSIncrementalStore` and `NSIncrementalStoreNode`), you can create Core Data stores that connect to any possible data source.
+
+  使用增量存储类 (`NSIncrementalStore` 和 `NSIncrementalStoreNode`)，您可以创建 连接到任何可能的数据源的 核心数据存储。
+
 - The work concurrency model API enables your app to share unsaved changes between threads across the object graph efficiently.
+
+  work concurrency model API 允许应用程序在对象图上的线程之间有效地共享未保存的更改。
+
+  
+
 - You can create nested managed object contexts, in which fetch and save operations are mediated by the parent context instead of a coordinator. This pattern has a number of usage scenarios, including performing background operations on a second thread or queue and managing discardable edits, such as in an inspector window or view.
 
+  您可以创建 嵌套的管理对象的上下文，其中获取 和保存操作 由 父上下文 而不是 协调器 进行中介。此模式有许多使用场景，包括在第二个线程 或 队列上 执行后台操作和 管理可丢弃的编辑，例如在 inspector 窗口 或 视图中。
+
+  
+
 For more information, see *[Core Data Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreData/index.html#//apple_ref/doc/uid/TP40001075)*. 
+
+更多信息可参阅  *[Core Data Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreData/index.html#//apple_ref/doc/uid/TP40001075)*。
 
 
 
@@ -569,49 +687,100 @@ You can also use Event Kit APIs to access reminder lists, create new reminders, 
 
 
 
+Event Kit (`EventKit.framework`) 提供用于访问 用户日历事件 和 提醒项的界面。您可以使用此框架中的 api 来获取 现有事件，并将新事件添加到用户的日历中。使用Event Kit 创建的事件 会自动传播到其他设备上的 CalDAV或Exchange日历，从而允许您的应用程序显示最新的日历信息，而不需要用户打开日历应用程序(日历事件可以包括带有规则的可配置警报，用于通知应该何时发送)。
+
+您还可以使用Event Kit api访问提醒列表、创建新的提醒、向提醒添加警报、设置提醒的到期日期和开始日期，并将提醒标记为完成。有关事件工具包api的更多信息，请参见  *[Event Kit Framework Reference](https://developer.apple.com/documentation/eventkit)* 。
+
+
+
 ***
 ### 7、Foundation and Core Foundation
 
 The Foundation and Core Foundation frameworks are essential to most types of software developed for OS X. The basic goals of both frameworks are the same: 
 
+Foundation 和 Core Foundation 框架 对于大多数为OSX 开发的软件来说都是必不可少的。这两个框架的基本目标是相同的:
+
 - Define basic object behavior and introduce consistent conventions for object mutability, object archiving, notifications, and similar behaviors.
+
+  定义基本的对象行为，并为对象可变性、对象归档、通知和类似的行为引入一致的约定。
+
+  
+
 - Define basic object types representing strings, numbers, dates, data, collections, and so on.
+
+  定义表示字符串、数字、日期、数据、集合等的基本对象类型。
+
 - Support internationalization with bundle technology and Unicode strings.
+
+  支持 bundle 技术和Unicode字符串的国际化。
+
 - Support object persistence.
+
+  支持对象持久化
+
 - Provide utility classes that access and abstract system entities and services at lower layers of the system, including ports, threads, processes, run loops, file systems, and pipes. 
 
+  提供 实用工具类 来访问和抽象系统低层的 系统实体和服务，包括端口、线程、进程、运行循环、文件系统和管道。
+
+  
+
 The difference between Foundation (`Foundation.framework`) and Core Foundation (`CoreFoundation.framework`) is the language environment in which they are used. Foundation is an Objective-C framework and is intended to be used with all other Objective-C frameworks that declare methods taking Foundation class types as parameters or with return values that are Foundation class types. Along with the AppKit and Core Data frameworks, Foundation is considered to be a core framework for app development (see [Cocoa Umbrella Framework](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CocoaApplicationLayer/CocoaApplicationLayer.html#//apple_ref/doc/uid/TP40001067-CH274-SW2)). Core Foundation, on the other hand, declares C-based programmatic interfaces; it is intended to be used with other C-based frameworks, such as Core Graphics. 
+
+Foundation ( `Foundation.framework`) 和 CoreFoundation ( `CoreFoundation.framework`)之间的区别在于使用它们的语言环境。Foundation是一个 Objective-C 框架，旨在与所有其他的 Objective-C 框架一起使用，这些框架声明了以 Foundation 类的类型为参数 或 返回值的方法。随着 AppKit 框架和  Core Data  框架, Foundation 被认为是基础核心应用开发框架(见  [Cocoa Umbrella Framework](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CocoaApplicationLayer/CocoaApplicationLayer.html#//apple_ref/doc/uid/TP40001067-CH274-SW2))。另一方面，Core Foundation声明了 基于 C 的编程接口；它用来与其他基于 C 的框架（如 Core Graphics）一起使用。
 
 
 
 **Note:** Although you can use Core Foundation objects and call Core Foundation functions in Swift or Objective-C projects, there is rarely a reason for doing so.
 
+备注：虽然你可以使用 Core Foundation  对象，和在 swift 或 OC 工程中调用 Core Foundation  功能，但很少有理由这样做。
+
 
 
 In its implementation, Foundation is based on Core Foundation. And, although it is C based, the design of the Core Foundation interfaces are more object-oriented than C. As a result, the opaque types (often referred to as *objects*) you create with Core Foundation interfaces operate seamlessly with the Foundation interfaces. Specifically, most equivalent Foundation classes and Core Foundation opaque types are toll-free bridged; this means that you can convert between object types through simple typecasting.
 
+在其实现中，Foundation 以 Core Foundation 为基础。而且，尽管它是基于C的，但核心基础接口的设计 比C更面向对象。因此，您用 Core Foundation 接口创建的不透明类型(通常称为“对象”) 与 Foundation 接口无缝地操作。具体来说，大多数等价的 Foundation 类 和 Core Foundation 不透明类型是免费桥接的；这意味着您可以通过简单的类型转换，在对象类型之间进行转换。
+
+
+
 Foundation and Core Foundation provide basic data types and data management features, including the following:
 
+Foundation 和 Core Foundation 提供了基本的数据类型和数据管理特性，包括以下内容:
+
 - Collections
+
 - Bundles and plug-ins
+
 - Strings
+
 - Raw data blocks
+
 - Dates and times
+
 - Preferences
+
 - Streams
+
 - URLs
+
 - XML data
-- Locale information
+
+- Locale information 本地信息
+
 - Run loops
+
 - Ports and sockets
+
 - Notification Center interaction
+
 - Interprocess communication between apps using XPC
+
+  使用 XPC 在应用间进行进程间通信
 
 
 
 For an overview of Foundation, read the introduction to *[Foundation Framework Reference](https://developer.apple.com/documentation/foundation)*. For an overview of Core Foundation, read *[Core Foundation Design Concepts](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFDesignConcepts/CFDesignConcepts.html#//apple_ref/doc/uid/10000122i)*.
 
-
+要了解 Foundation 的概述，请阅读介绍  *[Foundation Framework Reference](https://developer.apple.com/documentation/foundation)*. 要了解 Core Foundation 的概述, 可参阅 *[Core Foundation Design Concepts](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFDesignConcepts/CFDesignConcepts.html#//apple_ref/doc/uid/10000122i)*.
 
 ***
 ### 8、Quick Look 快速预览
@@ -635,7 +804,7 @@ The Social framework (`Social.framework`) helps you integrate supported social n
 
 To learn more about the Social API, see *[Social Framework Reference](https://developer.apple.com/documentation/social)*.
 
-社交框架（Social.framework）通过提供 用于创建HTTP请求的模板 和 用于代表用户发布请求的通用接口，帮助您将受支持的社交网络服务集成到应用程序中。您还可以使用社交框架检索信息，以便将用户的社交网络帐户集成到您的应用程序中。
+社交框架（Social.framework）通过提供 用于创建HTTP请求的模板 和 用于代表用户发布请求的通用接口，帮助你将受支持的社交网络服务集成到应用程序中。你还可以使用社交框架检索信息，以便将用户的社交网络帐户集成到你的应用程序中。
 要了解有关社交API的更多信息，请参见 *[Social Framework Reference](https://developer.apple.com/documentation/social)*。
 
 ***
@@ -649,7 +818,7 @@ Store Kit handles the financial aspects of a transaction, processing the payment
 
 For more information about Store Kit, read *[In-App Purchase Programming Guide](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Introduction.html#//apple_ref/doc/uid/TP40008267)* and *[Store Kit Framework Reference](https://developer.apple.com/documentation/storekit)*.
 
-Store Kit 处理交易的财务方面，通过用户的iTunes商店帐户处理付款请求。然后， Store Kit  将为你的应用程序提供有关购买的信息。你的应用程序处理交易的其他方面，包括展示购买界面和下载（或解锁）适当的内容。这种分工让您可以控制用户体验。您还可以决定最适合您的应用程序的传递机制。
+Store Kit 处理交易的财务方面，通过用户的iTunes商店帐户处理付款请求。然后， Store Kit  将为你的应用程序提供有关购买的信息。你的应用程序处理交易的其他方面，包括展示购买界面和下载（或解锁）适当的内容。这种分工让你可以控制用户体验。你还可以决定最适合你的应用程序的传递机制。
 
 
 
@@ -693,7 +862,9 @@ The Core Services layer of OS X also includes the following frameworks:
 
 
 
+***
 
+伊织 2019-12-24（二）小雨
 
 
 
