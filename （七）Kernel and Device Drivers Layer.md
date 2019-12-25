@@ -4,7 +4,8 @@
 
 ***
 
-https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SystemTechnology/SystemTechnology.html
+原文地址：
+[https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SystemTechnology/SystemTechnology.html](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SystemTechnology/SystemTechnology.html)
 
 ***
 
@@ -218,35 +219,72 @@ NKE 模块 具有 监视和修改网络流量 的内置功能。在数据链路�
 
 Integrated with Darwin is a customized version of the Berkeley Software Distribution (BSD) operating system. Darwin’s implementation of BSD includes much of the POSIX API, which higher-level apps can also use to implement basic app features. BSD serves as the basis for the file systems and networking facilities of OS X. In addition, it provides several programming interfaces and services, including:
 
+与 Darwin 集成的是 Berkeley Software Distribution（BSD）操作系统的定制版本。Darwin 的 BSD 实现包含了大部分 POSIX API，高级应用程序 也可以使用这些API 来实现基本的应用程序功能。BSD 是 OS X文件系统 和 网络设施的基础，它还提供了多种编程接口和服务，包括：
+
 - The process model (process IDs, signals, and so on)
+
+  进程模型（进程id、信号等）
+
 - Basic security policies such as file permissions and user and group IDs
+
+  基本安全策略，如文件权限、用户和组ID
+
 - Threading support (POSIX threads)
+
+  线程支持（POSIX 线程）
+
 - Networking support (BSD sockets)
+
+  网络支持（BSD套接字）
 
 
 
 **Note:** For more information about the FreeBSD operating system, go to [The FreeBSD Project website](http://www.freebsd.org/). For more information about the boot process of OS X, including how it launches the daemons used to implement key BSD services, see *[Daemons and Services Programming Guide](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html#//apple_ref/doc/uid/10000172i)*. 
 
+备注：有关 FreeBSD 操作系统的更多信息，请访问  [The FreeBSD Project website](http://www.freebsd.org/) 。有关OSX启动过程的更多信息，包括如何启动用于实现关键 BSD 服务的守护程序，请参阅 *[Daemons and Services Programming Guide](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html#//apple_ref/doc/uid/10000172i)* 。
+
 
 
 The following sections describe some of the key features of the BSD layer of OS X.
 
-
+以下部分描述了OSX 的 BSD 层的一些关键特性。
 
 ***
 ### 1、IPC and Notification Mechanisms 进程间通信和通知机制
 
 OS X supports the following technologies for interprocess communication (IPC) and for delivering notifications across the system:
 
+OSX支持以下用于进程间通信（IPC）和跨系统传递通知的技术：
+
 - **File System Events.** File System Events (`FSEvents`) is a mechanism for notifying your app when changes occur in the file system, such as at the creation, modification, or removal of files and directories. The `FSEvents` API gives you a way to monitor many directories at once and detect general changes to a file hierarchy. For example, you might use this technology in backup software to detect what files changed. The `FSEvents` API is not intended for detecting fine-grained changes to individual files.
 
   To learn how to use the `FSEvents` API, see *[File System Events Programming Guide](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/FSEvents_ProgGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40005289)*.
 
+  文件系统事件。文件系统事件（`FSEvents`）是一种机制，用于在文件系统中发生更改时（如在创建、修改或删除文件和目录时）通知应用程序。FSEvents API 提供了一种 同时监视多个目录,并检测文件层次结构的一般更改的方法。例如，您可以在备份软件中使用此技术来检测更改了哪些文件。FSEvents API 不用于检测对单个文件的细粒度更改。
+
+  要了解如何使用FSEvents API，可参阅  *[File System Events Programming Guide](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/FSEvents_ProgGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40005289)*。
+
+  
+
 - **Kernel queues and kernel events.** These mechanisms allow you to intercept kernel-level events to receive notifications about changes to sockets, processes, the file system, and other aspects of the system. Kernel queues and events are part of the FreeBSD layer of the operating system and are described in the `kqueue` and `kevent` man pages.
+
+  内核队列和内核事件。这些机制允许您 拦截内核级事件，以接收有关套接字、进程、文件系统 和 系统其他方面更改的通知。内核队列和事件是 操作系统 FreeBSD 层的一部分，在 kqueue 和 kevent 手册页中有描述。
+
+
 
 - **BSD notifications.** BSD notifications have a few advantages over the notification services that are offered by Core Foundation and Foundation. For example, your program can receive BSD notifications through mechanisms that include Mach ports, signals, and file descriptors. Moreover, this technology is lightweight, efficient, and capable of coalescing notifications.
 
   You can add support for BSD notifications to any type of program, including Cocoa apps. For more information, see *[Mac Notification Overview](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/MacOSXNotifcationOv/Introduction/Introduction.html#//apple_ref/doc/uid/TP40005947)* or the `notify` man page. For a discussion of Cocoa and Core Foundation interfaces for interprocess notification, see [Distributed Notifications](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-SW17). 
+
+  
+
+  BSD 通知。与 Core Foundation 和 Foundation 提供的通知服务相比，BSD通知具有一些优势。
+
+  例如，您的程序可以通过 包括 Mach端口、信号 和 文件描述符的机制 接收BSD通知。此外，此技术是轻量级的、高效的，并且能够合并通知。
+
+  您可以将 对BSD通知的支持，添加到任何类型的程序中，包括Cocoa应用程序。更多详细信息，请参阅 [Mac Notification Overview](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/MacOSXNotifcationOv/Introduction/Introduction.html#//apple_ref/doc/uid/TP40005947)*  或  `notify`  命令手册页。有关用于进程间通知的 Cocoa 和 Core Foundation 接口的讨论，请参阅 [Distributed Notifications](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-SW17). 。
+
+  
 
 - **Sockets and ports.** Sockets and ports are portable mechanisms for interprocess communication. A socket represents one end of a communications channel between two processes either locally or across the network. A port is a channel between processes or threads on the local computer. Core Foundation and Foundation provide higher-level abstractions for ports and sockets that make them easier to implement and offer additional features. For example, you can use a `CFSocket` with a `CFRunLoop` to multiplex data received from a socket with data received from other sources (or more information, see *[CFSocket Reference](https://developer.apple.com/documentation/corefoundation/cfsocket-rg7)* and *[CFRunLoop Reference](https://developer.apple.com/documentation/corefoundation/cfrunloop)*).
 
@@ -281,10 +319,18 @@ The OS X network protocol stack is based on BSD. The extensible architecture pro
 
 
 
+OSX 是互联世界中最重要的计算平台之一。它支持业界主流的媒体类型、协议和服务，以及来自苹果的差异化和创新服务。 
+
+OSX 网络协议栈基于BSD。网络核心扩展 所提供的 可扩展体系结构，总结在 [Network Kernel Extensions](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SystemTechnology/SystemTechnology.html#//apple_ref/doc/uid/TP40001067-CH207-BBCCJACD) 中，有助于创建模块，实现新的或现有的协议，这些协议可以添加到这个堆栈中。
+
+
+
 ***
 #### 2.1 Standard Network Protocols 标准网络协议
 
 OS X provides built-in support for a large number of network protocols that are standard in the computing industry. Table 6-1 summarizes these protocols.
+
+OSX 提供了对计算行业标准 的大量网络协议的内置支持。表6-1总结了这些协议。
 
 
 
@@ -308,7 +354,11 @@ OS X provides built-in support for a large number of network protocols that are 
 | TCP/IP and UDP/IP | OS X provides two transmission-layer protocols, TCP (Transmission Control Protocol) and UDP (User Datagram Protocol), to work with the network-layer Internet Protocol (IP). (OS X includes support for IPv6 and IPSec.) |
 | XML-RPC           | XML-RPC is a protocol for sending remote procedure calls using XML over the web.<br> |
 
+
+
 OS X also implements a number of file-sharing protocols; see [Table 6-4](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SystemTechnology/SystemTechnology.html#//apple_ref/doc/uid/TP40001067-CH207-BCIGEGHA) for a summary of these protocols.
+
+OSX还实现了许多文件共享协议；这些协议的摘要 见表6-4。
 
 
 
@@ -318,7 +368,7 @@ OS X also implements a number of file-sharing protocols; see [Table 6-4](https:/
 
 OS X supports the network technologies listed in Table 6-2.
 
-
+OSX支持表6-2中列出的网络技术。
 
 | Technology                    | Description                                                  |
 | :---------------------------- | :----------------------------------------------------------- |
@@ -433,6 +483,12 @@ OS X provides scripting bridges to the Objective-C classes of Cocoa. These bridg
 
 
 
+Darwin包含了 基于 UNIX 的 操作系统中 常见的所有脚本语言。除了与命令行 shell（如bash和csh）相关的脚本语言之外，Darwin还支持 Perl、Python、Ruby、Ruby on Rails 等。
+
+OS X 提供了到 Cocoa 的 Objective-C 类的 脚本桥。这些桥允许您在 Python 和 Ruby 脚本中使用Cocoa类。有关使用这些网桥的信息，请参见  *[Ruby and Python Programming Topics for Mac](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/RubyPythonCocoa/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004936)*。
+
+
+
 ***
 ### 6、Threading Support 线程支持
 
@@ -456,7 +512,7 @@ The X11 windowing system is provided as an optional installation component for t
 
 The following sections describe some additional features of OS X that affect the software development process.
 
-
+以下部分描述了 影响软件开发过程 的 OSX的一些附加功能。
 
 ***
 #### 8.1 Binary File Architecture 二进制文件架构
@@ -508,6 +564,12 @@ For information about the Mach-O file format, see *OS X ABI Mach-O File Format R
 
 
 
+OSX能够加载 使用多种不同对象文件格式 的对象文件。Mach-O 格式 是用于所有本机 OS X 应用程序开发的格式。
+有关Mach-O文件格式的信息，请参阅 OS X ABI Mach-O File Format Reference 。有关使用 Mach-O 文件的其他信息，请参见  *[Mach-O Programming Topics](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/MachOTopics/0-Introduction/introduction.html#//apple_ref/doc/uid/TP40001519)* 。
+
+
+
+***
 ##### 8.1.4 Debug File Formats
 
 Whenever you debug an executable file, the debugger uses symbol information generated by the compiler to associate user-readable names with the procedure and data address it finds in memory. Normally, this user-readable information is not needed by a running program and is stripped out (or never generated) by the compiler to save space in the resulting binary file. For debugging, however, this information is very important to be able to understand what the program is doing. 
@@ -540,6 +602,18 @@ For more information about the dynamic loader program, see the `dyld` man page. 
 #### 8.2 Language Support 语言支持
 
 The tools that come with OS X provide direct support for developing software using the Swift, C, C++, Objective-C, and Objective-C++ languages along with numerous scripting languages. Support for other languages may also be provided by third-party developers. For more information on the key features of Swift and Objective-C, see [Development Languages](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SoftwareProducts/SoftwareProducts.html#//apple_ref/doc/uid/TP40001067-CH206-SW4)。 
+
+
+
+与OS X一起使用的工具 提供了使用 SWIFT、C、C++、Objective-C 和 Objective-C++ 语言，以及多种脚本语言开发软件的直接支持。第三方开发人员 也可以提供对其他语言的支持。有关 Swift 和 Objective-C 的主要功能的更多信息，请参见 [Development Languages](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SoftwareProducts/SoftwareProducts.html#//apple_ref/doc/uid/TP40001067-CH206-SW4)。 
+
+
+
+
+
+
+
+
 
 
 
