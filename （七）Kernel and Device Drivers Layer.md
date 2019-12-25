@@ -101,41 +101,67 @@ The following sections describe some of the key features of the kernel and drive
 
 
 
+在吸引人的表现之下下，OSX 易于使用的 接口是一个稳固的、基于UNIX的 基础，它是为稳定、可靠性和性能而设计的。内核环境构建在Mach 3.0之上，为多个集成文件系统，提供高性能的 网络设施和支持。
 
+以下部分描述 Darwin 内核 和 驱动程序部分 的一些关键特性。
 
 ***
 ### 1、Mach
 
 Mach is at the heart of Darwin because it provides some of the most critical functions of the operating system. Much of what Mach provides is transparent to apps. It manages processor resources such as CPU usage and memory, handles scheduling, enforces memory protection, and implements a messaging-centered infrastructure for untyped interprocess communication, both local and remote. Mach provides the following important advantages to Mac computing:
 
-Mach 是 Darwin 的核心，因为它提供一些操作系统中最重要的功能。Mach 提供的大部分功能 对于用户是不可见的。它管理处理器资源，比如 CPU 的使用、内存，管理，内存保护，和实现消息中心架构。Mach 为 Mac 运算提供以下重要的功能：
+Mach 是 Darwin 的核心，因为它提供一些操作系统中最重要的功能。Mach 提供的大部分功能 对于用户是不可见的。它管理处理器资源，比如 CPU 的使用、内存，处理调度，实施内存保护，实现消息中心架构。Mach 为 Mac 运算提供以下重要的功能：
+
+
+
+它管理处理器资源，如CPU使用率和内存，处理调度，实施内存保护；并实现一个以消息为中心的基础设施，用于本地和远程的非类型化进程间通信。Mach 为 Mac 计算提供了以下重要优势：
+
+
 
 - **Protected memory.** The stability of an operating system should not depend on all executing apps being good citizens. Even a well-behaved process can accidentally write data into the address space of the system or another process, which can result in the loss or corruption of data or even precipitate system crashes. Mach ensures that an app cannot write in another app’s memory or in the operating system’s memory. By walling off apps from each other and from system processes, Mach makes it virtually impossible for a single poorly behaved app to damage the rest of the system. Best of all, if an app crashes as the result of its own misbehavior, the crash affects only that app and not the rest of the system.
 
-  内存保护：操作系统的稳定性，不应该基于所有运行的应用都是安全的。即使是一个表现良好的进程，也可能会往其他进程的地址空间写入数据，这将会导致数据的丢失和污染，甚至系统突然崩溃。
+  内存保护：操作系统的稳定性，不应该基于所有运行的应用都是安全的。即使是一个表现良好的进程，也可能会往其他进程的地址空间写入数据，这将会导致数据的丢失和污染，甚至系统突然崩溃。Mach 确保一个应用程序 不能往 另一个应用程序的内存 或 操作系统的内存 中写入数据。通过格力 应用程序，Mach 使得 一个性能不佳的应用程序 几乎不可能破坏系统的其余部分。最重要的是，如果某个应用程序由于自身的错误行为而崩溃，那么崩溃只会影响该应用程序，而不会影响系统的其他部分。
 
 - **Preemptive multitasking.** With Mach, processes share the CPU efficiently. Mach watches over the computer’s processor, prioritizing tasks, making sure activity levels are at the maximum, and ensuring that every task gets the resources it needs. It uses certain criteria to decide how important a task is and therefore how much time to allocate to it before giving another task its turn. Your process is not dependent on another process yielding its processing time.
 
+  抢占式多任务处理：使用Mach，进程可以高效地共享CPU。Mach 监视计算机的处理器，提高任务的优先级，确保活动水平最大，并确保每个任务获得所需的资源。它使用一定的标准来决定一个任务有多重要，然后在轮到这个任务之前 决定 要分配多少时间给它。您的进程不依赖于 另一个产生其处理时间的进程。
+
 - **Advanced virtual memory.** In OS X, virtual memory is “on” all the time. The Mach virtual memory system gives each process its own private virtual address space. For 64-bit apps, the theoretical maximum is approximately 18 exabytes, or 18 billion billion bytes. Mach maintains address maps that control the translation of a task’s virtual addresses into physical memory. Typically only a portion of the data or code contained in a task’s virtual address space resides in physical memory at any given time. As pages are needed, they are loaded into physical memory from storage. Mach augments these semantics with the abstraction of memory objects. Named memory objects enable one task (at a sufficiently low level) to map a range of memory, unmap it, and send it to another task. This capability is essential for implementing separate execution environments on the same system. 
+
+  高级虚拟内存。在OSX中，虚拟内存一直处于“开启”状态。Mach 虚拟内存系统 为每个进程提供了自己的 私有虚拟地址空间。对于64位应用程序，理论最大值大约为 18 艾字节，或 180 亿亿字节。Mach维护地址映射，以控制任务的虚拟地址 到物理内存的转换。通常，在任何给定时间，任务虚拟地址空间中包含的数据或代码 只有一部分驻留在物理内存中。当需要页时，它们会从存储区 加载到 物理内存中。Mach 通过对内存对象的抽象 来增强这些语义。命名内存对象允许一个任务（在足够低的级别）映射一个内存范围，取消映射，并将其发送到另一个任务。此功能对于在同一系统上实现不同的执行环境 至关重要。
 
 - **Real-time support.** This feature guarantees low-latency access to processor resources for time-sensitive media apps.
 
+  实时支持。此功能保证 对 时间敏感的媒体应用程序 的处理器资源的 低延迟访问。
+
 Mach also enables cooperative multitasking, preemptive threading, and cooperative threading.
 
-
+Mach还支持协同多任务、抢占式线程和协同线程。
 
 ***
 ### 2、64-Bit Kernel 64位内核
 
 As of v10.8, OS X requires a Mac that uses the 64-bit kernel. A 64-bit kernel provides several benefits:
 
+从v10.8开始，OS X 需要使用 64位内核的 Mac。64位内核有几个优点：
+
 - The kernel can support large memory configurations more efficiently.
+
+  内核可以更有效地支持大内存配置。
+
 - The maximum size of the buffer cache is increased, potentially improving I/O performance.
+
+  缓冲区高速缓存 的最大值增加，潜在地提高I/O性能。
+
 - Performance is improved when working with specialized networking hardware that emulates memory mapping across a wire or with multiple video cards containing over 2 GB of video RAM.
+
+  当使用专门的网络硬件（通过一根电线模拟内存映射）或使用多个视频卡（包含超过 2 GB的视频RAM）时，性能会得到提高。
+
+  
 
 Because a 64-bit kernel does not support 32-bit drivers and kernel extensions (KEXTs), those items must be built for 64-bit. Fortunately, for most drivers and KEXTs, building for a 64-bit kernel is usually not as difficult as you might think. For the most part, transitioning a driver or KEXT to be 64-bit capable is just like transitioning any other piece of code. For details about how to make the transition, including what things to check for in your code, see *[64-Bit Transition Guide](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/64bitPorting/intro/intro.html#//apple_ref/doc/uid/TP40001064)*.
 
-
+由于 64位内核 不支持 32位驱动程序 和 内核扩展（KEXTs），所以这些项必须为 64位构建。幸运的是，对于大多数驱动程序和KEXTs 来说，构建64位内核 通常并不像您想象的那么困难。在大多数情况下，将 驱动程序 或 KEXT 转换为64位的能力，就像转换任何其他代码一样。有关如何进行转换的详细信息，包括要在代码中检查的内容，请参见 *[64-Bit Transition Guide](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/64bitPorting/intro/intro.html#//apple_ref/doc/uid/TP40001064)*。
 
 ***
 ### 3、Device-Driver Support 设备驱动支持
@@ -154,6 +180,20 @@ For information on creating device drivers, see *[IOKit Device Driver Design Gui
 
 
 
+达尔文 为开发设备驱动程序 提供了一个面向对象的框架，称为I/O Kit 框架。这个框架促进了 OS X 驱动程序的创建，并提供了它们所需的大部分基础设施。写在一个有限的  C++ 子集的 和 设计一系列设备系列支持，I/O Kit 是模块化和可扩展的。
+
+使用I/O Kit 创建的设备驱动程序具有以下几个重要功能：
+
+- 真正的即插即用
+- 动态设备管理（“热插拔”）
+- 电源管理（适用于台式机和便携机）
+
+如果您的设备符合标准规范，如鼠标、键盘、音频输入设备、现代MIDI设备等，则在插入时应该可以正常工作。如果您的设备不符合已发布的标准，则可以使用 I/O Kit 资源 创建自定义驱动程序 以满足您的需要。设备诸如 AGP卡、PCI 和 PCIe 卡、扫描仪 和 打印机等，通常需要自定义驱动程序，或其他支持软件才能与OS X协同工作。
+
+有关创建设备驱动程序的信息，请参阅 *[IOKit Device Driver Design Guidelines](https://developer.apple.com/library/archive/documentation/DeviceDrivers/Conceptual/WritingDeviceDriver/Introduction/Intro.html#//apple_ref/doc/uid/TP30000694)*。
+
+
+
 ***
 ### 4、Network Kernel Extensions 网络内核驱动
 
@@ -162,6 +202,14 @@ Darwin allows kernel developers to add networking capabilities to the operating 
 NKE modules have built-in capabilities for monitoring and modifying network traffic. At the data-link and network layers, they can also receive notifications of asynchronous events from device drivers, such as when there is a change in the status of a network interface.
 
 For information on how to write an NKE, see *[Network Kernel Extensions Programming Guide](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/NKEConceptual/intro/intro.html#//apple_ref/doc/uid/TP40001858)*. 
+
+
+
+Darwin 允许内核开发人员 通过创建 网络内核扩展（NKEs: network kernel extensions）向操作系统 添加网络功能。NKE 工具允许您创建网络模块，甚至整个协议栈，这些模块可以动态加载到内核中，并从内核中卸载。NKE 还可以自动配置协议栈。
+
+NKE 模块 具有 监视和修改网络流量 的内置功能。在数据链路和网络层，它们还可以接收来自设备驱动程序的 异步事件通知，例如 网络接口的状态发生变化。
+
+有关如何编写 NKE 的信息，请参见 *[Network Kernel Extensions Programming Guide](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/NKEConceptual/intro/intro.html#//apple_ref/doc/uid/TP40001858)*。
 
 
 
