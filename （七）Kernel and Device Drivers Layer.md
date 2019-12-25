@@ -12,6 +12,8 @@ https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_
 
 The lowest layer of OS X includes the kernel, drivers, and BSD portions of the system and is based primarily on open source technologies. OS X extends this low-level environment with several core infrastructure technologies that make it easier for you to develop software. 
 
+OSX 最底层包含内核，驱动 和 系统的BSD 部分，主要基于开源技术。OSX 使用几个核心基础架构技术 拓展了这个低等级的环境，让你更开便来开发软件。
+
 
 
 ![../art/osx_architecture-kernels_drivers_2x.png](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/art/osx_architecture-kernels_drivers_2x.png)
@@ -25,7 +27,7 @@ The lowest layer of OS X includes the kernel, drivers, and BSD portions of the s
 
 The following sections describe features in the Kernel and Device Drivers layer of OS X.
 
-
+下面技术描述了 OSX 的  Kernel and Device Drivers  层的特性。
 
 ***
 ### 1、XPC Interprocess Communication and Services XPC进程间通信和服务
@@ -42,6 +44,16 @@ For more on XPC Services, read [Creating XPC Services](https://developer.apple.c
 
 
 
+XPC 是 OSX 上的进程间通信技术，通过启用特权分离 补充了 App 沙盒技术。特权分离是一种开发策略，在这种策略中，您根据每个应用程序所需的 系统资源访问权限 将应用程序分成若干块。您创建的组件被称为 XPC 服务。
+
+你可以在 Xcode 工程中创建一个 XPC 服务作为独立的 target。每一个服务获取他们自己的沙盒，具体来说，它有自己的容器和自己的权利集。此外，应用程序中包含的 XPC 服务只能由 你的应用访问。这些优点使 XPC 成为在OS X 应用程序中实现特权分离的最佳技术。
+
+XPC 与 Grand Central Dispatch (GCD) 集成。当您创建连接时，您将其与一个 调度队列相关联，在该队列上执行消息流。
+
+当应用程序启动时，系统自动将找到的每个 XP C服务 注册到应用程序可见的 命名空间中。应用程序与它的一个XPC 服务建立连接，并向它发送 包含该服务 随后处理的事件的消息。
+
+更多关于 XPC 的服务，可参阅  *[Daemons and Services Programming Guide](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html#//apple_ref/doc/uid/10000172i)*  中的  [Creating XPC Services](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingXPCServices.html#//apple_ref/doc/uid/10000172i-SW6) 。关于更多 App Sandbox 的学习，可参阅 *[App Sandbox Design Guide](https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AboutAppSandbox/AboutAppSandbox.html#//apple_ref/doc/uid/TP40011183)* 。
+
 ***
 
 ### 2、Caching API
@@ -53,6 +65,12 @@ In the wider system context, your app can also help by creating caches that the 
 For more information about the functions of the `libcache` library, see *libcache Reference*. For more information about the `NSCache` class, see *[NSCache Class Reference](https://developer.apple.com/documentation/foundation/nscache)*.
 
 
+
+`libcache` API是一个底层 可清除的缓存API。主动缓存 是 最大化应用程序性能 的重要技术。但是，当缓存需求超过可用内存时，系统必须释放必要的内存来处理新需求。通常，这意味着将缓存的数据分页到相对较慢的存储设备，有时甚至会导致系统范围的性能下降。您的应用程序应该通过主动管理其数据缓存，来避免潜在的分页开销，并在不再需要缓存的数据时释放缓存。
+
+在更广泛的系统环境中，您的应用程序还可以通过创建缓存来提供帮助，操作系统可以根据需要优先清除缓存。 `libcache` 库和基础框架的 `NSCache` 类帮助您创建这些可清除的缓存。
+
+更多关于 `libcache`  库的功能信息，可查阅  *libcache Reference* 。更多关于  `NSCache` 类的信息，可参阅  *[NSCache Class Reference](https://developer.apple.com/documentation/foundation/nscache)* 。
 
 ***
 
@@ -66,12 +84,22 @@ For more information, see the `IOVideoDevice.h` header file in the Kernel framew
 
 
 
+I/O Video  提供了一个内核级别的 C++ 变成接口来编写视频捕捉设备驱动。I/O Video  替代了 QuickTime 的 序列捕获器 API 来获取 OSX 上的视频。
+
+I/O Video 包括内核端的 `IOVideoDevice` 类 (以及各种相关的子类) , 你的驱动应该继承自它；和一个用户空间设备接口，用于与驱动程序通信。
+
+更多信息可参阅 Kernel 框架中的 `IOVideoDevice.h` 头文件。
+
+
+
 ***
-## 三、The Kernel
+## 三、The Kernel 内核
 
 Beneath the appealing, easy-to-use interface of OS X is a rock-solid, UNIX-based foundation that is engineered for stability, reliability, and performance. The kernel environment is built on top of Mach 3.0 and provides high-performance networking facilities and support for multiple, integrated file systems.
 
 The following sections describe some of the key features of the kernel and driver portions of Darwin.
+
+
 
 
 
