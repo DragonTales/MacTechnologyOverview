@@ -282,15 +282,25 @@ OSX支持以下用于进程间通信（IPC）和跨系统传递通知的技术�
 
   例如，您的程序可以通过 包括 Mach端口、信号 和 文件描述符的机制 接收BSD通知。此外，此技术是轻量级的、高效的，并且能够合并通知。
 
-  您可以将 对BSD通知的支持，添加到任何类型的程序中，包括Cocoa应用程序。更多详细信息，请参阅 [Mac Notification Overview](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/MacOSXNotifcationOv/Introduction/Introduction.html#//apple_ref/doc/uid/TP40005947)*  或  `notify`  命令手册页。有关用于进程间通知的 Cocoa 和 Core Foundation 接口的讨论，请参阅 [Distributed Notifications](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-SW17). 。
+  您可以将 对BSD通知的支持，添加到任何类型的程序中，包括Cocoa应用程序。更多详细信息，请参阅 [Mac Notification Overview](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/MacOSXNotifcationOv/Introduction/Introduction.html#//apple_ref/doc/uid/TP40005947)*  或  `notify`  命令手册页。有关用于进程间通知的 Cocoa 和 Core Foundation 接口的讨论，请参阅 [Distributed Notifications](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-SW17) 。
 
   
 
 - **Sockets and ports.** Sockets and ports are portable mechanisms for interprocess communication. A socket represents one end of a communications channel between two processes either locally or across the network. A port is a channel between processes or threads on the local computer. Core Foundation and Foundation provide higher-level abstractions for ports and sockets that make them easier to implement and offer additional features. For example, you can use a `CFSocket` with a `CFRunLoop` to multiplex data received from a socket with data received from other sources (or more information, see *[CFSocket Reference](https://developer.apple.com/documentation/corefoundation/cfsocket-rg7)* and *[CFRunLoop Reference](https://developer.apple.com/documentation/corefoundation/cfrunloop)*).
 
+  套接字和港口。套接字和端口是进程间通信的可移植机制。套接字表示 本地或跨网络的两个进程之间的 通信通道的一端。端口是本地计算机上进程或线程之间的通道。Core Foundation 和 Foundation 为端口和套接字提供了更高层次的抽象，使它们更容易实现，并提供了其他特性。例如，您可以使用带有 CFRunLoop 的 CFSocket 来复用从socket接收到的数据，和从其他来源接收到的数据(或更多信息，请参阅  *[CFSocket Reference](https://developer.apple.com/documentation/corefoundation/cfsocket-rg7)*  和  [CFRunLoop Reference](https://developer.apple.com/documentation/corefoundation/cfrunloop)。
+
+
+
 - **Streams**. A stream is mechanism for transferring data between processes when you are communicating using an established transport mechanism such as Bonjour or HTTP. Higher-level interfaces of Core Foundation and Foundation (which work with `CFNetwork`) provide a stream-based way to read and write network data and can be used with run loops to operate efficiently in a network environment.
 
+  流。流是在使用 已建立的传输机制(如Bonjour或HTTP)进行通信时，在进程之间传输数据的机制。Core Foundation 和Foundation (与CFNetwork一起工作) 的高级接口，提供了一种基于流的方式来读写网络数据，可以与run循环一起使用，从而在网络环境中高效地运行。
+
 - **Pipes**. A pipe is a communications channel typically created between a parent and a child process when the child process is forked. Data written to a pipe is buffered and read in first-in, first-out (FIFO) order. You can create named pipes (`pipe` function) for communication between related processes or named pipes for communication between any two processes. A named pipe must be created with a unique name known to both the sending and the receiving process.
+
+  管道。管道是一种通信通道，通常在子进程分叉时，在父进程和子进程之间创建。写入管道的数据被缓冲，并按先进先出(FIFO) 顺序读取。可以为相关进程之间的通信，创建命名管道(管道函数)；也可以为任意两个进程之间的通信，创建命名管道。必须使用 发送和接收进程 都知道的惟一名称 创建命名管道。
+
+  
 
 - **Shared memory**. Shared memory is a region of memory that has been allocated by a process specifically for the purpose of being readable and possibly writable among several processes. You can create regions of shared memory using several BSD approaches, including the `shm_open` and `shm_unlink`routines, and the `mmap` routine. Access to shared memory is controlled through POSIX semaphores, which implement a kind of locking mechanism.
 
@@ -298,20 +308,36 @@ OSX支持以下用于进程间通信（IPC）和跨系统传递通知的技术�
 
   For information about `shm_open`, `shm_unlink`, and `mmap`, see the `shm_open`, `shm_unlink`, and `mmap` man pages. 
 
+  
+
+  共享内存。共享内存是一个进程 专门为几个进程之间的可读和可写而分配的内存区域。您可以使用几种 BSD方法 创建共享内存区域，包括 `shm_open` 和 `shm_unlinkroutine`，以及 `mmap` 例程。对共享内存的访问是通过 POSIX 信号量 来控制的，它实现了一种锁定机制。
+
+  尽管共享内存 允许任何具有 适当权限的进程 直接读写共享内存区域，但它非常脆弱——导致数据损坏和安全漏洞的危险——应该谨慎使用。它最好只用作原始数据 (如像素或音频) 的存储库，通过更传统的进程间通信 访问控制数据结构。
+
+  有关 `shm_open`、`shm_unlink` 和 `mmap` 的信息，请参阅 `shm_open`、`shm_unlink` 和 `mmap` 手册页。
+
+  
+
 - **Apple event**. An Apple event is a high-level semantic event that an app can send to itself, to other apps on the same computer, or to apps on a remote computer. Apps can use Apple events to request services and information from other apps. To supply services, you define objects in your app that can be accessed using Apple events and then provide Apple event handlers to respond to requests for those objects.
 
   Although Apple events are not a BSD technology, they are a low-level alternative for interprocess communication. To learn how to use Apple events, see *[Apple Events Programming Guide](https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleEvents/intro_aepg/intro_aepg.html#//apple_ref/doc/uid/TP40001449)*. 
+  
+  
+  
+  苹果的事件。Apple事件是一种高级语义事件，应用程序可以发送给自己，或同一台计算机上的其他应用程序，或远程计算机上的应用程序。应用程序可以使用 Apple events 向其他应用程序请求服务和信息。要提供服务，需要在应用程序中定义 可以使用 Apple事件访问的对象，然后提供Apple事件处理程序来响应这些对象的请求。
+  
+  尽管Apple事件不是一种 BSD技术，但它们是进程间通信的低级替代。要了解如何使用Apple事件，请参见  *[Apple Events Programming Guide](https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleEvents/intro_aepg/intro_aepg.html#//apple_ref/doc/uid/TP40001449)* 。
 
 
 
 **Note:** Mach ports are another technology for transferring messages between processes. However, messaging with Mach port objects is the least desirable way to communicate between processes. Mach port messaging relies on knowledge of the kernel interfaces, which might change in a future version of OS X. The only time you might consider using Mach ports directly is if you are writing software that runs in the kernel. 
 
-
+注意: Mach 端口 是在进程之间传输消息的另一种技术。但是，使用Mach端口对象进行消息传递，是进程之间最不理想的通信方式。Mach端口消息传递 依赖于内核接口的知识，在OSX 的未来版本中，这些知识可能会改变。
 
 
 
 ***
-### 2、Network Support
+### 2、Network Support 网络支持
 
 OS X is one of the premier platforms for computing in an interconnected world. It supports the dominant media types, protocols, and services in the industry, as well as differentiated and innovative services from Apple. 
 
@@ -399,6 +425,14 @@ For more information on using this feature, see [Using Network Diagnostics](http
 
 
 
+网络诊断是帮助用户解决网络问题的一种方法。尽管现代网络通常是可靠的，但仍有网络服务可能会失败的时候。有时，失败的原因超出了桌面用户的修复能力，但有时问题在于用户计算机的配置方式。网络诊断功能提供了一个诊断应用程序，帮助用户定位和纠正问题。
+
+如果您的应用程序遇到网络错误，您可以使用 `CFNetwork` 的诊断接口 来启动诊断应用程序，并尝试交互式地解决问题。您还可以选择向用户报告诊断问题，而不尝试解决它们。
+
+有关使用此功能的更多信息，请参见 [Using Network Diagnostics](https://developer.apple.com/library/archive/documentation/Networking/Conceptual/CFNetwork/UsingNetworkDiagnostics/UsingNetworkDiagnostics.html#//apple_ref/doc/uid/TP30001132-CH7)。
+
+
+
 ***
 ### 3、File-System Support 文件系统支持
 
@@ -416,6 +450,18 @@ Because of its multiple app environments and the various kinds of devices it sup
 
 
 
+Darwin 的文件系统组件 基于对BSD的扩展和增强的虚拟文件系统(VFS)设计。文件系统组件包括以下功能:
+
+- 可移动媒体的权限。此功能基于系统中 每个连接的可移动设备(包括USB和火线设备)注册的全局惟一ID。
+- 访问控制列表，它支持对文件系统对象的细粒度访问。
+- 基于 URL 的卷挂载，允许用户 (通过Finder命令)挂载 AppleShare 和 web 服务器等。
+- 统一缓冲区缓存，将缓冲区缓存 与 虚拟内存缓存 合并。
+- 长文件名（255个字符 或 755字节，基于UTF-8）。
+- 支持 隐藏文件扩展名的基础上的文件。
+- 所有文件系统类型的日志记录，以帮助崩溃后的数据恢复。
+
+由于OS X 支持多种应用程序环境和各种设备，它可以处理 许多标准卷格式的文件数据。表6-3列出了支持的格式。
+
 | Volume format          | Description                                                  |
 | :--------------------- | :----------------------------------------------------------- |
 | Mac OS Extended Format | Also called HFS (hierarchical file system) Plus, or HFS+. This is the default root and booting volume format in OS X. This extended version of HFS optimizes the storage capacity of large hard disks by decreasing the minimum size of a single file.<br> |
@@ -431,15 +477,19 @@ Because of its multiple app environments and the various kinds of devices it sup
 
 HFS+ volumes support aliases, symbolic links, and hard links, whereas UFS volumes support symbolic links and hard links but not aliases. Although an alias and a symbolic link are both lightweight references to a file or directory elsewhere in the file system, they are semantically different in significant ways. For more information, see [Aliases and Symbolic Links](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPFileSystem/Articles/Aliases.html#//apple_ref/doc/uid/20002288) in *[File System Overview](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPFileSystem/BPFileSystem.html#//apple_ref/doc/uid/10000185i)*.
 
+HFS+卷支持别名、符号链接和硬链接，而 UFS 卷支持 符号链接 和 硬链接，但不支持别名。虽然 别名 和 符号链接 都是对文件系统中其他文件或目录的轻量级引用，但它们在语义上有很大的不同。有关更多信息，请参见 *[File System Overview](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPFileSystem/BPFileSystem.html#//apple_ref/doc/uid/10000185i)* 中的  [Aliases and Symbolic Links](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPFileSystem/Articles/Aliases.html#//apple_ref/doc/uid/20002288) 。
+
 
 
 **Note:** OS X does not support stacking in its file-system design.
+
+注意:OS X在其文件系统设计中不支持堆叠。
 
 
 
 Because OS X is intended to be deployed in heterogeneous networks, it also supports several network file-sharing protocols. Table 6-4 lists these protocols.
 
-
+因为OS X打算部署在异构网络中，所以它还支持多个网络文件共享协议。表6-4列出了这些协议。
 
 | File protocol | Description                                                  |
 | :------------ | :----------------------------------------------------------- |
@@ -457,9 +507,15 @@ The roots of OS X in the UNIX operating system provide a robust and secure compu
 
 The CommonCrypto library, which is part of `libSystem`, provides raw cryptographic algorithms. It is intended to replace similar OpenSSL interfaces.
 
-
-
 **Note:** CDSA (Common Data Security Architecture) and OpenSSL are deprecated and their further use is discouraged. Consider using Security Transforms technology to replace CDSA and CommonCrypto to replace OpenSSL. Security Transforms, which are part of the Security framework, are described in [Security Services](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-TPXREF168).
+
+
+
+UNIX操作系统中的 OS X 根源提供了一个健壮和安全的计算环境，其历史记录可以追溯到几十年前。OS X 安全服务 建立在开源标准BSD（Berkeley Software Distribution）的基础上。BSD 是 UNIX 操作系统 的一种形式，为文件和网络访问等基本服务，提供基本的安全性。
+
+CommonCrypto 库是 `libSystem` 的一部分，它提供原始的加密算法。它旨在替代类似的 OpenSSL 接口。
+
+备注：不推荐使用CDSA（公共数据安全体系结构）和OpenSSL，不鼓励进一步使用它们。考虑使用安全转换技术（Security Transforms ）来替代CDSA，和 `CommonCrypto` 来替代 OpenSSL。Security Transforms  是 Security 框架的一部分，在  [Security Services](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-TPXREF168) 中有描述。
 
 
 
@@ -471,6 +527,17 @@ OS X also includes the following security features:
 - Support for putting unknown files into quarantine. This is especially useful for developers of web browsers or other network-based apps that receive files from unknown sources. The system prevents access to quarantined files unless the user explicitly approves that access. 
 
 For an introduction to OS X security features, see *[Security Overview](https://developer.apple.com/library/archive/documentation/Security/Conceptual/Security_Overview/Introduction/Introduction.html#//apple_ref/doc/uid/TP30000976)*. 
+
+
+
+OS X还包括以下安全特性:
+
+- 采用强制访问控制（ Mandatory Access Control ），它提供了控制 内核层级进程 的细粒度安全体系结构。该功能支持应用程序的“沙盒”功能，这个功能允许你将 应用程序的访问 限制在指定的那些功能上。
+- 支持代码签名和安装程序包签名。该功能允许系统使用数字签名 验证应用程序，并在应用程序被篡改时 警告用户。
+- 编译器支持 增强源代码 以抵御潜在的安全威胁。这种支持包括 不允许执行位于堆栈上的代码，或 包含数据的内存 的其他部分。
+- 支持将未知文件隔离。这对于 web 浏览器，或其他基于网络的应用程序的开发人员来说尤其有用，因为他们可以接收来自未知来源的文件。除非用户明确批准访问，否则系统将阻止访问被隔离的文件。
+
+有关OS X安全特性的介绍，请参阅  [Security Overview](https://developer.apple.com/library/archive/documentation/Security/Conceptual/Security_Overview/Introduction/Introduction.html#//apple_ref/doc/uid/TP30000976)。
 
 
 
