@@ -1,6 +1,6 @@
 # 【Mac Technology Overview】（八）Migrating from Cocoa Touch （从 Cocoa Touch 移植应用）
 
-[toc]
+[TOC]
 
 
 
@@ -8,9 +8,9 @@
 
 If you've developed an iOS app, many of the frameworks available in OS X should already seem familiar to you. The basic technology stack in iOS and OSX are identical in many respects. But, despite the similarities, not all of the frameworks in OS X are exactly the same as their iOS counterparts. This chapter describes the differences you may encounter as you create Mac apps and explains how you can adjust your code to handle some of the more significant differences.
 
+如果您已经开发了一个iOS应用程序，那么OS X中的许多框架对您来说应该已经很熟悉了。iOS 和 OSX 的基本技术堆栈 在许多方面是相同的。但是，尽管有相似之处，并不是OS X中的所有框架都与iOS中的完全相同。本章描述了您在创建Mac应用程序时可能遇到的差异，并解释了如何调整代码来处理一些更重要的差异。
 
-
-## 一、General Migration Notes
+## 一、General Migration Notes 
 
 In OS X, apps typically have a screen that is larger, and resources that are greater, than in iOS. As a developer, you have more frameworks at your disposal in OS X development and (generally) more programmatic possibilities. This greater range of possibilities may be a pleasant prospect, but it also requires different ways of thinking about user expectations and app design.
 
@@ -20,7 +20,15 @@ If your Cocoa Touch app is already factored according to the Model-View-Controll
 
 
 
-### 1、Migrating the Data Model
+在OS X中，应用程序的屏幕通常比iOS更大，资源也更丰富。作为开发人员，您可以在OS X开发中使用更多的框架，并且(通常)有更多的编程可能性。这种更大范围的可能性可能是一个令人愉快的前景，但它也需要考虑用户期望和应用程序设计的不同方式。
+
+在迁移应用程序时，请注意每个平台上不同的习惯用法和隐喻。例如，您不会将OS X 应用程序建立在 视图控制器的堆栈上，也不会包含需要陀螺仪的功能。重要的是，你的应用程序的每个版本的外观和行为，好像它是为它所运行的平台设计的。
+
+如果您的Cocoa Touch应用程序已经根据 模型-视图-控制器设计模式进行了分解，那么将应用程序的关键部分迁移到OS X应该是相对容易的。
+
+
+
+### 1、Migrating the Data Model 迁移数据模型
 
 Cocoa Touch apps whose data model is based on classes in the Foundation and Core Foundation frameworks can be brought over to OS X with little or no modification. OS X includes both frameworks, and they are virtually identical to their iOS counterparts. Most of the differences that do exist are relatively minor or are related to features that are not present in iOS. For example, iOS apps do not support AppleScript. For a detailed list of differences, see [Foundation Framework Differences](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/MigratingFromCocoaTouch/MigratingFromCocoaTouch.html#//apple_ref/doc/uid/TP40001067-CH8-SW2). 
 
