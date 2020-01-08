@@ -567,10 +567,22 @@ In general, you should try to use Grand Central Dispatch or operation objects to
 
 
 
+OS X 完全支持在单个进程中，创建多个抢占式执行线程。线程让程序 并行执行多个任务。例如，您可以创建一个线程来在后台执行一些冗长的计算，而另一个线程 则响应用户事件，并更新应用程序中的窗口。使用多个线程 通常可以显著提高应用程序的性能，特别是在具有多个CPU 核心的计算机上。不过，多线程编程也不是没有危险。它需要仔细协调，以确保您的应用程序的状态不被损坏。
+
+OS X 中的所有用户级线程 都基于POSIX线程（也称为pthreads）。pthread 是一个围绕 Mach 线程的轻量级包装器，Mach 线程 是线程的内核实现。您可以直接使用 pthreads API，也可以使用Cocoa 提供的任何线程包。尽管每个线程化包提供了灵活性和易用性的不同组合，但所有包提供的性能大致相同。
+
+通常，您应该尝试使用 Grand Central Dispatch 或 operation 对象来并发执行工作。但是，仍然可能需要显式地创建线程。有关线程支持 和 如何安全地使用线程 的指南的更多信息，请参见
+
+[Threading Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Multithreading/Introduction/Introduction.html#//apple_ref/doc/uid/10000057i)。
+
 ***
 ### 7、X11
 
 The X11 windowing system is provided as an optional installation component for the system. This windowing system is used by many UNIX applications to draw windows, controls, and other elements of graphical user interfaces. The OS X implementation of X11 uses the Quartz drawing environment to give X11 windows a native OS X feel. This integration also makes it possible to display X11 windows alongside windows from native apps written in Cocoa.
+
+
+
+X11 窗口系统 是 作为系统的 可选安装组件 提供的。许多UNIX 应用程序 都使用这个窗口系统 来绘制窗口、控件 和 图形用户界面 的其他元素。X11 的 OS X实现使用 Quartz绘图环境 来给X11 窗口一个本地 OS X 的感觉。这种集成还使 X11 窗口 与 用Cocoa编写的本地应用程序的窗口 一起显示成为可能。
 
 
 
