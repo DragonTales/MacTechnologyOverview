@@ -362,23 +362,23 @@ OSX 提供了对计算行业标准 的大量网络协议的内置支持。表6-1
 
 | Protocol          | Description                                                  |
 | :---------------- | :----------------------------------------------------------- |
-| 802.1x            | 802.1x is a protocol for implementing port-based network access over wired or wireless LANs. It supports a wide range of authentication methods, including TLS, TTLS, LEAP, MDS, and PEAP (MSCHAPv2, MD5, GTC).<br> |
-| DHCP and BOOTP    | The Dynamic Host Configuration Protocol and the Bootstrap Protocol automate the assignment of IP addresses in a particular network.<br> |
-| DNS               | Domain Name Services is the standard Internet service for mapping host names to IP addresses.<br> |
-| FTP and SFTP      | The File Transfer Protocol and Secure File Transfer Protocol are two standard means of moving files between computers on TCP/IP networks.<br> |
-| HTTP and HTTPS    | The Hypertext Transport Protocol is the standard protocol for transferring webpages between a web server and browser. OS X provides support for both the insecure and secure versions of the protocol.<br> |
-| LDAP              | The Lightweight Directory Access Protocol lets users locate groups, individuals, and resources such as files and devices in a network, whether on the Internet or on a corporate intranet.<br> |
-| NBP               | The Name Binding Protocol is used to bind processes across a network.<br> |
-| NTP               | The Network Time Protocol is used for synchronizing client clocks.<br> |
-| PAP               | The Printer Access Protocol is used for spooling print jobs and printing to network printers.<br> |
-| PPP               | For dial-up (modem) access, OS X includes PPP (Point-to-Point Protocol). PPP support includes TCP/IP as well as the PAP and CHAP authentication protocols.<br> |
-| PPPoE             | The Point-to-Point Protocol over Ethernet protocol provides an Ethernet-based dial-up connection for broadband users.<br> |
-| S/MIME            | The Secure/Multipurpose Internet Mail Extensions protocol supports encryption of email and the attachment of digital signatures to validate email addresses.<br> |
-| SLP               | Service Location Protocol is designed for the automatic discovery of resources (servers, fax machines, and so on) on an IP network.<br> |
-| SOAP              | The Simple Object Access Protocol is a lightweight protocol for exchanging encapsulated messages over the web or other networks.<br> |
-| SSH               | The Secure Shell protocol is a safe way to perform a remote login to another computer. Session information is encrypted to prevent unauthorized access of data.<br> |
-| TCP/IP and UDP/IP | OS X provides two transmission-layer protocols, TCP (Transmission Control Protocol) and UDP (User Datagram Protocol), to work with the network-layer Internet Protocol (IP). (OS X includes support for IPv6 and IPSec.) |
-| XML-RPC           | XML-RPC is a protocol for sending remote procedure calls using XML over the web.<br> |
+| 802.1x            | 802.1x is a protocol for implementing port-based network access over wired or wireless LANs. It supports a wide range of authentication methods, including TLS, TTLS, LEAP, MDS, and PEAP (MSCHAPv2, MD5, GTC).<br> 802.1x是在有线 或 无线局域网上 实现基于端口的网络访问的协议。它支持多种身份验证方法，包括TLS、TTLS、LEAP、MDS和PEAP (MSCHAPv2、MD5、GTC)。 |
+| DHCP and BOOTP    | The Dynamic Host Configuration Protocol and the Bootstrap Protocol automate the assignment of IP addresses in a particular network.<br> 动态主机配置协议（DHCP）和引导协议 自动分配特定网络中的IP地址。 |
+| DNS               | Domain Name Services is the standard Internet service for mapping host names to IP addresses.<br> 域名服务（DNS: Domain Name Services）是将主机名映射到IP地址的标准Internet服务。 |
+| FTP and SFTP      | The File Transfer Protocol and Secure File Transfer Protocol are two standard means of moving files between computers on TCP/IP networks.<br> 文件传输协议(FTP: File Transfer Protocol)和安全文件传输协议(SFTP: Secure File Transfer Protocol) 是TCP/IP网络上计算机间传输文件的两种标准方式。 |
+| HTTP and HTTPS    | The Hypertext Transport Protocol is the standard protocol for transferring webpages between a web server and browser. OS X provides support for both the insecure and secure versions of the protocol.<br> 超文本传输协议(HTTP: Hypertext Transport Protocol) 是在web服务器和浏览器之间传输网页 的标准协议。OS X 同时支持协议的不加密版本和加密版本。 |
+| LDAP              | The Lightweight Directory Access Protocol lets users locate groups, individuals, and resources such as files and devices in a network, whether on the Internet or on a corporate intranet.<br> 轻量级目录访问协议（LDAP: Lightweight Directory Access Protocol） 允许用户在 Internet 或 企业内部网中定位组、个人和资源，如文件和设备。 |
+| NBP               | The Name Binding Protocol is used to bind processes across a network.<br>名称绑定协议（NBP: Name Binding Protocol）用于跨网络绑定进程。 |
+| NTP               | The Network Time Protocol is used for synchronizing client clocks.<br> 网络时间协议（NTP: Network Time Protocol）用于同步客户端时钟。 |
+| PAP               | The Printer Access Protocol is used for spooling print jobs and printing to network printers.<br> 打印机访问协议（PAP: Printer Access Protocol）用于假脱机打印作业和打印到网络打印机。 |
+| PPP               | For dial-up (modem) access, OS X includes PPP (Point-to-Point Protocol). PPP support includes TCP/IP as well as the PAP and CHAP authentication protocols.<br> 对于拨号(调制解调器)访问，OS X包括PPP(点对点协议)。PPP支持包括TCP/IP以及PAP和CHAP身份验证协议。 |
+| PPPoE             | The Point-to-Point Protocol over Ethernet protocol provides an Ethernet-based dial-up connection for broadband users.<br> 以太网上的点对点协议，为宽带用户提供了基于以太网的拨号连接。 |
+| S/MIME            | The Secure/Multipurpose Internet Mail Extensions protocol supports encryption of email and the attachment of digital signatures to validate email addresses.<br> 安全/多用途互联网邮件扩展协议，支持对电子邮件 进行加密 和附加数字签名 以验证电子邮件地址。 |
+| SLP               | Service Location Protocol is designed for the automatic discovery of resources (servers, fax machines, and so on) on an IP network.<br> 服务位置协议是为IP网络上的资源(服务器、传真机等)的自动发现而设计的。 |
+| SOAP              | The Simple Object Access Protocol is a lightweight protocol for exchanging encapsulated messages over the web or other networks.<br> 简单对象访问协议 是用于在 web或其他网络上 交换封装消息的轻量级协议。 |
+| SSH               | The Secure Shell protocol is a safe way to perform a remote login to another computer. Session information is encrypted to prevent unauthorized access of data.<br> Secure Shell 协议是执行到另一台计算机的 远程登录 的安全方法。会话信息被加密 以防止未经授权的数据访问。 |
+| TCP/IP and UDP/IP | OS X provides two transmission-layer protocols, TCP (Transmission Control Protocol) and UDP (User Datagram Protocol), to work with the network-layer Internet Protocol (IP). (OS X includes support for IPv6 and IPSec.) <BR> OS X提供了两种传输层协议，TCP(传输控制协议)和UDP(用户数据报协议)来处理网络层Internet协议(IP)。(OS X包括对IPv6和IPSec的支持。) |
+| XML-RPC           | XML-RPC is a protocol for sending remote procedure calls using XML over the web.<br> XML-RPC 是一种协议，用于通过 web 使用 XML 发送远程过程调用。 |
 
 
 
@@ -398,17 +398,17 @@ OSX支持表6-2中列出的网络技术。
 
 | Technology                    | Description                                                  |
 | :---------------------------- | :----------------------------------------------------------- |
-| Ethernet 10/100Base-T         | For the Ethernet ports built into every new Macintosh.       |
-| Ethernet 1000Base-T           | Also known as Gigabit Ethernet. For data transmission over fiber-optic cable and standardized copper wiring.<br> |
-| Jumbo Frame                   | This Ethernet format uses 9 KB frames for interserver links rather than the standard 1.5 KB frame. Jumbo Frame decreases network overhead and increases the flow of server-to-server and server-to-app data.<br> |
-| Serial                        | Supports modem and ISDN capabilities.<br> 1                  |
-| Wireless                      | Supports the 802.11b, 802.11g, 80211n, and 802.11ac wireless network technologies using AirPort Extreme and AirPort Express.<br> |
-| IP Routing/RIP                | IP routing provides routing services for small networks. It uses Routing Information Protocol (RIP) in its implementation.<br> |
-| Multihoming                   | Enables a computer host to be physically connected to multiple data links that can be on the same or different networks.<br> |
-| IP aliasing                   | Allows a network administrator to assign multiple IP addresses to a single network interface.<br> |
+| Ethernet 10/100Base-T         | For the Ethernet ports built into every new Macintosh.<br/> 每个新的 Mac 中内置的以太网端口。 |
+| Ethernet 1000Base-T           | Also known as Gigabit Ethernet. For data transmission over fiber-optic cable and standardized copper wiring.<br> 也被熟知为 千兆以太网卡。用于光纤电缆和标准铜线上的数据传输。 |
+| Jumbo Frame                   | This Ethernet format uses 9 KB frames for interserver links rather than the standard 1.5 KB frame. Jumbo Frame decreases network overhead and increases the flow of server-to-server and server-to-app data.<br> 这种以太网格式 对服务器间链接使用9 KB帧，而不是标准的 1.5 KB帧。巨型帧减少了网络开销，增加了服务器 到服务器 和服务器到应用程序 的数据流。 |
+| Serial                        | Supports modem and ISDN capabilities.<br> 支持调制解调器和ISDN功能。 |
+| Wireless                      | Supports the 802.11b, 802.11g, 80211n, and 802.11ac wireless network technologies using AirPort Extreme and AirPort Express.<br> 支持使用 AirPort Extreme 和 AirPort Express 的 802.11b、802.11g、80211n 和 802.11ac 无线网络技术。 |
+| IP Routing/RIP                | IP routing provides routing services for small networks. It uses Routing Information Protocol (RIP) in its implementation.<br> IP 路由为小型网络提供路由服务。它采用路由信息协议(RIP)来实现。 |
+| Multihoming                   | Enables a computer host to be physically connected to multiple data links that can be on the same or different networks.<br> 使计算机主机能够 物理连接到 同一或不同网络上的多个数据链路。 |
+| IP aliasing                   | Allows a network administrator to assign multiple IP addresses to a single network interface.<br> 允许网络管理员 将多个IP地址分配给单个网络接口 。 |
 | Zero-configuration networking | See [Bonjour](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-SW2).<br> 请查看 [Bonjour](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-SW2) |
-| NetBoot                       | Allows computers to share a single System folder, which is installed on a centralized server that the system administrator controls. Users store their data in home directories on the server and have access to a common Applications folder, both of which are also commonly installed on the server.<br> |
-| Personal web sharing          | Allows users to share information with other users on an intranet, no matter what type of computer or browser they are using. The Apache web server is integrated as the system’s HTTP service.<br> |
+| NetBoot                       | Allows computers to share a single System folder, which is installed on a centralized server that the system administrator controls. Users store their data in home directories on the server and have access to a common Applications folder, both of which are also commonly installed on the server.<br> 允许计算机共享单个系统文件夹，该文件夹安装在 系统管理员控制的集中服务器上。用户将数据存储在服务器上的主目录中，并可以访问 一个通用应用程序文件夹，这两个文件夹通常也安装在服务器上。 |
+| Personal web sharing          | Allows users to share information with other users on an intranet, no matter what type of computer or browser they are using. The Apache web server is integrated as the system’s HTTP service.<br> 允许用户与内部网中的其他用户共享信息，无论他们使用的是哪种类型的计算机或浏览器。Apache web服务器集成为系统的HTTP服务。 |
 
 
 
@@ -464,14 +464,14 @@ Darwin 的文件系统组件 基于对BSD的扩展和增强的虚拟文件系统
 
 | Volume format          | Description                                                  |
 | :--------------------- | :----------------------------------------------------------- |
-| Mac OS Extended Format | Also called HFS (hierarchical file system) Plus, or HFS+. This is the default root and booting volume format in OS X. This extended version of HFS optimizes the storage capacity of large hard disks by decreasing the minimum size of a single file.<br> |
-| Mac OS Standard Format | Also called hierarchical file system, or HFS. This is the legacy volume format in Mac OS systems prior to Mac OS 8.1. HFS (like HFS+) stores resources and data in separate forks of a file and makes use of various file attributes, including type and creator codes.<br> |
-| UDF                    | Universal Disk Format, used for hard drives and optical disks, including most types of CDs and DVDs. OS X supports reading UDF revisions 1.02 through 2.60 on both block devices and most optical media, and it supports writing to block devices and to DVD-RW and DVD+RW media using UDF 2.00 through 2.50 (except for mirrored metadata partitions in 2.50). You can find the UDF specification at [http://www.osta.org](http://www.osta.org/).<br> |
-| ISO 9660               | The standard format for CD-ROM volumes.                      |
-| NTFS                   | The NT File System, used by Windows computers. OS X can read NTFS-formatted volumes but cannot write to them.<br> |
-| UFS                    | UNIX File System, a flat (that is, single-fork) disk volume format, based on the BSD FFS (Fast File System), that is similar to the standard volume format of most UNIX operating systems; it supports POSIX file-system semantics, which are important for many server applications. Although UFS is supported in OS X, its use is discouraged.<br> |
-| MS-DOS (FAT)           | The FAT file system is used by many Windows computers, digital cameras, video cameras, SD and SDHC memory cards, and other digital devices. OS X can read and write FAT-formatted volumes.<br> |
-| ExFAT                  | The ExFAT file system is an extension of the FAT file system, and is also used on Windows computers, some digital cameras and video cameras, SDXC memory cards, and other digital devices. OS X can read and write ExFAT-formatted volumes.<br> |
+| Mac OS Extended Format | Also called HFS (hierarchical file system) Plus, or HFS+. This is the default root and booting volume format in OS X. This extended version of HFS optimizes the storage capacity of large hard disks by decreasing the minimum size of a single file.<br> 同样成为 HFS (hierarchical file system)加，或HFS+。这是 OSX 的默认根目录和启动卷。这个扩展版本的HFS 通过减少单个文件的最小大小 来优化大型硬盘的存储容量。（译者注：2017年后是 APFS ） |
+| Mac OS Standard Format | Also called hierarchical file system, or HFS. This is the legacy volume format in Mac OS systems prior to Mac OS 8.1. HFS (like HFS+) stores resources and data in separate forks of a file and makes use of various file attributes, including type and creator codes.<br> 也称为 HFS（hierarchical file system）。这是 在Mac OS 8.1之前的遗留卷格式。HFS (像 HFS+) 将资源和数据存储在文件的独立分支中，并使用各种文件属性，包括类型和创建者代码。 |
+| UDF                    | Universal Disk Format, used for hard drives and optical disks, including most types of CDs and DVDs. OS X supports reading UDF revisions 1.02 through 2.60 on both block devices and most optical media, and it supports writing to block devices and to DVD-RW and DVD+RW media using UDF 2.00 through 2.50 (except for mirrored metadata partitions in 2.50). You can find the UDF specification at [http://www.osta.org](http://www.osta.org/).<br> 通用磁盘格式，用于硬盘和光盘，包括大多数类型的 cd 和 dvd。OS X支持在块设备和大多数光媒体上读取UDF修订 1.02 到 2.60，并且支持使用 UDF 2.00 到 2.50(2.50中镜像元数据分区除外)写入块设备和DVD-RW和DVD+RW媒体。您可以在这里找到UDF规范 [http://www.osta.org](http://www.osta.org/)。 |
+| ISO 9660               | The standard format for CD-ROM volumes. <br> 标准的 CS-ROM 卷宗格式。 |
+| NTFS                   | The NT File System, used by Windows computers. OS X can read NTFS-formatted volumes but cannot write to them.<br> Windows 电脑使用的 NT 文件系统。OS X 可以读取 NTFS 格式的卷宗，但无法写入他们。 |
+| UFS                    | UNIX File System, a flat (that is, single-fork) disk volume format, based on the BSD FFS (Fast File System), that is similar to the standard volume format of most UNIX operating systems; it supports POSIX file-system semantics, which are important for many server applications. Although UFS is supported in OS X, its use is discouraged.<br> UNIX文件系统，一种基于BSD FFS(快速文件系统)的平面（即单分支）磁盘卷格式，类似于大多数 UNIX 操作系统的标准卷格式；它支持 POSIX 文件系统语义，这对许多服务器应用程序非常重要。虽然OS X中支持UFS，但不鼓励使用UFS。 |
+| MS-DOS (FAT)           | The FAT file system is used by many Windows computers, digital cameras, video cameras, SD and SDHC memory cards, and other digital devices. OS X can read and write FAT-formatted volumes.<br> FAT 在很多 windows 电脑、数码相机、录像机、SD 和 SDHC memory 卡，还有其他电子设备中使用。OS X 可以读写 FAT 格式的卷宗。 |
+| ExFAT                  | The ExFAT file system is an extension of the FAT file system, and is also used on Windows computers, some digital cameras and video cameras, SDXC memory cards, and other digital devices. OS X can read and write ExFAT-formatted volumes.<br> ExFAT 是 FAT 卷宗的拓展，同样用于 Windows 电脑，一些电子相机和录像机，SDXC 存储卡，还有其他电子设备。OSX 可以读写 ExFAT 格式的卷宗。 |
 
 
 
@@ -493,9 +493,9 @@ Because OS X is intended to be deployed in heterogeneous networks, it also suppo
 
 | File protocol | Description                                                  |
 | :------------ | :----------------------------------------------------------- |
-| AFP           | Apple Filing Protocol, the principal file-sharing protocol in Mac OS 9 systems (available only over TCP/IP transport).<br> |
-| NFS           | Network File System, the dominant file-sharing protocol in the UNIX world.<br> |
-| WebDAV        | Web-based Distributed Authoring and Versioning, an HTTP extension that allows collaborative file management on the web.<br> |
+| AFP           | Apple Filing Protocol, the principal file-sharing protocol in Mac OS 9 systems (available only over TCP/IP transport).<br> 苹果文件协议，macOS 系统上主要的文件共享协议（只能使用 TCP/IP 传输） |
+| NFS           | Network File System, the dominant file-sharing protocol in the UNIX world.<br> 网络文件系统，UNIX 中主要的文件共享协议。 |
+| WebDAV        | Web-based Distributed Authoring and Versioning, an HTTP extension that allows collaborative file management on the web.<br> WebDAV，一个 允许 web 协作文件管理的 HTTP 拓展。 |
 | SMB/CIFS      | SMB/CIFS, a file-sharing protocol used on Windows and UNIX systems.<br> Windows 和 UNIX 系统上使用的 文件共享协议。 |
 
 
@@ -600,8 +600,12 @@ The underlying architecture of OS X executables was built from the beginning wit
 
 
 
+OS X 可执行程序的底层架构 从一开始就考虑到了灵活性。随着 Mac电脑从使用 PowerPC 转向使用 Intel cpu，从只支持 32 位应用程序 转向支持 64 位应用程序，这种灵活性变得非常重要。 以下部分提供了 OS X 可执行文件中 可以支持的架构类型的概述，以及有关运行时 和 调试环境的其他信息。
+
+
+
 ***
-##### 8.1.1 Hardware Architectures
+##### 8.1.1 Hardware Architectures 硬件架构
 
 When OS X was first introduced, it was built to support a 32-bit PowerPC hardware architecture. With Apple’s transition to Intel-based Mac computers, OS X added initial support for 32-bit Intel hardware architectures. In addition to 32-bit support, OS X v10.4 added some basic support for 64-bit architectures as well and this support was expanded in OS X v10.5. This means that apps and libraries can now support two different architectures:
 
@@ -616,8 +620,23 @@ Xcode provides integral support for creating apps that support multiple hardware
 
 
 
+当OS X首次引入时，它是为支持 32 位 PowerPC 硬件体系结构 而构建的。随着苹果转向基于Intel的Mac电脑，OS X增加了对32位Intel硬件架构的初始支持。除了32位支持之外，OS X v10.4还增加了对64位体系结构的一些基本支持，并且在OS X v10.5中扩展了这种支持。这意味着应用程序和库现在可以支持两种不同的架构:
+
+- 32-bit Intel (`i386`) （2019年， macOS 10.15 已不支持32 位程序）
+- 64-bit Intel (`x86_64`)
+
+尽管应用程序可以在 一个二进制文件中 支持所有这些架构，但并不需要这样做。能够创建在所有支持的体系结构上 本机运行的 `通用二进制文件`，为OS X 提供了它未来所需的灵活性。
+
+支持多种体系结构 需要对每种体系结构的代码进行仔细的规划和测试。如果在您的代码中没有考虑到，那么不同架构之间的细微差异 可能会导致问题。例如，一些内置数据类型 在32位和64位体系结构中具有不同的大小。解释这些差异并不困难，但是需要考虑避免编码错误。
+
+Xcode为创建支持多种硬件架构的应用程序提供了整体支持。有关工具支持 和 创建通用二进制文件的信息。有关OS X中 64位支持的信息，包括如何进行转换的文档链接，请参阅  [64-Bit Support](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SystemTechnology/SystemTechnology.html#//apple_ref/doc/uid/TP40001067-CH207-SW2) 。
+
+
+
+
+
 ***
-##### 8.1.2 64-Bit Support
+##### 8.1.2 64-Bit Support 64 位支持
 
 OS X was initially designed to support binary files on computers using a 32-bit architecture. In OS X v10.4, however, support was introduced for compiling, linking, and debugging binaries on a 64-bit architecture. This initial support was limited to code written using C or C++ only. In addition, 64-bit binaries could link against the Accelerate framework and `libSystem.dylib` only. 
 
@@ -634,8 +653,23 @@ OS X uses the LP64 model that is in use by other 64-bit UNIX systems, which mean
 
 
 
+OS X最初被设计成使用32位架构来支持计算机上的二进制文件。但是，在OS X v10.4中引入了对编译、链接和调试64位体系结构二进制文件的支持。这种最初的支持仅限于使用 C 或 c++ 编写的代码。此外，64位二进制文件 只能链接到 Accelerate 框架和 libSystem.dylib。
+
+从OS X v10.5开始，大多数系统库和框架都是 64位的，这意味着它们可以在 32位 和 64位 应用程序中使用。为 64位 构建的框架意味着您可以创建处理超大数据集的应用程序，在当前基于intel 的 cpu 上处理 128 TB 的数据。在基于 intel 的 Macintosh 电脑上，一些64位应用程序甚至可能比 32 位 的同类程序运行得更快，因为64位模式下有额外的处理器资源可用。
+
+有一些技术还没有移植到64位。仍然支持使用这些 APIs 开发32位应用程序，但是如果您想创建64位 应用程序，就必须使用替代技术。这些宣传短片包括:
+
+- 整个 QuickTime C API (在OS X v10.9中被弃用；在64位应用程序中，使用 AV Foundation 替代)
+- HIToolbox, Window Manager 和大部分用户交互 APIs（一般而言，使用 Cocoa UI 类和其他替代类）；获取特定APIs 和转换路径的列表，可查看  *[64-Bit Guide for Carbon Developers](https://developer.apple.com/library/archive/documentation/Carbon/Conceptual/Carbon64BitGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004381)*。
+
+OS X 使用 其他64位UNIX系统使用的 LP64模型，这意味着从其他操作系统移植时 更少的麻烦。有关LP64模型和如何编写64位应用程序的信息可参见： *[64-Bit Transition Guide](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/64bitPorting/intro/intro.html#//apple_ref/doc/uid/TP40001064)*。关于 Cocoa 特性迁移信息，可参见  *[64-Bit Transition Guide for Cocoa](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Cocoa64BitGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004247)*。
+
+
+
+
+
 ***
-##### 8.1.3 Object File Formats
+##### 8.1.3 Object File Formats 对象文件格式
 
 OS X is capable of loading object files that use several different object-file formats. Mach-O format is the format used for all native OS X app development.
 
@@ -649,7 +683,7 @@ OSX能够加载 使用多种不同对象文件格式 的对象文件。Mach-O �
 
 
 ***
-##### 8.1.4 Debug File Formats
+##### 8.1.4 Debug File Formats 调试文件格式
 
 Whenever you debug an executable file, the debugger uses symbol information generated by the compiler to associate user-readable names with the procedure and data address it finds in memory. Normally, this user-readable information is not needed by a running program and is stripped out (or never generated) by the compiler to save space in the resulting binary file. For debugging, however, this information is very important to be able to understand what the program is doing. 
 
@@ -659,21 +693,43 @@ For information about the DWARF standard, go to [The DWARF Debugging Standard](h
 
 
 
+当你调试一个可执行文件时，调试器使用 编译器生成的 符号信息，来将用户可读的名字 与 处理过程和内存中的数据地址联系起来。通常，运行中的程序不需要这些用户可读的信息，编译器会删除(或从不生成)这些信息，以节省生成的二进制文件中的空间。但是，对于调试来说，这些信息对于理解程序在做什么是非常重要的。
+
+OS X支持两种不同的调试文件格式的编译可执行文件: Stabs 和 DWARF。Stabs 格式在不同的 OSX 版本中都展示出来，直到 Xcode 2.4 一直都是默认的调试格式。Xcode 2.4 和之后的代码编译，默认使用 DWARF 调试格式。当使用 Stabs 格式调试符号，就像其他符号一样，存储在可执行文件的符号表中，可参见 OS X ABI Mach-O File Format Reference。使用 DWARF 格式，调试的符号既存储在可执行文件的特定区域，或分离的调试信息文件中。  
+
+更多关于 DWARF 标准的信息，可查阅  [The DWARF Debugging Standard](http://www.dwarfstd.org/)；
+
+关于 Stabs 调试信息格式的信息，可参阅  *STABS Debug Format*。
+
+更多关于 Mach-O 文件和他们存储的符号信息，可参阅  *[Mach-O Programming Topics](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/MachOTopics/0-Introduction/introduction.html#//apple_ref/doc/uid/TP40001519)*。
+
+
+
 ***
 ##### 8.1.5 Runtime Environments 运行时环境
 
 Since its first release, OS X has supported several different environments for running apps. The most prominent of these environments is the dynamic link editor (`dyld`) environment, which is also the only environment supported for active development. Most of the other environments provided legacy support during the transition from Mac OS 9 to OS X and are no longer supported for active development. The following sections describe the runtime environments you may encounter in various versions of OS X. 
 
+自从第一次发布以来，OS X 已经为运行应用程序支持了几种不同的环境。这些环境中最突出的是 动态链接器 (dynamic link editor, dyld)环境，它也是惟一支持动态开发的环境。大多数其他环境在 从Mac OS 9 过渡到OS X期间提供了遗留支持，并且不再支持动态开发。以下部分描述了您可能在不同版本的OS X 中遇到的运行时环境。
+
 
 
 ***
-##### 8.1.6 dyld Runtime Environment
+##### 8.1.6 dyld Runtime Environment  dyld运行环境
 
 The `dyld` runtime environment is the native environment in OS X and is used to load, link, and execute Mach-O files. At the heart of this environment is the `dyld` dynamic loader program, which handles the loading of a program’s code modules and associated dynamic libraries, resolves any dependencies between those libraries and modules, and begins the execution of the program. 
 
 Upon loading a program’s code modules, the dynamic loader performs the minimal amount of symbol binding needed to launch your program and get it running. This binding process involves resolving links to external libraries and loading them as their symbols are used. The dynamic loader takes a lazy approach to binding individual symbols, doing so only as they are used by your code. Symbols in your code can be strongly linked or weakly linked. Strongly linked symbols cause the dynamic loader to terminate your program if the library containing the symbol cannot be found or the symbol is not present in the library. Weakly linked symbols terminate your program only if the symbol is not present and an attempt is made to use it. 
 
 For more information about the dynamic loader program, see the `dyld` man page. For information about building and working with Mach-O executable files, see *[Mach-O Programming Topics](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/MachOTopics/0-Introduction/introduction.html#//apple_ref/doc/uid/TP40001519)*. 
+
+
+
+dyld运行时环境是OS X中的本机环境，用于加载、链接和执行 Mach-O文件。这个环境的核心是dyld 动态加载程序，它处理程序的代码模块和相关的动态库的加载，解决这些库和模块之间的任何依赖关系，并开始执行程序。
+
+加载程序的代码模块后，动态加载程序 执行启动程序 并使其运行所需的最小符号绑定量。这个绑定过程 涉及 解析到外部库的链接，并在使用它们的符号时 加载它们。动态加载器采用一种懒惰的方法来绑定单个符号，仅在您的代码使用它们时才这样做。代码中的符号可以是强链接的，也可以是弱链接的。如果无法找到包含符号的库 或 该符号不在库中，强链接符号 将导致动态加载程序终止程序。弱链接符号只有在符号不存在 并试图使用它时才终止程序。
+
+有关动态加载程序的更多信息，请参见 dyld 手册页。有关构建 和 使用 Mach-O 可执行文件的信息，请参阅 *[Mach-O Programming Topics](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/MachOTopics/0-Introduction/introduction.html#//apple_ref/doc/uid/TP40001519)*。
 
 
 
@@ -688,7 +744,9 @@ The tools that come with OS X provide direct support for developing software usi
 
 
 
+***
 
+伊织 2020-01-08（三）晴冷
 
 
 
