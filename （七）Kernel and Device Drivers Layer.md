@@ -45,11 +45,11 @@ For more on XPC Services, read [Creating XPC Services](https://developer.apple.c
 
 
 
-XPC 是 OSX 上的进程间通信技术，通过启用特权分离 补充了 App 沙盒技术。特权分离是一种开发策略，在这种策略中，您根据每个应用程序所需的 系统资源访问权限 将应用程序分成若干块。您创建的组件被称为 XPC 服务。
+XPC 是 OSX 上的进程间通信技术，通过启用特权分离 补充了 App 沙盒技术。特权分离是一种开发策略，在这种策略中，你根据每个应用程序所需的 系统资源访问权限 将应用程序分成若干块。你创建的组件被称为 XPC 服务。
 
 你可以在 Xcode 工程中创建一个 XPC 服务作为独立的 target。每一个服务获取他们自己的沙盒，具体来说，它有自己的容器和自己的权利集。此外，应用程序中包含的 XPC 服务只能由 你的应用访问。这些优点使 XPC 成为在OS X 应用程序中实现特权分离的最佳技术。
 
-XPC 与 Grand Central Dispatch (GCD) 集成。当您创建连接时，您将其与一个 调度队列相关联，在该队列上执行消息流。
+XPC 与 Grand Central Dispatch (GCD) 集成。当你创建连接时，你将其与一个 调度队列相关联，在该队列上执行消息流。
 
 当应用程序启动时，系统自动将找到的每个 XP C服务 注册到应用程序可见的 命名空间中。应用程序与它的一个XPC 服务建立连接，并向它发送 包含该服务 随后处理的事件的消息。
 
@@ -67,9 +67,9 @@ For more information about the functions of the `libcache` library, see *libcach
 
 
 
-`libcache` API是一个底层 可清除的缓存API。主动缓存 是 最大化应用程序性能 的重要技术。但是，当缓存需求超过可用内存时，系统必须释放必要的内存来处理新需求。通常，这意味着将缓存的数据分页到相对较慢的存储设备，有时甚至会导致系统范围的性能下降。您的应用程序应该通过主动管理其数据缓存，来避免潜在的分页开销，并在不再需要缓存的数据时释放缓存。
+`libcache` API是一个底层 可清除的缓存API。主动缓存 是 最大化应用程序性能 的重要技术。但是，当缓存需求超过可用内存时，系统必须释放必要的内存来处理新需求。通常，这意味着将缓存的数据分页到相对较慢的存储设备，有时甚至会导致系统范围的性能下降。你的应用程序应该通过主动管理其数据缓存，来避免潜在的分页开销，并在不再需要缓存的数据时释放缓存。
 
-在更广泛的系统环境中，您的应用程序还可以通过创建缓存来提供帮助，操作系统可以根据需要优先清除缓存。 `libcache` 库和基础框架的 `NSCache` 类帮助您创建这些可清除的缓存。
+在更广泛的系统环境中，你的应用程序还可以通过创建缓存来提供帮助，操作系统可以根据需要优先清除缓存。 `libcache` 库和基础框架的 `NSCache` 类帮助你创建这些可清除的缓存。
 
 更多关于 `libcache`  库的功能信息，可查阅  *libcache Reference* 。更多关于  `NSCache` 类的信息，可参阅  *[NSCache Class Reference](https://developer.apple.com/documentation/foundation/nscache)* 。
 
@@ -125,7 +125,7 @@ Mach 是 Darwin 的核心，因为它提供一些操作系统中最重要的功�
 
 - **Preemptive multitasking.** With Mach, processes share the CPU efficiently. Mach watches over the computer’s processor, prioritizing tasks, making sure activity levels are at the maximum, and ensuring that every task gets the resources it needs. It uses certain criteria to decide how important a task is and therefore how much time to allocate to it before giving another task its turn. Your process is not dependent on another process yielding its processing time.
 
-  抢占式多任务处理：使用Mach，进程可以高效地共享CPU。Mach 监视计算机的处理器，提高任务的优先级，确保活动水平最大，并确保每个任务获得所需的资源。它使用一定的标准来决定一个任务有多重要，然后在轮到这个任务之前 决定 要分配多少时间给它。您的进程不依赖于 另一个产生其处理时间的进程。
+  抢占式多任务处理：使用Mach，进程可以高效地共享CPU。Mach 监视计算机的处理器，提高任务的优先级，确保活动水平最大，并确保每个任务获得所需的资源。它使用一定的标准来决定一个任务有多重要，然后在轮到这个任务之前 决定 要分配多少时间给它。你的进程不依赖于 另一个产生其处理时间的进程。
 
 - **Advanced virtual memory.** In OS X, virtual memory is “on” all the time. The Mach virtual memory system gives each process its own private virtual address space. For 64-bit apps, the theoretical maximum is approximately 18 exabytes, or 18 billion billion bytes. Mach maintains address maps that control the translation of a task’s virtual addresses into physical memory. Typically only a portion of the data or code contained in a task’s virtual address space resides in physical memory at any given time. As pages are needed, they are loaded into physical memory from storage. Mach augments these semantics with the abstraction of memory objects. Named memory objects enable one task (at a sufficiently low level) to map a range of memory, unmap it, and send it to another task. This capability is essential for implementing separate execution environments on the same system. 
 
@@ -162,7 +162,7 @@ As of v10.8, OS X requires a Mac that uses the 64-bit kernel. A 64-bit kernel pr
 
 Because a 64-bit kernel does not support 32-bit drivers and kernel extensions (KEXTs), those items must be built for 64-bit. Fortunately, for most drivers and KEXTs, building for a 64-bit kernel is usually not as difficult as you might think. For the most part, transitioning a driver or KEXT to be 64-bit capable is just like transitioning any other piece of code. For details about how to make the transition, including what things to check for in your code, see *[64-Bit Transition Guide](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/64bitPorting/intro/intro.html#//apple_ref/doc/uid/TP40001064)*.
 
-由于 64位内核 不支持 32位驱动程序 和 内核扩展（KEXTs），所以这些项必须为 64位构建。幸运的是，对于大多数驱动程序和KEXTs 来说，构建64位内核 通常并不像您想象的那么困难。在大多数情况下，将 驱动程序 或 KEXT 转换为64位的能力，就像转换任何其他代码一样。有关如何进行转换的详细信息，包括要在代码中检查的内容，请参见 *[64-Bit Transition Guide](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/64bitPorting/intro/intro.html#//apple_ref/doc/uid/TP40001064)*。
+由于 64位内核 不支持 32位驱动程序 和 内核扩展（KEXTs），所以这些项必须为 64位构建。幸运的是，对于大多数驱动程序和KEXTs 来说，构建64位内核 通常并不像你想象的那么困难。在大多数情况下，将 驱动程序 或 KEXT 转换为64位的能力，就像转换任何其他代码一样。有关如何进行转换的详细信息，包括要在代码中检查的内容，请参见 *[64-Bit Transition Guide](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/64bitPorting/intro/intro.html#//apple_ref/doc/uid/TP40001064)*。
 
 ***
 ### 3、Device-Driver Support 设备驱动支持
@@ -189,7 +189,7 @@ For information on creating device drivers, see *[IOKit Device Driver Design Gui
 - 动态设备管理（“热插拔”）
 - 电源管理（适用于台式机和便携机）
 
-如果您的设备符合标准规范，如鼠标、键盘、音频输入设备、现代MIDI设备等，则在插入时应该可以正常工作。如果您的设备不符合已发布的标准，则可以使用 I/O Kit 资源 创建自定义驱动程序 以满足您的需要。设备诸如 AGP卡、PCI 和 PCIe 卡、扫描仪 和 打印机等，通常需要自定义驱动程序，或其他支持软件才能与OS X协同工作。
+如果你的设备符合标准规范，如鼠标、键盘、音频输入设备、现代MIDI设备等，则在插入时应该可以正常工作。如果你的设备不符合已发布的标准，则可以使用 I/O Kit 资源 创建自定义驱动程序 以满足你的需要。设备诸如 AGP卡、PCI 和 PCIe 卡、扫描仪 和 打印机等，通常需要自定义驱动程序，或其他支持软件才能与OS X协同工作。
 
 有关创建设备驱动程序的信息，请参阅 *[IOKit Device Driver Design Guidelines](https://developer.apple.com/library/archive/documentation/DeviceDrivers/Conceptual/WritingDeviceDriver/Introduction/Intro.html#//apple_ref/doc/uid/TP30000694)*。
 
@@ -206,7 +206,7 @@ For information on how to write an NKE, see *[Network Kernel Extensions Programm
 
 
 
-Darwin 允许内核开发人员 通过创建 网络内核扩展（NKEs: network kernel extensions）向操作系统 添加网络功能。NKE 工具允许您创建网络模块，甚至整个协议栈，这些模块可以动态加载到内核中，并从内核中卸载。NKE 还可以自动配置协议栈。
+Darwin 允许内核开发人员 通过创建 网络内核扩展（NKEs: network kernel extensions）向操作系统 添加网络功能。NKE 工具允许你创建网络模块，甚至整个协议栈，这些模块可以动态加载到内核中，并从内核中卸载。NKE 还可以自动配置协议栈。
 
 NKE 模块 具有 监视和修改网络流量 的内置功能。在数据链路和网络层，它们还可以接收来自设备驱动程序的 异步事件通知，例如 网络接口的状态发生变化。
 
@@ -260,7 +260,7 @@ OSX支持以下用于进程间通信（IPC）和跨系统传递通知的技术�
 
   To learn how to use the `FSEvents` API, see *[File System Events Programming Guide](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/FSEvents_ProgGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40005289)*.
 
-  文件系统事件。文件系统事件（`FSEvents`）是一种机制，用于在文件系统中发生更改时（如在创建、修改或删除文件和目录时）通知应用程序。FSEvents API 提供了一种 同时监视多个目录,并检测文件层次结构的一般更改的方法。例如，您可以在备份软件中使用此技术来检测更改了哪些文件。FSEvents API 不用于检测对单个文件的细粒度更改。
+  文件系统事件。文件系统事件（`FSEvents`）是一种机制，用于在文件系统中发生更改时（如在创建、修改或删除文件和目录时）通知应用程序。FSEvents API 提供了一种 同时监视多个目录,并检测文件层次结构的一般更改的方法。例如，你可以在备份软件中使用此技术来检测更改了哪些文件。FSEvents API 不用于检测对单个文件的细粒度更改。
 
   要了解如何使用FSEvents API，可参阅  *[File System Events Programming Guide](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/FSEvents_ProgGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40005289)*。
 
@@ -268,7 +268,7 @@ OSX支持以下用于进程间通信（IPC）和跨系统传递通知的技术�
 
 - **Kernel queues and kernel events.** These mechanisms allow you to intercept kernel-level events to receive notifications about changes to sockets, processes, the file system, and other aspects of the system. Kernel queues and events are part of the FreeBSD layer of the operating system and are described in the `kqueue` and `kevent` man pages.
 
-  内核队列和内核事件。这些机制允许您 拦截内核级事件，以接收有关套接字、进程、文件系统 和 系统其他方面更改的通知。内核队列和事件是 操作系统 FreeBSD 层的一部分，在 kqueue 和 kevent 手册页中有描述。
+  内核队列和内核事件。这些机制允许你 拦截内核级事件，以接收有关套接字、进程、文件系统 和 系统其他方面更改的通知。内核队列和事件是 操作系统 FreeBSD 层的一部分，在 kqueue 和 kevent 手册页中有描述。
 
 
 
@@ -280,15 +280,15 @@ OSX支持以下用于进程间通信（IPC）和跨系统传递通知的技术�
 
   BSD 通知。与 Core Foundation 和 Foundation 提供的通知服务相比，BSD通知具有一些优势。
 
-  例如，您的程序可以通过 包括 Mach端口、信号 和 文件描述符的机制 接收BSD通知。此外，此技术是轻量级的、高效的，并且能够合并通知。
+  例如，你的程序可以通过 包括 Mach端口、信号 和 文件描述符的机制 接收BSD通知。此外，此技术是轻量级的、高效的，并且能够合并通知。
 
-  您可以将 对BSD通知的支持，添加到任何类型的程序中，包括Cocoa应用程序。更多详细信息，请参阅 [Mac Notification Overview](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/MacOSXNotifcationOv/Introduction/Introduction.html#//apple_ref/doc/uid/TP40005947)*  或  `notify`  命令手册页。有关用于进程间通知的 Cocoa 和 Core Foundation 接口的讨论，请参阅 [Distributed Notifications](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-SW17) 。
+  你可以将 对BSD通知的支持，添加到任何类型的程序中，包括Cocoa应用程序。更多详细信息，请参阅 [Mac Notification Overview](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/MacOSXNotifcationOv/Introduction/Introduction.html#//apple_ref/doc/uid/TP40005947)*  或  `notify`  命令手册页。有关用于进程间通知的 Cocoa 和 Core Foundation 接口的讨论，请参阅 [Distributed Notifications](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40001067-CH270-SW17) 。
 
   
 
 - **Sockets and ports.** Sockets and ports are portable mechanisms for interprocess communication. A socket represents one end of a communications channel between two processes either locally or across the network. A port is a channel between processes or threads on the local computer. Core Foundation and Foundation provide higher-level abstractions for ports and sockets that make them easier to implement and offer additional features. For example, you can use a `CFSocket` with a `CFRunLoop` to multiplex data received from a socket with data received from other sources (or more information, see *[CFSocket Reference](https://developer.apple.com/documentation/corefoundation/cfsocket-rg7)* and *[CFRunLoop Reference](https://developer.apple.com/documentation/corefoundation/cfrunloop)*).
 
-  套接字和港口。套接字和端口是进程间通信的可移植机制。套接字表示 本地或跨网络的两个进程之间的 通信通道的一端。端口是本地计算机上进程或线程之间的通道。Core Foundation 和 Foundation 为端口和套接字提供了更高层次的抽象，使它们更容易实现，并提供了其他特性。例如，您可以使用带有 CFRunLoop 的 CFSocket 来复用从socket接收到的数据，和从其他来源接收到的数据(或更多信息，请参阅  *[CFSocket Reference](https://developer.apple.com/documentation/corefoundation/cfsocket-rg7)*  和  [CFRunLoop Reference](https://developer.apple.com/documentation/corefoundation/cfrunloop)。
+  套接字和港口。套接字和端口是进程间通信的可移植机制。套接字表示 本地或跨网络的两个进程之间的 通信通道的一端。端口是本地计算机上进程或线程之间的通道。Core Foundation 和 Foundation 为端口和套接字提供了更高层次的抽象，使它们更容易实现，并提供了其他特性。例如，你可以使用带有 CFRunLoop 的 CFSocket 来复用从socket接收到的数据，和从其他来源接收到的数据(或更多信息，请参阅  *[CFSocket Reference](https://developer.apple.com/documentation/corefoundation/cfsocket-rg7)*  和  [CFRunLoop Reference](https://developer.apple.com/documentation/corefoundation/cfrunloop)。
 
 
 
@@ -310,7 +310,7 @@ OSX支持以下用于进程间通信（IPC）和跨系统传递通知的技术�
 
   
 
-  共享内存。共享内存是一个进程 专门为几个进程之间的可读和可写而分配的内存区域。您可以使用几种 BSD方法 创建共享内存区域，包括 `shm_open` 和 `shm_unlinkroutine`，以及 `mmap` 例程。对共享内存的访问是通过 POSIX 信号量 来控制的，它实现了一种锁定机制。
+  共享内存。共享内存是一个进程 专门为几个进程之间的可读和可写而分配的内存区域。你可以使用几种 BSD方法 创建共享内存区域，包括 `shm_open` 和 `shm_unlinkroutine`，以及 `mmap` 例程。对共享内存的访问是通过 POSIX 信号量 来控制的，它实现了一种锁定机制。
 
   尽管共享内存 允许任何具有 适当权限的进程 直接读写共享内存区域，但它非常脆弱——导致数据损坏和安全漏洞的危险——应该谨慎使用。它最好只用作原始数据 (如像素或音频) 的存储库，通过更传统的进程间通信 访问控制数据结构。
 
@@ -427,7 +427,7 @@ For more information on using this feature, see [Using Network Diagnostics](http
 
 网络诊断是帮助用户解决网络问题的一种方法。尽管现代网络通常是可靠的，但仍有网络服务可能会失败的时候。有时，失败的原因超出了桌面用户的修复能力，但有时问题在于用户计算机的配置方式。网络诊断功能提供了一个诊断应用程序，帮助用户定位和纠正问题。
 
-如果您的应用程序遇到网络错误，您可以使用 `CFNetwork` 的诊断接口 来启动诊断应用程序，并尝试交互式地解决问题。您还可以选择向用户报告诊断问题，而不尝试解决它们。
+如果你的应用程序遇到网络错误，你可以使用 `CFNetwork` 的诊断接口 来启动诊断应用程序，并尝试交互式地解决问题。你还可以选择向用户报告诊断问题，而不尝试解决它们。
 
 有关使用此功能的更多信息，请参见 [Using Network Diagnostics](https://developer.apple.com/library/archive/documentation/Networking/Conceptual/CFNetwork/UsingNetworkDiagnostics/UsingNetworkDiagnostics.html#//apple_ref/doc/uid/TP30001132-CH7)。
 
@@ -552,7 +552,7 @@ OS X provides scripting bridges to the Objective-C classes of Cocoa. These bridg
 
 Darwin包含了 基于 UNIX 的 操作系统中 常见的所有脚本语言。除了与命令行 shell（如bash和csh）相关的脚本语言之外，Darwin还支持 Perl、Python、Ruby、Ruby on Rails 等。
 
-OS X 提供了到 Cocoa 的 Objective-C 类的 脚本桥。这些桥允许您在 Python 和 Ruby 脚本中使用Cocoa类。有关使用这些网桥的信息，请参见  *[Ruby and Python Programming Topics for Mac](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/RubyPythonCocoa/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004936)*。
+OS X 提供了到 Cocoa 的 Objective-C 类的 脚本桥。这些桥允许你在 Python 和 Ruby 脚本中使用Cocoa类。有关使用这些网桥的信息，请参见  *[Ruby and Python Programming Topics for Mac](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/RubyPythonCocoa/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004936)*。
 
 
 
@@ -567,11 +567,11 @@ In general, you should try to use Grand Central Dispatch or operation objects to
 
 
 
-OS X 完全支持在单个进程中，创建多个抢占式执行线程。线程让程序 并行执行多个任务。例如，您可以创建一个线程来在后台执行一些冗长的计算，而另一个线程 则响应用户事件，并更新应用程序中的窗口。使用多个线程 通常可以显著提高应用程序的性能，特别是在具有多个CPU 核心的计算机上。不过，多线程编程也不是没有危险。它需要仔细协调，以确保您的应用程序的状态不被损坏。
+OS X 完全支持在单个进程中，创建多个抢占式执行线程。线程让程序 并行执行多个任务。例如，你可以创建一个线程来在后台执行一些冗长的计算，而另一个线程 则响应用户事件，并更新应用程序中的窗口。使用多个线程 通常可以显著提高应用程序的性能，特别是在具有多个CPU 核心的计算机上。不过，多线程编程也不是没有危险。它需要仔细协调，以确保你的应用程序的状态不被损坏。
 
-OS X 中的所有用户级线程 都基于POSIX线程（也称为pthreads）。pthread 是一个围绕 Mach 线程的轻量级包装器，Mach 线程 是线程的内核实现。您可以直接使用 pthreads API，也可以使用Cocoa 提供的任何线程包。尽管每个线程化包提供了灵活性和易用性的不同组合，但所有包提供的性能大致相同。
+OS X 中的所有用户级线程 都基于POSIX线程（也称为pthreads）。pthread 是一个围绕 Mach 线程的轻量级包装器，Mach 线程 是线程的内核实现。你可以直接使用 pthreads API，也可以使用Cocoa 提供的任何线程包。尽管每个线程化包提供了灵活性和易用性的不同组合，但所有包提供的性能大致相同。
 
-通常，您应该尝试使用 Grand Central Dispatch 或 operation 对象来并发执行工作。但是，仍然可能需要显式地创建线程。有关线程支持 和 如何安全地使用线程 的指南的更多信息，请参见
+通常，你应该尝试使用 Grand Central Dispatch 或 operation 对象来并发执行工作。但是，仍然可能需要显式地创建线程。有关线程支持 和 如何安全地使用线程 的指南的更多信息，请参见
 
 [Threading Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Multithreading/Introduction/Introduction.html#//apple_ref/doc/uid/10000057i)。
 
@@ -627,7 +627,7 @@ Xcode provides integral support for creating apps that support multiple hardware
 
 尽管应用程序可以在 一个二进制文件中 支持所有这些架构，但并不需要这样做。能够创建在所有支持的体系结构上 本机运行的 `通用二进制文件`，为OS X 提供了它未来所需的灵活性。
 
-支持多种体系结构 需要对每种体系结构的代码进行仔细的规划和测试。如果在您的代码中没有考虑到，那么不同架构之间的细微差异 可能会导致问题。例如，一些内置数据类型 在32位和64位体系结构中具有不同的大小。解释这些差异并不困难，但是需要考虑避免编码错误。
+支持多种体系结构 需要对每种体系结构的代码进行仔细的规划和测试。如果在你的代码中没有考虑到，那么不同架构之间的细微差异 可能会导致问题。例如，一些内置数据类型 在32位和64位体系结构中具有不同的大小。解释这些差异并不困难，但是需要考虑避免编码错误。
 
 Xcode为创建支持多种硬件架构的应用程序提供了整体支持。有关工具支持 和 创建通用二进制文件的信息。有关OS X中 64位支持的信息，包括如何进行转换的文档链接，请参阅  [64-Bit Support](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SystemTechnology/SystemTechnology.html#//apple_ref/doc/uid/TP40001067-CH207-SW2) 。
 
@@ -655,9 +655,9 @@ OS X uses the LP64 model that is in use by other 64-bit UNIX systems, which mean
 
 OS X最初被设计成使用32位架构来支持计算机上的二进制文件。但是，在OS X v10.4中引入了对编译、链接和调试64位体系结构二进制文件的支持。这种最初的支持仅限于使用 C 或 c++ 编写的代码。此外，64位二进制文件 只能链接到 Accelerate 框架和 libSystem.dylib。
 
-从OS X v10.5开始，大多数系统库和框架都是 64位的，这意味着它们可以在 32位 和 64位 应用程序中使用。为 64位 构建的框架意味着您可以创建处理超大数据集的应用程序，在当前基于intel 的 cpu 上处理 128 TB 的数据。在基于 intel 的 Macintosh 电脑上，一些64位应用程序甚至可能比 32 位 的同类程序运行得更快，因为64位模式下有额外的处理器资源可用。
+从OS X v10.5开始，大多数系统库和框架都是 64位的，这意味着它们可以在 32位 和 64位 应用程序中使用。为 64位 构建的框架意味着你可以创建处理超大数据集的应用程序，在当前基于intel 的 cpu 上处理 128 TB 的数据。在基于 intel 的 Macintosh 电脑上，一些64位应用程序甚至可能比 32 位 的同类程序运行得更快，因为64位模式下有额外的处理器资源可用。
 
-有一些技术还没有移植到64位。仍然支持使用这些 APIs 开发32位应用程序，但是如果您想创建64位 应用程序，就必须使用替代技术。这些宣传短片包括:
+有一些技术还没有移植到64位。仍然支持使用这些 APIs 开发32位应用程序，但是如果你想创建64位 应用程序，就必须使用替代技术。这些宣传短片包括:
 
 - 整个 QuickTime C API (在OS X v10.9中被弃用；在64位应用程序中，使用 AV Foundation 替代)
 - HIToolbox, Window Manager 和大部分用户交互 APIs（一般而言，使用 Cocoa UI 类和其他替代类）；获取特定APIs 和转换路径的列表，可查看  *[64-Bit Guide for Carbon Developers](https://developer.apple.com/library/archive/documentation/Carbon/Conceptual/Carbon64BitGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004381)*。
@@ -710,7 +710,7 @@ OS X支持两种不同的调试文件格式的编译可执行文件: Stabs 和 D
 
 Since its first release, OS X has supported several different environments for running apps. The most prominent of these environments is the dynamic link editor (`dyld`) environment, which is also the only environment supported for active development. Most of the other environments provided legacy support during the transition from Mac OS 9 to OS X and are no longer supported for active development. The following sections describe the runtime environments you may encounter in various versions of OS X. 
 
-自从第一次发布以来，OS X 已经为运行应用程序支持了几种不同的环境。这些环境中最突出的是 动态链接器 (dynamic link editor, dyld)环境，它也是惟一支持动态开发的环境。大多数其他环境在 从Mac OS 9 过渡到OS X期间提供了遗留支持，并且不再支持动态开发。以下部分描述了您可能在不同版本的OS X 中遇到的运行时环境。
+自从第一次发布以来，OS X 已经为运行应用程序支持了几种不同的环境。这些环境中最突出的是 动态链接器 (dynamic link editor, dyld)环境，它也是惟一支持动态开发的环境。大多数其他环境在 从Mac OS 9 过渡到OS X期间提供了遗留支持，并且不再支持动态开发。以下部分描述了你可能在不同版本的OS X 中遇到的运行时环境。
 
 
 
@@ -727,7 +727,7 @@ For more information about the dynamic loader program, see the `dyld` man page. 
 
 dyld运行时环境是OS X中的本机环境，用于加载、链接和执行 Mach-O文件。这个环境的核心是dyld 动态加载程序，它处理程序的代码模块和相关的动态库的加载，解决这些库和模块之间的任何依赖关系，并开始执行程序。
 
-加载程序的代码模块后，动态加载程序 执行启动程序 并使其运行所需的最小符号绑定量。这个绑定过程 涉及 解析到外部库的链接，并在使用它们的符号时 加载它们。动态加载器采用一种懒惰的方法来绑定单个符号，仅在您的代码使用它们时才这样做。代码中的符号可以是强链接的，也可以是弱链接的。如果无法找到包含符号的库 或 该符号不在库中，强链接符号 将导致动态加载程序终止程序。弱链接符号只有在符号不存在 并试图使用它时才终止程序。
+加载程序的代码模块后，动态加载程序 执行启动程序 并使其运行所需的最小符号绑定量。这个绑定过程 涉及 解析到外部库的链接，并在使用它们的符号时 加载它们。动态加载器采用一种懒惰的方法来绑定单个符号，仅在你的代码使用它们时才这样做。代码中的符号可以是强链接的，也可以是弱链接的。如果无法找到包含符号的库 或 该符号不在库中，强链接符号 将导致动态加载程序终止程序。弱链接符号只有在符号不存在 并试图使用它时才终止程序。
 
 有关动态加载程序的更多信息，请参见 dyld 手册页。有关构建 和 使用 Mach-O 可执行文件的信息，请参阅 *[Mach-O Programming Topics](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/MachOTopics/0-Introduction/introduction.html#//apple_ref/doc/uid/TP40001519)*。
 
