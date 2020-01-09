@@ -457,7 +457,7 @@ Services can represent one-way actions as well. For example, a service could tak
 
 Preference panes are used primarily to modify system preferences for the current user. Preference panes are implemented as plug-ins and installed in `/Library/PreferencePanes`. App developers can also take advantage of these plug-ins to manage per-user app preferences; however, most apps provide their own UI to manage preferences.
 
-偏好设置面板主要用来修改 当前用户的系统偏好设置。偏好设置作为差劲来执行，安装在  `/Library/PreferencePanes` 文件夹。App 开发者 可以利用这些插件 来管理每个用户的应用程序首选项。 但是，大多数应用程序提供了自己的UI 来管理偏好设置。
+偏好设置面板主要用来修改 当前用户的系统偏好设置。偏好设置作为插件来执行，安装在  `/Library/PreferencePanes` 文件夹。App 开发者 可以利用这些插件 来管理每个用户的应用程序首选项。 但是，大多数应用程序提供了自己的UI 来管理偏好设置。
 
 
 
